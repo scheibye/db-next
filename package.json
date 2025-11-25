@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@sanity/client": "^7.13.0",
     "next": "16.0.4",
+    "next-sanity": "^11.6.9",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
