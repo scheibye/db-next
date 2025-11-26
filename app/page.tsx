@@ -3,6 +3,8 @@ import { sanityClient } from "@/lib/sanity.client";
 import { HeroSection } from "@/components/HeroSection";
 import { UspSection } from "@/components/UspSection";
 import { LoanApplicationForm } from "@/components/LoanApplicationForm";
+import { StepsSection } from "@/components/StepsSection";
+import { FaqSection } from "@/components/FaqSection";
 
 type HeroSectionData = {
   _type: "heroSection";
@@ -25,9 +27,26 @@ type UspSectionData = {
   items: UspItemData[];
 };
 
+type StepsSectionData = {
+  _type: "stepsSection";
+  title?: string;
+  steps: { label: string; description?: string }[];
+};
+
+type FaqSectionData = {
+  _type: "faqSection";
+  title?: string;
+  items: { question: string; answer: string }[];
+};
+
 type PageData = {
   title: string;
-  sections: (HeroSectionData | UspSectionData)[];
+  sections: (
+    | HeroSectionData
+    | UspSectionData
+    | StepsSectionData
+    | FaqSectionData
+  )[];
 };
 
 const homePageQuery = groq`
@@ -35,10 +54,14 @@ const homePageQuery = groq`
     title,
     sections[]{
       ...,
-      items[]{title, description, icon}
+      // for uspSection
+      items[]{title, description, icon, question, answer},
+      // for stepsSection
+      steps[]{label, description}
     }
   }
 `;
+
 
 async function getHomePage(): Promise<PageData | null> {
   return sanityClient.fetch(homePageQuery);
@@ -59,20 +82,45 @@ export default async function Home() {
   }
 
   return (
-    <main>
-      {page.sections?.map((section, idx) => {
-        if (section._type === "heroSection") {
-          return <HeroSection key={idx} {...section} />;
-        }
-        if (section._type === "uspSection") {
-          return <UspSection key={idx} title={section.title} items={section.items || []} />;
-        }
-        return null;
-      })}
-       {/* Formsektion under CMS-sektionerne */}
-      <section className="mt-8 mb-16 px-4 md:px-0">
-        <LoanApplicationForm />
-      </section>
-    </main>
-  );
+  <main>
+    {page.sections?.map((section, idx) => {
+      if (section._type === "heroSection") {
+        return <HeroSection key={idx} {...section} />;
+      }
+      if (section._type === "uspSection") {
+        return (
+          <UspSection
+            key={idx}
+            title={section.title}
+            items={section.items || []}
+          />
+        );
+      }
+      if (section._type === "stepsSection") {
+        return (
+          <StepsSection
+            key={idx}
+            title={section.title}
+            steps={section.steps || []}
+          />
+        );
+      }
+      if (section._type === "faqSection") {
+        return (
+          <FaqSection
+            key={idx}
+            title={section.title}
+            items={section.items || []}
+          />
+        );
+      }
+      return null;
+    })}
+
+    <section className="mt-8 mb-16 px-4 md:px-0">
+      <LoanApplicationForm />
+    </section>
+  </main>
+);
+
 }
