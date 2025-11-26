@@ -1,10 +1,17 @@
 import { groq } from "next-sanity";
 import { sanityClient } from "@/lib/sanity.client";
+
 import { HeroSection } from "@/components/HeroSection";
 import { UspSection } from "@/components/UspSection";
 import { LoanApplicationForm } from "@/components/LoanApplicationForm";
 import { StepsSection } from "@/components/StepsSection";
 import { FaqSection } from "@/components/FaqSection";
+import { TrustpilotSection } from "@/components/TrustpilotSection";
+import { ApplyNowSection } from "@/components/ApplyNowSection";
+import { AboutUsSection } from "@/components/AboutUsSection";
+import { CtaProductsSection } from "@/components/CtaProductsSection";
+import { BlogPostSection } from "@/components/BlogPostSection";
+import { VideoSection } from "@/components/VideoSection";
 
 type HeroSectionData = {
   _type: "heroSection";
@@ -40,13 +47,63 @@ type FaqSectionData = {
   items: { question: string; answer: string }[];
 };
 
+type TrustpilotSectionData = {
+  _type: "trustpilotSection";
+  title?: string;
+  ratingText?: string;
+  stars?: number;
+};
+
+type ApplyNowSectionData = {
+  _type: "applyNowSection";
+  title?: string;
+  subtitle?: string;
+  bulletPoints?: string[];
+  primaryCtaLabel?: string;
+  primaryCtaHref?: string;
+  phone?: string;
+};
+
+type AboutUsSectionData = {
+  _type: "aboutUsSection";
+  title?: string;
+  subtitle?: string;
+  body?: any;
+  imageUrl?: string;
+};
+
+type CtaProductsSectionData = {
+  _type: "ctaProductsSection";
+  title?: string;
+  subtitle?: string;
+  items?: { title: string; description?: string; href?: string; badge?: string }[];
+};
+
+type BlogPostSectionData = {
+  _type: "blogPostSection";
+  title?: string;
+  posts?: { title: string; excerpt?: string; href?: string; imageUrl?: string }[];
+};
+
+type VideoSectionData = {
+  _type: "videoSection";
+  title?: string;
+  videoUrl?: string;
+};
+
 type PageData = {
   title: string;
   sections: (
     | HeroSectionData
+    | UspSectionData
     | StepsSectionData
-    | UspSectionData    
     | FaqSectionData
+    | TrustpilotSectionData
+    | ApplyNowSectionData
+    | AboutUsSectionData
+    | CtaProductsSectionData
+    | BlogPostSectionData
+    | VideoSectionData
   )[];
 };
 
@@ -55,13 +112,23 @@ const homePageQuery = groq`
     title,
     sections[]{
       ...,
-      // for uspSection
-      items[]{title, description, icon, question, answer},
-      // for stepsSection
-      steps[]{label, description}
+      // uspSection
+      items[]{title, description, icon, question, answer, href, badge},
+      // stepsSection
+      steps[]{label, title, description},
+      // blogPostSection
+      posts[]{
+        title,
+        excerpt,
+        href,
+        "imageUrl": image.asset->url
+      },
+      // aboutUsSection
+      "imageUrl": image.asset->url
     }
   }
 `;
+
 
 
 async function getHomePage(): Promise<PageData | null> {
@@ -83,49 +150,121 @@ export default async function Home() {
   }
 
   return (
-  <main>
-    {page.sections?.map((section, idx) => {
-      if (section._type === "heroSection") {
-        return <HeroSection key={idx} {...section} />;
-      }
-      if (section._type === "stepsSection") {
-  return (
-    <StepsSection
-      key={idx}
-      title={section.title ?? undefined}
-      subtitle={section.subtitle ?? undefined}
-      steps={(section.steps || []).map((step: any) => ({
-        label: step.label,
-        description: step.description,
-      }))}
-    />
+    <main>
+      {page.sections?.map((section: any, idx: number) => {
+        if (section._type === "heroSection") {
+          return <HeroSection key={idx} {...section} />;
+        }
+
+        if (section._type === "stepsSection") {
+          return (
+            <StepsSection
+              key={idx}
+              title={section.title ?? undefined}
+              subtitle={section.subtitle ?? undefined}
+              steps={(section.steps || []).map((step: any) => ({
+                label: step.label ?? step.title,
+                description: step.description,
+              }))}
+            />
+          );
+        }
+
+        if (section._type === "uspSection") {
+          return (
+            <UspSection
+              key={idx}
+              title={section.title}
+              items={section.items || []}
+            />
+          );
+        }
+
+        if (section._type === "faqSection") {
+          return (
+            <FaqSection
+              key={idx}
+              title={section.title}
+              items={section.items || []}
+            />
+          );
+        }
+
+        if (section._type === "trustpilotSection") {
+          return (
+            <TrustpilotSection
+              key={idx}
+              title={section.title}
+              ratingText={section.ratingText}
+              stars={section.stars}
+            />
+          );
+        }
+
+        if (section._type === "applyNowSection") {
+          return (
+            <ApplyNowSection
+              key={idx}
+              title={section.title}
+              subtitle={section.subtitle}
+              bulletPoints={section.bulletPoints || []}
+              primaryCtaLabel={section.primaryCtaLabel}
+              primaryCtaHref={section.primaryCtaHref}
+              phone={section.phone}
+            />
+          );
+        }
+
+        if (section._type === "aboutUsSection") {
+          return (
+            <AboutUsSection
+              key={idx}
+              title={section.title}
+              subtitle={section.subtitle}
+              body={section.body}
+              imageUrl={section.imageUrl}
+            />
+          );
+        }
+
+        if (section._type === "ctaProductsSection") {
+          return (
+            <CtaProductsSection
+              key={idx}
+              title={section.title}
+              subtitle={section.subtitle}
+              items={section.items || []}
+            />
+          );
+        }
+
+        if (section._type === "blogPostSection") {
+          return (
+            <BlogPostSection
+              key={idx}
+              title={section.title}
+              posts={section.posts || []}
+            />
+          );
+        }
+
+        if (section._type === "videoSection") {
+          return (
+            <VideoSection
+              key={idx}
+              title={section.title}
+              videoUrl={section.videoUrl}
+            />
+          );
+        }
+
+        return null;
+      })}
+
+      {/* Formularen til sidst på siden */}
+      <section className="mt-8 mb-16 px-4 md:px-0">
+        <LoanApplicationForm />
+      </section>
+    </main>
   );
-}
-      if (section._type === "uspSection") {
-        return (
-          <UspSection
-            key={idx}
-            title={section.title}
-            items={section.items || []}
-          />
-        );
-      }
-      if (section._type === "faqSection") {
-        return (
-          <FaqSection
-            key={idx}
-            title={section.title}
-            items={section.items || []}
-          />
-        );
-      }
-      return null;
-    })}
-
-    <section className="mt-8 mb-16 px-4 md:px-0">
-      <LoanApplicationForm />
-    </section>
-  </main>
-);
-
 }
