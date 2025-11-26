@@ -24,3 +24,36 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom slider til Dansk Boliglån */
+input[type="range"].db-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+input[type="range"].db-slider:focus {
+  outline: none;
+}
+
+input[type="range"].db-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  border: none;
+}
+
+input[type="range"].db-slider::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border: none;
+  background: transparent;
+}
+
+input[type="range"].db-slider::-ms-thumb {
+  width: 0;
+  height: 0;
+  border: none;
+  background: transparent;
+}

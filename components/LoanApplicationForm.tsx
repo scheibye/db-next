@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { HeroCalculatorCard } from "@/components/HeroCalculatorCard";
 
 type Purpose = "boligkob" | "frivaerdi";
 
@@ -26,8 +27,8 @@ export function LoanApplicationForm() {
 
   // Step 1 state
   const [purpose, setPurpose] = useState<Purpose>("boligkob");
-  const [propertyValue, setPropertyValue] = useState<number>(2500000);
-  const [loanAmount, setLoanAmount] = useState<number>(500000);
+  const [loanAmount, setLoanAmount] = useState<number>(1_000_000);
+  const [secondaryAmount, setSecondaryAmount] = useState<number>(100_000);
 
   // Step 2 state
   const [name, setName] = useState("");
@@ -102,8 +103,8 @@ export function LoanApplicationForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           purpose,
-          propertyValue,
           loanAmount,
+          secondaryAmount,
           name,
           email,
           phone,
@@ -179,7 +180,7 @@ export function LoanApplicationForm() {
 
   if (step === "done") {
     return (
-      <section className="max-w-xl mx-auto p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+      <section id="loan-form" className="max-w-xl mx-auto p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
         <h2 className="text-xl font-bold mb-2 text-slate-900">
           Tak for din henvendelse
         </h2>
@@ -203,99 +204,27 @@ export function LoanApplicationForm() {
         </div>
       )}
 
+      {/* STEP 1 – hero-kalkulatoren */}
       {step === 1 && (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setStep(2);
-          }}
-          className="space-y-6"
-        >
-          <div>
-            <p className="text-xs font-semibold text-slate-700 mb-2">
-              Hvad er formålet?
-            </p>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <button
-                type="button"
-                onClick={() => setPurpose("boligkob")}
-                className={`rounded-full border px-3 py-2 text-left ${
-                  purpose === "boligkob"
-                    ? "border-sky-600 bg-sky-50 text-sky-800"
-                    : "border-slate-200 bg-white text-slate-700"
-                }`}
-              >
-                Lån til boligkøb
-              </button>
-              <button
-                type="button"
-                onClick={() => setPurpose("frivaerdi")}
-                className={`rounded-full border px-3 py-2 text-left ${
-                  purpose === "frivaerdi"
-                    ? "border-sky-600 bg-sky-50 text-sky-800"
-                    : "border-slate-200 bg-white text-slate-700"
-                }`}
-              >
-                Lån i friværdi
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <label className="text-xs font-semibold text-slate-700 mb-1 block">
-              Ejendommens værdi (anslået)
-            </label>
-            <div className="flex items-center justify-between text-xs mb-1 text-slate-500">
-              <span>500.000 kr.</span>
-              <span>10.000.000+ kr.</span>
-            </div>
-            <input
-              type="range"
-              min={500000}
-              max={10000000}
-              step={50000}
-              value={propertyValue}
-              onChange={(e) => setPropertyValue(Number(e.target.value))}
-              className="w-full"
-            />
-            <div className="text-right text-xs text-slate-700 mt-1">
-              {propertyValue.toLocaleString("da-DK")} kr.
-            </div>
-          </div>
-
-          <div>
-            <label className="text-xs font-semibold text-slate-700 mb-1 block">
-              Ønsket lånebeløb
-            </label>
-            <div className="flex items-center justify-between text-xs mb-1 text-slate-500">
-              <span>100.000 kr.</span>
-              <span>5.000.000+ kr.</span>
-            </div>
-            <input
-              type="range"
-              min={100000}
-              max={5000000}
-              step={25000}
-              value={loanAmount}
-              onChange={(e) => setLoanAmount(Number(e.target.value))}
-              className="w-full"
-            />
-            <div className="text-right text-xs text-slate-700 mt-1">
-              {loanAmount.toLocaleString("da-DK")} kr.
-            </div>
-          </div>
-
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              className="inline-flex items-center rounded-full bg-sky-600 px-4 py-2 text-xs font-medium text-white hover:bg-sky-700"
-            >
-              Videre til kontaktoplysninger
-            </button>
-          </div>
-        </form>
+        <div className="space-y-4">
+          <p className="text-xs font-semibold text-slate-700">
+            Start med at vælge formål og beløb
+          </p>
+          <HeroCalculatorCard
+            purpose={purpose}
+            onPurposeChange={setPurpose}
+            loanAmount={loanAmount}
+            onLoanAmountChange={setLoanAmount}
+            secondaryAmount={secondaryAmount}
+            onSecondaryAmountChange={setSecondaryAmount}
+            secondaryLabelForBoligkob="Din udbetaling til boligkøb"
+            secondaryLabelForFrivaerdi="Ejendommens værdi (anslået)"
+            onStart={() => setStep(2)}
+          />
+        </div>
       )}
 
+      {/* STEP 2 – kontaktoplysninger */}
       {step === 2 && (
         <form onSubmit={handleSubmitStep2} className="space-y-4">
           <div className="text-xs text-slate-600 mb-1">
@@ -356,6 +285,7 @@ export function LoanApplicationForm() {
         </form>
       )}
 
+      {/* STEP 3 – ejendomsoplysninger */}
       {step === 3 && (
         <form onSubmit={handleSubmitStep3} className="space-y-4">
           <div className="text-xs text-slate-600 mb-1">
