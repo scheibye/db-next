@@ -88,6 +88,10 @@ type BlogPostSectionData = {
 type VideoSectionData = {
   _type: "videoSection";
   title?: string;
+  lead?: string;
+  body?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
   videoUrl?: string;
 };
 
@@ -249,14 +253,19 @@ export default async function Home() {
         }
 
         if (section._type === "videoSection") {
-          return (
-            <VideoSection
-              key={idx}
-              title={section.title}
-              videoUrl={section.videoUrl}
-            />
-          );
-        }
+  return (
+    <VideoSection
+      key={idx}
+      title={section.title}
+      lead={section.lead}
+      body={section.body}
+      ctaLabel={section.ctaLabel}
+      ctaHref={section.ctaHref}
+      videoUrl={section.videoUrl}
+    />
+  );
+}
+
 
         return null;
       })}
