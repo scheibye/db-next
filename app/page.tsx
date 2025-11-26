@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { sanityClient } from "@/lib/sanity.client";
 import { HeroSection } from "@/components/HeroSection";
 import { UspSection } from "@/components/UspSection";
+import { LoanApplicationForm } from "@/components/LoanApplicationForm";
 
 type HeroSectionData = {
   _type: "heroSection";
@@ -68,6 +69,10 @@ export default async function Home() {
         }
         return null;
       })}
+       {/* Formsektion under CMS-sektionerne */}
+      <section className="mt-8 mb-16 px-4 md:px-0">
+        <LoanApplicationForm />
+      </section>
     </main>
   );
 }
