@@ -15,76 +15,78 @@ type HeroProps = {
 };
 
 export function HeroSection(props: HeroProps) {
-  const { eyebrow, title, subtitle, primaryCtaHref, primaryCtaLabel } = props;
+  const { eyebrow, title, subtitle, primaryCtaLabel, primaryCtaHref } = props;
 
-  // Lokal state til hero-kalkulatoren (uafhængig af formen længere nede)
   const [purpose, setPurpose] = useState<Purpose>("boligkob");
   const [loanAmount, setLoanAmount] = useState<number>(1_000_000);
   const [secondaryAmount, setSecondaryAmount] = useState<number>(100_000);
 
-  const handleStartFromHero = () => {
+  const handleStart = () => {
     const el = document.getElementById("loan-form");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#00382D] text-[#FDFFE6] py-16 md:py-24">
-      {/* Baggrundsbillede */}
+    <section className="relative overflow-hidden bg-brand-dark text-brand-card">
+      {/* Background image */}
       <Image
-        src="/hero-image.png"      // læg billedet i /public/hero-image.png
+        src="/hero-image.png"
         alt="Dansk Boliglån"
         fill
         priority
-        className="object-cover opacity-80"
+        className="object-cover object-center opacity-60"
       />
 
-      {/* Mørk overlay for læsbarhed */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#00382D] via-[#00382D]/85 to-[#00382D]/40" />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent" />
 
-      {/* Indhold */}
-      <div className="relative max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-10 items-center">
-        {/* Tekst-side */}
-        <div>
-          {eyebrow && (
-            <p className="text-xs md:text-sm font-semibold text-[#96FAB9] mb-3 uppercase tracking-wide">
-              {eyebrow}
-            </p>
-          )}
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="text-sm md:text-lg text-[#FDFFE6CC] mb-8 max-w-xl">
-              {subtitle}
-            </p>
-          )}
+      {/* CONTENT */}
+      <div className="relative max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-32">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          
+          {/* Left column – text */}
+          <div className="space-y-4 md:space-y-6 max-w-xl">
+            {eyebrow && (
+              <p className="text-xs md:text-sm font-semibold text-brand-spring uppercase tracking-wide">
+                {eyebrow}
+              </p>
+            )}
 
-          {/* Evt. primær CTA som link – kan stadig pege på fx #loan-form */}
-          {primaryCtaLabel && primaryCtaHref && (
-            <a
-              href={primaryCtaHref}
-              className="inline-flex items-center px-6 py-3 rounded-full border border-transparent text-sm md:text-base font-medium bg-[#0272DB] text-white hover:bg-[#025BB0]"
-            >
-              {primaryCtaLabel}
-            </a>
-          )}
-        </div>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight text-brand-card">
+              {title}
+            </h1>
 
-        {/* Kalkulator-kort i højre side */}
-        <div className="flex justify-end">
-          <HeroCalculatorCard
-            purpose={purpose}
-            onPurposeChange={setPurpose}
-            loanAmount={loanAmount}
-            onLoanAmountChange={setLoanAmount}
-            secondaryAmount={secondaryAmount}
-            onSecondaryAmountChange={setSecondaryAmount}
-            secondaryLabelForBoligkob="Din udbetaling til boligkøb"
-            secondaryLabelForFrivaerdi="Ejendommens værdi (anslået)"
-            onStart={handleStartFromHero}
-          />
+            {subtitle && (
+              <p className="text-sm md:text-lg text-brand-card/80 leading-relaxed">
+                {subtitle}
+              </p>
+            )}
+
+            {primaryCtaLabel && primaryCtaHref && (
+              <a
+                href={primaryCtaHref}
+                className="inline-flex items-center px-6 py-3 rounded-full bg-brand-primary text-white font-medium text-sm md:text-base hover:bg-brand-primary-soft transition"
+              >
+                {primaryCtaLabel}
+              </a>
+            )}
+          </div>
+
+          {/* Right column – calculator */}
+          <div className="flex justify-center md:justify-end">
+            <HeroCalculatorCard
+              purpose={purpose}
+              onPurposeChange={setPurpose}
+              loanAmount={loanAmount}
+              onLoanAmountChange={setLoanAmount}
+              secondaryAmount={secondaryAmount}
+              onSecondaryAmountChange={setSecondaryAmount}
+              secondaryLabelForBoligkob="Din udbetaling til boligkøb"
+              secondaryLabelForFrivaerdi="Ejendommens værdi (anslået)"
+              onStart={handleStart}
+            />
+          </div>
+
         </div>
       </div>
     </section>

@@ -1,17 +1,33 @@
 @import "tailwindcss";
 
+/* Grundlæggende lys/dunkel baggrund */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f8f8;
+  --foreground: #222222;
 }
 
+/* Tailwind v4 theme tokens – her definerer vi brand-farver & font */
 @theme inline {
+  /* Typografi – brug Ubuntu Sans som standard */
+  --font-sans: "Ubuntu Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono);
+
+  /* Standard baggrund/tekst – bruges af bg-background, text-foreground */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Dansk Boliglån brand-farver */
+  --color-brand-dark: #00382d;          /* mørkegrøn baggrund */
+  --color-brand-primary: #0272db;      /* blå CTA */
+  --color-brand-primary-soft: #5ed7e4; /* lysere blå (hover/accent) */
+  --color-brand-card: #fdffe6;         /* lys kort-baggrund */
+  --color-brand-spring: #96fab9;       /* lys grøn accent */
+  --color-brand-dusk: #0b3c45;         /* mørk blå/grøn */
+  --color-brand-text: #222222;         /* primær tekstfarve */
 }
 
+/* Valgfri dark-mode – kun baggrund/foreground, brandfarver lader vi være */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,10 +35,12 @@
   }
 }
 
+/* Global base-styling */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
 }
 
 /* Custom slider til Dansk Boliglån */
