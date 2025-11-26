@@ -7,15 +7,13 @@ import { HeroCalculatorCard } from "@/components/HeroCalculatorCard";
 type Purpose = "boligkob" | "frivaerdi";
 
 type HeroProps = {
-  eyebrow?: string;
   title: string;
-  subtitle?: string;
   primaryCtaLabel?: string;
   primaryCtaHref?: string;
 };
 
 export function HeroSection(props: HeroProps) {
-  const { eyebrow, title, subtitle, primaryCtaLabel, primaryCtaHref } = props;
+  const { title, primaryCtaLabel, primaryCtaHref } = props;
 
   const [purpose, setPurpose] = useState<Purpose>("boligkob");
   const [loanAmount, setLoanAmount] = useState<number>(1_000_000);
@@ -67,21 +65,13 @@ export function HeroSection(props: HeroProps) {
 
         {/* Højre: tekstmodul */}
         <div className="flex flex-col justify-center items-start space-y-4">
-          {eyebrow && (
-            <p className="text-xs font-semibold text-brand-spring uppercase tracking-wide">
-              {eyebrow}
-            </p>
-          )}
+          
 
           <h1 className="text-5xl font-bold leading-tight">
             {title}
           </h1>
 
-          {subtitle && (
-            <p className="text-lg text-brand-card/80 max-w-xl">
-              {subtitle}
-            </p>
-          )}
+         
 
           {primaryCtaLabel && primaryCtaHref && (
             <a

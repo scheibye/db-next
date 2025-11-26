@@ -1,56 +1,58 @@
 // components/Header.tsx
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
-const navLinks = [
+const navItems = [
   { href: "/laan-til-boligkoeb", label: "Lån til boligkøb" },
   { href: "/laan-i-frivaerdi", label: "Lån i friværdi" },
   { href: "/artikler", label: "Artikler" },
   { href: "/om-os", label: "Om Os" },
 ];
 
-export async function Header() {
+export function Header() {
   return (
-    // fuld bredde, transparent, ligger ovenpå hero
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="mx-auto max-w-[1900px] px-[10px] h-[150px] flex items-center justify-between">
-        {/* logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo-container.svg"
-            alt="Dansk Boliglån"
-            width={310}
-            height={150}
-            className="w-[310px] h-[150px] object-contain"
-            priority
-          />
-        </Link>
+    <header className="fixed inset-x-0 top-0 z-40 flex justify-center">
+      {/* 1900 + 10px margins matcher hero */}
+      <div className="mx-auto max-w-[1900px] px-[10px] w-full">
+        <div className="flex h-[150px] items-center justify-between">
+          {/* Logo-blok (samlet SVG med grøn baggrund i filen) */}
+          <Link href="/" className="block">
+            <Image
+              src="/logo-container.svg"
+              alt="Dansk Boliglån"
+              width={310}
+              height={150}
+              priority
+              className="block w-[310px] h-[150px] object-contain"
+            />
+          </Link>
 
-        {/* nav */}
-        <nav className="flex items-center gap-16 text-brand-card text-base font-medium">
-          <Link className="hover:text-brand-spring" href="/laan-til-boligkoeb">
-            Lån til boligkøb
-          </Link>
-          <Link className="hover:text-brand-spring" href="/laan-i-frivaerdi">
-            Lån i friværdi
-          </Link>
-          <Link className="hover:text-brand-spring" href="/artikler">
-            Artikler
-          </Link>
-          <Link className="hover:text-brand-spring" href="/om-os">
-            Om Os
-          </Link>
-        </nav>
+          {/* Navigation – hvid tekst, lidt tracking */}
+          <nav className="flex items-center gap-16 text-[15px] font-medium text-brand-card">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="hover:text-brand-spring transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        {/* CTA */}
-        <a
-          href="#loan-form"
-          className="flex items-center justify-center w-[274px] h-[70px] rounded-[96px]
-                     border-[3px] border-brand-spring text-brand-card bg-transparent
-                     hover:bg-brand-dusk/70 transition"
-        >
-          Start låneansøgning
-        </a>
+          {/* CTA – 274x70, radius 96, 3px kant, tekst FDFFE6 */}
+          <a
+            href="#loan-form"
+            className="flex items-center justify-center w-[274px] h-[70px]
+                       rounded-[96px] border-[3px] border-brand-spring
+                       text-[15px] font-medium text-brand-card
+                       bg-transparent hover:bg-brand-dark/40 transition-colors"
+          >
+            Start låneansøgning
+          </a>
+        </div>
       </div>
     </header>
   );

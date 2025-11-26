@@ -31,7 +31,7 @@ export default async function RootLayout({
         <Header />
 
         {/* Indhold – max 1900 + 10px margin på hver side */}
-        <main className="pt-[150px]">
+        <main>
           <div className="mx-auto max-w-[1900px] px-[10px]">
             {children}
           </div>

@@ -87,21 +87,22 @@ export default async function Home() {
       if (section._type === "heroSection") {
         return <HeroSection key={idx} {...section} />;
       }
+      if (section._type === "stepsSection") {
+        return (
+          <StepsSection
+            key={idx}
+            title={section.title}
+            subtitle={section.subtitle]
+            steps={section.steps || []}
+          />
+        );
+      }
       if (section._type === "uspSection") {
         return (
           <UspSection
             key={idx}
             title={section.title}
             items={section.items || []}
-          />
-        );
-      }
-      if (section._type === "stepsSection") {
-        return (
-          <StepsSection
-            key={idx}
-            title={section.title}
-            steps={section.steps || []}
           />
         );
       }
