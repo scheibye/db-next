@@ -30,6 +30,7 @@ type UspSectionData = {
 type StepsSectionData = {
   _type: "stepsSection";
   title?: string;
+  subtitle?: string;
   steps: { label: string; description?: string }[];
 };
 
@@ -88,15 +89,18 @@ export default async function Home() {
         return <HeroSection key={idx} {...section} />;
       }
       if (section._type === "stepsSection") {
-        return (
-          <StepsSection
-            key={idx}
-            title={section.title}
-            subtitle={section.subtitle]
-            steps={section.steps || []}
-          />
-        );
-      }
+  return (
+    <StepsSection
+      key={idx}
+      title={section.title ?? undefined}
+      subtitle={section.subtitle ?? undefined}
+      steps={(section.steps || []).map((step: any) => ({
+        label: step.label,
+        description: step.description,
+      }))}
+    />
+  );
+}
       if (section._type === "uspSection") {
         return (
           <UspSection

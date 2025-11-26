@@ -1,5 +1,5 @@
 type Step = {
-  label: string;a
+  label: string;
   description?: string;
 };
 
@@ -9,7 +9,7 @@ type StepsSectionProps = {
   steps: Step[];
 };
 
-export function StepsSection({ title, steps }: StepsSectionProps) {
+export function StepsSection({ title, subtitle, steps }: StepsSectionProps) {
   if (!steps || steps.length === 0) return null;
 
   return (
@@ -21,7 +21,7 @@ export function StepsSection({ title, steps }: StepsSectionProps) {
           </h2>
         )}
          {subtitle && (
-          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-brand-dark">
+          <h3 className="mt-2 text-sm md:text-base text-brand-text/80">
             {subtitle}
           </h3>
         )}
