@@ -21,59 +21,33 @@ export function HeroSection(props: HeroProps) {
   const [loanAmount, setLoanAmount] = useState<number>(1_000_000);
   const [secondaryAmount, setSecondaryAmount] = useState<number>(100_000);
 
-  const handleStart = () => {
-    const el = document.getElementById("loan-form");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
-    <section className="relative overflow-hidden bg-brand-dark text-brand-card">
-      {/* Background image */}
-      <Image
-        src="/hero-image.png"
-        alt="Dansk Boliglån"
-        fill
-        priority
-        className="object-cover object-center opacity-60"
-      />
+    <section className="relative overflow-hidden bg-brand-dark text-brand-card h-[900px]">
+  {/* Billede + gradients i ét lag */}
+  <div className="absolute inset-0">
+    <Image
+      src="/hero-image.png"
+      alt="Dansk Boliglån"
+      fill
+      priority
+      className="object-cover"
+    />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent" />
+    {/* Lodret gradient (top -> bund) */}
+    <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/45 via-brand-dark/20 to-brand-dark/0 pointer-events-none" />
 
-      {/* CONTENT */}
-      <div className="relative max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-32">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          
-          {/* Left column – text */}
-          <div className="space-y-4 md:space-y-6 max-w-xl">
-            {eyebrow && (
-              <p className="text-xs md:text-sm font-semibold text-brand-spring uppercase tracking-wide">
-                {eyebrow}
-              </p>
-            )}
+    {/* Vandret gradient (venstre -> højre) */}
+    <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/45 to-transparent pointer-events-none" />
+  </div>
 
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight text-brand-card">
-              {title}
-            </h1>
-
-            {subtitle && (
-              <p className="text-sm md:text-lg text-brand-card/80 leading-relaxed">
-                {subtitle}
-              </p>
-            )}
-
-            {primaryCtaLabel && primaryCtaHref && (
-              <a
-                href={primaryCtaHref}
-                className="inline-flex items-center px-6 py-3 rounded-full bg-brand-primary text-white font-medium text-sm md:text-base hover:bg-brand-primary-soft transition"
-              >
-                {primaryCtaLabel}
-              </a>
-            )}
-          </div>
-
-          {/* Right column – calculator */}
-          <div className="flex justify-center md:justify-end">
+      {/* Indhold ovenpå */}
+      <div className="relative z-10 h-full flex items-center">
+    <div className="mx-auto max-w-[1900px] px-[10px] w-full">
+      {/* venstre = form, højre = tekst */}
+      <div className="grid grid-cols-1 lg:grid-cols-[420px,1fr] gap-16 h-full">
+        {/* Venstre: kalkulator, forankret nede */}
+        <div className="flex items-end pb-24">
+          <div className="max-w-[420px] w-full">
             <HeroCalculatorCard
               purpose={purpose}
               onPurposeChange={setPurpose}
@@ -83,12 +57,44 @@ export function HeroSection(props: HeroProps) {
               onSecondaryAmountChange={setSecondaryAmount}
               secondaryLabelForBoligkob="Din udbetaling til boligkøb"
               secondaryLabelForFrivaerdi="Ejendommens værdi (anslået)"
-              onStart={handleStart}
+              onStart={() => {
+                const el = document.getElementById("loan-form");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
             />
           </div>
+        </div>
 
+        {/* Højre: tekstmodul */}
+        <div className="flex flex-col justify-center items-start space-y-4">
+          {eyebrow && (
+            <p className="text-xs font-semibold text-brand-spring uppercase tracking-wide">
+              {eyebrow}
+            </p>
+          )}
+
+          <h1 className="text-5xl font-bold leading-tight">
+            {title}
+          </h1>
+
+          {subtitle && (
+            <p className="text-lg text-brand-card/80 max-w-xl">
+              {subtitle}
+            </p>
+          )}
+
+          {primaryCtaLabel && primaryCtaHref && (
+            <a
+              href={primaryCtaHref}
+              className="inline-flex items-center px-6 py-3 rounded-full bg-brand-primary text-white font-medium text-base hover:bg-brand-primary-soft transition"
+            >
+              {primaryCtaLabel}
+            </a>
+          )}
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
   );
 }

@@ -2,7 +2,7 @@
 
 /* Grundlæggende lys/dunkel baggrund */
 :root {
-  --background: #f8f8f8;
+  --background: #FDFFE6;
   --foreground: #222222;
 }
 
@@ -27,13 +27,7 @@
   --color-brand-text: #222222;         /* primær tekstfarve */
 }
 
-/* Valgfri dark-mode – kun baggrund/foreground, brandfarver lader vi være */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 
 /* Global base-styling */
 body {
