@@ -44,8 +44,8 @@ type PageData = {
   title: string;
   sections: (
     | HeroSectionData
-    | UspSectionData
     | StepsSectionData
+    | UspSectionData    
     | FaqSectionData
   )[];
 };
