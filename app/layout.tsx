@@ -11,7 +11,6 @@ const ubuntu = Ubuntu_Sans({
   variable: "--font-sans",
 });
 
-
 export const metadata: Metadata = {
   title: "Dansk Boliglån",
   description: "Dansk Boliglån – moderne boliglånsløsninger.",
