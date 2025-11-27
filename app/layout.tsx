@@ -32,7 +32,7 @@ export default async function RootLayout({
 
         {/* Indhold – max 1900 + 10px margin på hver side */}
         <main>
-          <div className="mx-auto max-w-[1900px] px-[10px]">
+          <div className="mx-auto max-w-[1900px] px-[10px] py-[10px]">
             {children}
           </div>
         </main>
