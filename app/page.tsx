@@ -8,6 +8,7 @@ import { HeroSection } from '@/components/HeroSection'
 import { LoanApplicationForm } from '@/components/LoanApplicationForm'
 import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
+import { StepCardsSection } from '@/components/sections/StepCardsSection'
 import { StepsSection } from '@/components/StepsSection'
 import { TrustpilotSection } from '@/components/TrustpilotSection'
 import { UspSection } from '@/components/UspSection'
@@ -255,6 +256,7 @@ export default async function Home() {
         <LoanApplicationForm />
       </section>
 
+      <StepCardsSection />
       <HelpCardsSection />
       {/* <CtaVideoSection /> */}
     </>

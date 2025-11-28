@@ -26,15 +26,15 @@ const helpCards = [
   },
 ]
 
-export function HelpCardsSection() {
+export function HelpCardsSection({ className }: { className?: string }) {
   return (
-    <section className="max-w-container mx-auto py-18">
+    <section className={cn('max-w-container mx-auto py-8 md:py-18', className)}>
       <div className="max-w-container-inner mx-auto grid gap-6">
         <h2 className="text-brand-dark text-center text-2xl font-medium md:text-4xl lg:text-5xl">
           Hvad kan vi hjælpe dig med?
         </h2>
 
-        <div className="-mx-padding-x flex w-[calc(100%+var(--spacing-padding-x)*2)] snap-x snap-mandatory gap-3 overflow-x-auto px-6 py-6 lg:mx-0 lg:grid lg:w-full lg:snap-none lg:grid-cols-2 lg:gap-5 xl:grid-cols-4">
+        <div className="-mx-padding-x flex w-[calc(100%+var(--spacing-padding-x)*2)] snap-x snap-mandatory gap-3 overflow-x-auto px-6 py-6 lg:mx-0 lg:grid lg:w-full lg:snap-none lg:grid-cols-2 lg:gap-5 lg:px-0 xl:grid-cols-4">
           {helpCards.map((card) => (
             <HelpCard
               key={card.title}

@@ -1,9 +1,10 @@
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
+import { cn } from '@/lib/utils'
 
-export function CtaVideoSection() {
+export function CtaVideoSection({ className }: { className?: string }) {
   return (
-    <section className="relative h-dvh">
+    <section className={cn('relative h-dvh', className)}>
       <video
         className="pointer-events-none size-full object-cover"
         src="/sections/cta-video/bg-video.mp4"

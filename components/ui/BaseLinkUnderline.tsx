@@ -3,20 +3,17 @@ import { cva } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 import type { VariantProps } from 'class-variance-authority'
 
-const linkVariants = cva(
-  'border-b-[5px] pb-1.5 text-base transition-all sm:text-xl hover:border-brand-primary-soft',
-  {
-    variants: {
-      variant: {
-        default: 'border-brand-text',
-        light: 'border-brand-primary',
-      },
+const linkVariants = cva('border-b-[5px] pb-1.5 text-base sm:text-xl', {
+  variants: {
+    variant: {
+      default: 'border-brand-text',
+      light: 'border-brand-primary',
     },
-    defaultVariants: {
-      variant: 'default',
-    },
-  }
-)
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+})
 
 export function BaseLinkUnderline({
   children,
