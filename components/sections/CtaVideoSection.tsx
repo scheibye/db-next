@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 
-export function HomeCtaSection() {
+export function CtaVideoSection() {
   return (
     <section className="relative h-dvh">
       <video
         className="pointer-events-none size-full object-cover"
-        src="/sections/home/bg-video.mp4"
+        src="/sections/cta-video/bg-video.mp4"
         autoPlay={true}
         muted={true}
         playsInline={true}
