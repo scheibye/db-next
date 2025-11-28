@@ -1,8 +1,8 @@
 import './globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
-import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { getSettings } from '@/lib/settings'
+import { Footer } from '@/components/layout/Footer'
+// import { getSettings } from '@/lib/settings'
 import type { Metadata } from 'next'
 
 const ubuntu = Ubuntu_Sans({
@@ -17,20 +17,19 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const settings = await getSettings()
+  // const settings = await getSettings()
 
   return (
     <html lang="da" className={ubuntu.className}>
-      <body className="bg-brand-card relative">
-        {/* Header skal ligge ovenpå hero */}
+      <body className="bg-brand-card relative p-2.5 antialiased">
         <Header />
 
         {/* Indhold – max 1900 + 10px margin på hver side */}
         <main>
-          <div className="mx-auto max-w-[1900px] px-[10px] py-[10px]">{children}</div>
+          <div className="mx-auto max-w-[1900px]">{children}</div>
         </main>
 
-        <Footer settings={settings} />
+        <Footer />
       </body>
     </html>
   )
