@@ -21,7 +21,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="da" className={ubuntu.className}>
-      <body className="bg-brand-card relative p-2.5 antialiased">
+      <body className="bg-brand-card p-padding-x relative antialiased">
         {/* <Header /> */}
 
         {/* Indhold – max 1900 + 10px margin på hver side */}

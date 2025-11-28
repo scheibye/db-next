@@ -14,7 +14,13 @@
   --breakpoint-3xl: 112.5rem; /* 1800px */
 
   /* Sizing */
-  --spacing-container: 118.75rem; /* px */
+  --spacing-container: 118.75rem; /* 1900px */
+  --spacing-container-inner: 101.25rem; /* 1620px */
+
+  --spacing-padding-x: 0.625rem; /* 10px */
+
+  /* Animations */
+  --default-transition-duration: 300ms;
 }
 
 /* Tailwind v4 theme tokens – her definerer vi brand-farver & font */

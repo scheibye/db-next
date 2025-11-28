@@ -34,13 +34,13 @@ export function BaseCtaButton({
   ...props
 }: React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
-    href?: LinkProps['href']
+    href?: string
   }) {
   if (href) {
     return (
       <Link
         className={cn(buttonVariants({ variant, size, className }))}
-        href={href}
+        href={href as any}
         data-slot="button"
       >
         <BaseCtaButtonText>{children}</BaseCtaButtonText>
@@ -64,7 +64,7 @@ export function BaseCtaButton({
 function BaseCtaButtonText({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="bg-brand-primary group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center px-10 transition-all duration-300 xl:px-12"
+      className="bg-brand-primary group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center px-10 transition-all xl:px-12"
       data-slot="text"
     >
       {children}
@@ -76,7 +76,7 @@ function BaseCtaButtonIcon() {
   return (
     <span className="inline-flex h-full w-16 shrink-0 items-center sm:w-17.5" data-slot="icon">
       <svg
-        className="group-hover:fill-brand-primary-soft! size-10 shrink-0 transition-all duration-300 group-hover:translate-x-3"
+        className="group-hover:fill-brand-primary-soft! size-10 shrink-0 transition-all group-hover:translate-x-3"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 42 38"
       >

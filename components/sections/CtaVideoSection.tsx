@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
+import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
 
 export function CtaVideoSection() {
   return (
@@ -43,12 +43,9 @@ export function CtaVideoSection() {
           </div>
 
           <div>
-            <Link
-              className="border-brand-primary hover:border-brand-primary-soft hover:text-brand-primary-soft border-b-[5px] pb-1.5 text-base transition-all duration-300 sm:text-xl"
-              href="#"
-            >
+            <BaseLinkUnderline href="#" variant="light">
               Læs mere om os
-            </Link>
+            </BaseLinkUnderline>
           </div>
         </div>
       </div>
