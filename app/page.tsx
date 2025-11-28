@@ -6,6 +6,7 @@ import { CtaProductsSection } from '@/components/CtaProductsSection'
 import { FaqSection } from '@/components/FaqSection'
 import { HeroSection } from '@/components/HeroSection'
 import { LoanApplicationForm } from '@/components/LoanApplicationForm'
+import { AboutSection } from '@/components/sections/AboutSection'
 import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
 import { StepCardsSection } from '@/components/sections/StepCardsSection'
@@ -257,8 +258,9 @@ export default async function Home() {
       </section>
 
       <StepCardsSection />
+      <AboutSection />
       <HelpCardsSection />
-      {/* <CtaVideoSection /> */}
+      <CtaVideoSection />
     </>
   )
 }

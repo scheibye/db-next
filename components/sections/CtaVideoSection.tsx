@@ -15,7 +15,7 @@ export function CtaVideoSection({ className }: { className?: string }) {
       />
 
       <div className="absolute inset-0 grid bg-black/30 xl:grid-cols-[1fr_1.7398fr]">
-        <div className="bg-brand-card/15 3xl:pl-36 hidden px-5 py-32 backdrop-blur-sm xl:block xl:self-end">
+        <div className="bg-brand-card/15 3xl:pl-33.25 hidden px-5 py-32 backdrop-blur-sm xl:block xl:self-end">
           <p className="text-brand-card mb-12 text-3xl font-semibold text-balance xl:text-4xl">
             Vores rådgivere sidder klar til at hjælpe dig
           </p>
@@ -23,7 +23,7 @@ export function CtaVideoSection({ className }: { className?: string }) {
         </div>
 
         <div className="text-brand-card mx-auto grid max-w-200 gap-7 self-end px-5 pt-24 pb-12 sm:gap-8 md:px-20 lg:self-center lg:p-12 lg:pt-0">
-          <h2 className="text-4xl/snug font-medium text-balance lg:text-[60px]/[70px]">
+          <h2 className="text-4xl/snug font-medium text-balance lg:text-6xl">
             Et enklere alternativ til bankens afslag
           </h2>
 

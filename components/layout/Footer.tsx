@@ -58,9 +58,9 @@ export function Footer() {
     <footer className="max-w-container mx-auto lg:grid lg:grid-cols-[1fr_1.7398fr]">
       {/* Light section */}
       <div className="bg-brand-card text-brand-dark flex flex-col pt-12 lg:pt-24">
-        <div className="3xl:pl-36 px-5 md:px-20 lg:px-5">
+        <div className="3xl:pl-33.25 px-5 md:px-20 lg:px-5">
           {/* Title */}
-          <div className="mb-6 text-xl/normal font-medium text-balance lg:mb-24 lg:text-2xl/normal xl:text-[30px]/[40px]">
+          <div className="mb-6 text-xl/normal font-medium text-balance lg:mb-24 lg:text-2xl/normal xl:text-3xl">
             Dansk Boliglån er Reguleret af Finanstilsynet autorisation 42007
           </div>
 
@@ -122,7 +122,7 @@ export function Footer() {
       {/* Dark section */}
       <div className="bg-brand-dark text-brand-card 3xl:px-36 flex flex-col px-5 pt-16 pb-8 md:px-16 lg:pt-24 xl:px-20">
         <div className="mb-12 lg:mb-24 2xl:flex 2xl:items-center 2xl:justify-between 2xl:gap-20">
-          <div className="mb-10 text-2xl/normal font-medium text-balance md:text-[30px]/[40px] 2xl:mb-0">
+          <div className="mb-10 text-2xl/normal font-medium text-balance md:text-3xl 2xl:mb-0">
             Vores rådgivere sidder klar til at hjælpe dig
           </div>
 
