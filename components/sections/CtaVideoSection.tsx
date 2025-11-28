@@ -22,7 +22,7 @@ export function CtaVideoSection({ className }: { className?: string }) {
           <BaseCtaButton href="#">Beregn dit boliglån</BaseCtaButton>
         </div>
 
-        <div className="text-brand-card mx-auto grid max-w-200 gap-7 self-end px-5 pt-24 pb-12 sm:gap-8 md:px-20 lg:self-center lg:p-12 lg:pt-0">
+        <div className="text-brand-card mx-auto grid max-w-191 gap-7 self-end px-5 pt-24 pb-12 sm:gap-8 md:px-20 lg:self-center lg:p-12 lg:pt-0">
           <h2 className="text-4xl/snug font-medium text-balance lg:text-6xl">
             Et enklere alternativ til bankens afslag
           </h2>

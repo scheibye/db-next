@@ -14,7 +14,7 @@ export function AboutSection({ className }: { className?: string }) {
   return (
     <section
       className={cn(
-        'max-w-container mx-auto grid py-8 md:py-18 lg:grid-cols-[1fr_1.35fr]',
+        'max-w-container mx-auto grid py-8 md:py-18 lg:grid-cols-[1fr_1.3535fr]',
         className
       )}
     >
@@ -47,7 +47,7 @@ export function AboutSection({ className }: { className?: string }) {
         </div>
       </div>
 
-      <div className="text-brand-dark mx-auto grid max-w-210 gap-7 self-center px-5 pt-10 sm:gap-8 md:px-20 lg:p-12 lg:pt-0">
+      <div className="text-brand-dark mx-auto grid max-w-220 gap-7 self-center px-5 pt-10 sm:gap-8 md:px-20 lg:p-12 lg:pt-0">
         <div className="text-brand-primary text-lg font-semibold sm:text-2xl">Om os</div>
 
         <h2 className="text-4xl font-medium text-balance lg:text-6xl">
