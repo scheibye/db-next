@@ -1,63 +1,45 @@
 // components/AboutUsSection.tsx
-import Image from "next/image";
+import Image from 'next/image'
 
 type AboutUsSectionProps = {
-  title?: string;
-  subtitle?: string;
-  body?: any;
-  imageUrl?: string;
-};
+  title?: string
+  subtitle?: string
+  body?: any
+  imageUrl?: string
+}
 
-export function AboutUsSection({
-  title,
-  subtitle,
-  body,
-  imageUrl,
-}: AboutUsSectionProps) {
+export function AboutUsSection({ title, subtitle, body, imageUrl }: AboutUsSectionProps) {
   return (
-    <section className="py-12 px-4 bg-brand-card/60">
+    <section className="bg-brand-card/60 px-4 py-12">
       <div className="mx-auto max-w-[1900px] px-[10px]">
-        <div className="grid md:grid-cols-2 gap-10 items-center rounded-[30px] bg-white px-8 py-10 shadow-sm">
+        <div className="grid items-center gap-10 rounded-[30px] bg-white px-8 py-10 shadow-sm md:grid-cols-2">
           <div className="space-y-4">
             {title && (
-              <h2 className="text-2xl md:text-3xl font-semibold text-brand-dark">
-                {title}
-              </h2>
+              <h2 className="text-brand-dark text-2xl font-semibold md:text-3xl">{title}</h2>
             )}
-            {subtitle && (
-              <p className="text-sm md:text-base text-brand-text/80">
-                {subtitle}
-              </p>
-            )}
+            {subtitle && <p className="text-brand-text/80 text-sm md:text-base">{subtitle}</p>}
             {body && (
               <div className="prose prose-sm md:prose-base max-w-none">
                 {/* simpelt render af Portable Text */}
                 {(body as any[])?.map((block, idx) => {
-                  if (block._type === "block") {
+                  if (block._type === 'block') {
                     return (
-                      <p key={idx}>
-                        {block.children?.map((child: any) => child.text).join("")}
-                      </p>
-                    );
+                      <p key={idx}>{block.children?.map((child: any) => child.text).join('')}</p>
+                    )
                   }
-                  return null;
+                  return null
                 })}
               </div>
             )}
           </div>
 
           {imageUrl && (
-            <div className="relative w-full h-64 md:h-80 lg:h-96 rounded-[24px] overflow-hidden">
-              <Image
-                src={imageUrl}
-                alt={title || "Om os"}
-                fill
-                className="object-cover"
-              />
+            <div className="relative h-64 w-full overflow-hidden rounded-[24px] md:h-80 lg:h-96">
+              <Image src={imageUrl} alt={title || 'Om os'} fill className="object-cover" />
             </div>
           )}
         </div>
       </div>
     </section>
-  );
+  )
 }
