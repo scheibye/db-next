@@ -6,12 +6,13 @@ import type { LinkProps } from 'next/link'
 import type { VariantProps } from 'class-variance-authority'
 
 const buttonVariants = cva(
-  'group overflow-hidden inline-flex items-center font-medium rounded-full cursor-pointer',
+  'group overflow-hidden inline-flex items-center font-medium rounded-full cursor-pointer text-brand-card',
   {
     variants: {
       variant: {
-        default: '[&>[data-slot="icon"]]:bg-brand-dark',
-        light: '[&>[data-slot="icon"]]:bg-brand-card',
+        default:
+          '[&>[data-slot="icon"]]:bg-brand-dusk [&>[data-slot="icon"]>svg]:fill-brand-primary',
+        light: '[&>[data-slot="icon"]]:bg-brand-card [&>[data-slot="icon"]>svg]:fill-brand-dark',
       },
       size: {
         md: 'h-16 sm:h-17.5 text-lg sm:text-xl md:text-2xl',
@@ -63,7 +64,7 @@ export function BaseCtaButton({
 function BaseCtaButtonText({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="bg-brand-primary group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center px-10 transition-all duration-300 sm:px-12"
+      className="bg-brand-primary group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center px-10 transition-all duration-300 xl:px-12"
       data-slot="text"
     >
       {children}
@@ -75,7 +76,7 @@ function BaseCtaButtonIcon() {
   return (
     <span className="inline-flex h-full w-16 shrink-0 items-center sm:w-17.5" data-slot="icon">
       <svg
-        className="fill-brand-dark group-hover:fill-brand-primary-soft size-10 shrink-0 transition-all duration-300 group-hover:translate-x-3"
+        className="group-hover:fill-brand-primary-soft! size-10 shrink-0 transition-all duration-300 group-hover:translate-x-3"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 42 38"
       >

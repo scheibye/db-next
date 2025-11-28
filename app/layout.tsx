@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="da" className={ubuntu.className}>
       <body className="bg-brand-card relative p-2.5 antialiased">
-        <Header />
+        {/* <Header /> */}
 
         {/* Indhold – max 1900 + 10px margin på hver side */}
         <main>
