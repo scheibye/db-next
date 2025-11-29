@@ -7,6 +7,7 @@ import { FaqSection } from '@/components/FaqSection'
 import { HeroSection } from '@/components/HeroSection'
 import { LoanApplicationForm } from '@/components/LoanApplicationForm'
 import { AboutSection } from '@/components/sections/AboutSection'
+import { BlogSection } from '@/components/sections/blog/BlogSection'
 import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
 import { StepCardsSection } from '@/components/sections/StepCardsSection'
@@ -260,6 +261,7 @@ export default async function Home() {
       <StepCardsSection />
       <AboutSection />
       <HelpCardsSection />
+      <BlogSection />
       <CtaVideoSection />
     </>
   )

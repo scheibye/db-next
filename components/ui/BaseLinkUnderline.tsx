@@ -20,13 +20,14 @@ export function BaseLinkUnderline({
   className,
   href,
   variant,
+  ...props
 }: VariantProps<typeof linkVariants> & {
   className?: string
   href: string
   children: React.ReactNode
 }) {
   return (
-    <Link className={cn(linkVariants({ variant, className }))} href={href as any}>
+    <Link className={cn(linkVariants({ variant, className }))} href={href as any} {...props}>
       {children}
     </Link>
   )
