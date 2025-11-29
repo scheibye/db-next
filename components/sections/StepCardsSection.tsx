@@ -1,6 +1,7 @@
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
 import { cn } from '@/lib/utils'
+import { SectionContainer, SectionContainerInner } from '../layout/containers/SectionContainer'
 
 const stepCards = [
   {
@@ -22,8 +23,8 @@ const stepCards = [
 
 export function StepCardsSection({ className }: { className?: string }) {
   return (
-    <section className={cn('max-w-container mx-auto py-8 md:py-18', className)}>
-      <div className="max-w-container-inner mx-auto grid gap-10 md:gap-12">
+    <SectionContainer className={className}>
+      <SectionContainerInner className="grid-cols-none! md:gap-12!">
         <div className="text-center text-balance">
           <h2 className="mb-6 text-4xl font-medium md:mb-10 md:text-5xl lg:text-6xl">
             Ansøg i dag, og få svar i morgen
@@ -35,19 +36,21 @@ export function StepCardsSection({ className }: { className?: string }) {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3">
-          {stepCards.map((card, index) => (
-            <StepCard key={card.title} step={index + 1} {...card} />
-          ))}
+        <div>
+          <div className="relative grid lg:grid-cols-3" data-slot="bg-image">
+            {stepCards.map((card, index) => (
+              <StepCard key={card.title} step={index + 1} {...card} />
+            ))}
+          </div>
         </div>
 
         <div className="text-center">
-          <BaseCtaButton className="xxs:w-auto w-full" href="/form">
+          <BaseCtaButton className="xs:w-auto w-full" href="/form">
             Beregn dit boliglån
           </BaseCtaButton>
         </div>
-      </div>
-    </section>
+      </SectionContainerInner>
+    </SectionContainer>
   )
 }
 

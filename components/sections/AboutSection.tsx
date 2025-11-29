@@ -16,7 +16,7 @@ const listItems = [
 export function AboutSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className}>
-      <SectionContainerInner className="gap-10" withImage="left">
+      <SectionContainerInner withImage="left">
         <div className="relative grid items-end pt-64 pb-12 lg:col-span-5 lg:h-dvh lg:py-24">
           <Image
             className="object-cover object-top-right"

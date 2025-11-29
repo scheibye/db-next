@@ -18,7 +18,7 @@ export function SectionContainerInner({
   withImage,
   ...props
 }: React.ComponentProps<'div'> & {
-  withImage: 'left' | 'right' | 'center'
+  withImage?: 'left' | 'right' | 'center'
 }) {
   return (
     <div
@@ -27,7 +27,12 @@ export function SectionContainerInner({
         '**:bg-image:max-w-none',
         '**:bg-image:-inset-x-(--container-padding)! **:bg-image:w-[calc(100%+var(--container-padding)*2)]!',
 
-        withImage !== 'center' && '**:bg-image:xl:w-[calc(100%+var(--container-padding))]!',
+        // Content
+        !withImage && '**:lg:bg-image:inset-x-auto! **:lg:bg-image:w-full!',
+
+        // Image
+        (withImage === 'left' || withImage === 'right') &&
+          '**:bg-image:xl:w-[calc(100%+var(--container-padding))]!',
 
         withImage === 'left' && '**:bg-image:xl:right-0!',
         withImage === 'right' && '**:bg-image:xl:left-0!',
