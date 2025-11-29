@@ -7,13 +7,12 @@ import type { Metadata } from 'next'
 
 const ubuntu = Ubuntu_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
-  variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
   title: 'Dansk Boliglån',
-  description: 'Dansk Boliglån – moderne boliglånsløsninger.',
+  description: 'Dansk Boliglån - moderne boliglånsløsninger.',
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -21,7 +20,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="da" className={ubuntu.className}>
-      <body className="bg-brand-card p-padding-x relative antialiased">
+      <body className="bg-brand-card p-padding-x text-brand-dark relative antialiased">
         {/* <Header /> */}
 
         {/* Indhold – max 1900 + 10px margin på hver side */}

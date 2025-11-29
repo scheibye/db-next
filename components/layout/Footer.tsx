@@ -57,7 +57,7 @@ export function Footer() {
   return (
     <footer className="max-w-container mx-auto lg:grid lg:grid-cols-[1fr_1.7398fr]">
       {/* Light section */}
-      <div className="bg-brand-card text-brand-dark flex flex-col pt-12 lg:pt-24">
+      <div className="bg-brand-card flex flex-col pt-12 lg:pt-24">
         <div className="3xl:pl-33.25 px-5 md:px-20 lg:px-5">
           {/* Title */}
           <div className="mb-6 text-xl/normal font-medium text-balance lg:mb-24 lg:text-2xl/normal xl:text-3xl">

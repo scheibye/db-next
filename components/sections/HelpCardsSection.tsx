@@ -31,7 +31,7 @@ export function HelpCardsSection({ className }: { className?: string }) {
   return (
     <section className={cn('max-w-container mx-auto py-8 md:py-18', className)}>
       <div className="max-w-container-inner mx-auto grid gap-6">
-        <h2 className="text-brand-dark text-center text-2xl font-medium md:text-4xl lg:text-5xl">
+        <h2 className="text-center text-2xl font-medium md:text-4xl lg:text-5xl">
           Hvad kan vi hjælpe dig med?
         </h2>
 
@@ -46,7 +46,7 @@ export function HelpCardsSection({ className }: { className?: string }) {
             Start låneansøgning
           </BaseCtaButton>
 
-          <p className="text-brand-dark text-sm">
+          <p className="text-sm">
             <small className="italic">
               * Ved klik på knappen Forbrugslån sendes du til vores partner LendMe. Priseks.: Samlet
               kreditbeløb 130.000 kr. Var. deb. rente 3,60 - 20,95%. ÅOP 4,11 - 21,77%. Etb. omk.

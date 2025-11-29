@@ -19,9 +19,7 @@ export function Footer({ settings }: FooterProps) {
       <div className="text-brand-text mx-auto grid max-w-6xl gap-10 px-4 py-10 text-sm md:grid-cols-3 md:px-6">
         {/* Kolonne 1 – Firma info */}
         <div>
-          <p className="text-brand-dark mb-2 text-base font-bold">
-            {settings?.siteTitle || 'Dansk Boliglån'}
-          </p>
+          <p className="mb-2 text-base font-bold">{settings?.siteTitle || 'Dansk Boliglån'}</p>
 
           {settings?.address && (
             <p className="text-brand-text/80 leading-relaxed">{settings.address}</p>
@@ -30,7 +28,7 @@ export function Footer({ settings }: FooterProps) {
 
         {/* Kontakt */}
         <div>
-          <p className="text-brand-dark mb-2 text-base font-bold">Kontakt</p>
+          <p className="mb-2 text-base font-bold">Kontakt</p>
 
           {settings?.phone && <p className="text-brand-text/80">Telefon: {settings.phone}</p>}
 
@@ -39,7 +37,7 @@ export function Footer({ settings }: FooterProps) {
 
         {/* Links */}
         <div>
-          <p className="text-brand-dark mb-2 text-base font-bold">Links</p>
+          <p className="mb-2 text-base font-bold">Links</p>
 
           <ul className="space-y-1">
             {footerLinks.map((link, idx) => (

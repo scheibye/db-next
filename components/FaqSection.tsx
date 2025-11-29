@@ -20,7 +20,7 @@ export function FaqSection({ title, items }: FaqSectionProps) {
   return (
     <section className="bg-brand-paper px-4 py-12 md:px-8 md:py-16">
       <div className="mx-auto max-w-3xl">
-        {title && <h2 className="text-brand-dark mb-6 text-2xl font-bold md:text-3xl">{title}</h2>}
+        {title && <h2 className="mb-6 text-2xl font-bold md:text-3xl">{title}</h2>}
 
         <div className="border-brand-dark/10 divide-brand-dark/10 divide-y rounded-2xl border bg-white shadow-sm">
           {items.map((item, idx) => {
@@ -33,9 +33,7 @@ export function FaqSection({ title, items }: FaqSectionProps) {
                 className="hover:bg-brand-card/50 w-full px-4 py-3 text-left transition md:px-6 md:py-4"
               >
                 <div className="flex items-center justify-between gap-4">
-                  <span className="text-brand-dark text-sm font-medium md:text-base">
-                    {item.question}
-                  </span>
+                  <span className="text-sm font-medium md:text-base">{item.question}</span>
                   <span className="border-brand-dark/20 text-brand-text/70 flex h-6 w-6 items-center justify-center rounded-full border text-[11px]">
                     {isOpen ? '−' : '+'}
                   </span>

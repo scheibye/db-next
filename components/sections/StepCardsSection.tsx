@@ -24,7 +24,7 @@ export function StepCardsSection({ className }: { className?: string }) {
   return (
     <section className={cn('max-w-container mx-auto py-8 md:py-18', className)}>
       <div className="max-w-container-inner mx-auto grid gap-10 md:gap-12">
-        <div className="text-brand-dark text-center text-balance">
+        <div className="text-center text-balance">
           <h2 className="mb-6 text-4xl font-medium md:mb-10 md:text-5xl lg:text-6xl">
             Ansøg i dag, og få svar i morgen
           </h2>
