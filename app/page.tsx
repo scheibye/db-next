@@ -3,13 +3,13 @@ import { AboutUsSection } from '@/components/AboutUsSection'
 import { ApplyNowSection } from '@/components/ApplyNowSection'
 import { BlogPostSection } from '@/components/BlogPostSection'
 import { CtaProductsSection } from '@/components/CtaProductsSection'
-import { FaqSection } from '@/components/FaqSection'
 import { HeroSection } from '@/components/HeroSection'
 import { LoanApplicationForm } from '@/components/LoanApplicationForm'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { BlogSection } from '@/components/sections/blog/BlogSection'
 import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
 import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
+import { FaqSection } from '@/components/sections/faq/FaqSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
 import { SocialProofSection } from '@/components/sections/SocialProofSection'
 import { StepCardsSection } from '@/components/sections/StepCardsSection'
@@ -261,6 +261,7 @@ export default async function Home() {
       </section>
 
       <StepCardsSection />
+      <FaqSection />
       <CtaSmallSection className="border-brand-dark border-b-2" />
       <SocialProofSection className="pt-0!" />
       <AboutSection />
