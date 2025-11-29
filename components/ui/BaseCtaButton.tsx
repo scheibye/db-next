@@ -63,7 +63,7 @@ export function BaseCtaButton({
 function BaseCtaButtonText({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="bg-brand-primary group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center px-10 transition-all xl:px-12"
+      className="bg-brand-primary group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center justify-center px-10 text-center transition-all xl:px-12"
       data-slot="text"
     >
       {children}

@@ -10,6 +10,7 @@ import { AboutSection } from '@/components/sections/AboutSection'
 import { BlogSection } from '@/components/sections/blog/BlogSection'
 import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
+import { SocialProofSection } from '@/components/sections/SocialProofSection'
 import { StepCardsSection } from '@/components/sections/StepCardsSection'
 import { StepsSection } from '@/components/StepsSection'
 import { TrustpilotSection } from '@/components/TrustpilotSection'
@@ -259,10 +260,11 @@ export default async function Home() {
       </section>
 
       <StepCardsSection />
+      <SocialProofSection />
       <AboutSection />
       <HelpCardsSection />
       <BlogSection />
-      <CtaVideoSection />
+      {/* <CtaVideoSection /> */}
     </>
   )
 }
