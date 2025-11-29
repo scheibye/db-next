@@ -11,7 +11,7 @@ export function SocialProofSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className}>
       <SectionContainerInner className="lg:min-h-175">
-        <div className="order-2 space-y-6 self-center lg:order-1 lg:col-span-5 xl:space-y-10">
+        <div className="order-2 space-y-6 self-center lg:order-1 lg:col-span-5 lg:py-12 xl:space-y-10">
           {/* Trustpilot rating */}
           <div className="text-brand-card xs:gap-5 xs:text-sm relative z-1 -mt-20 mb-16 flex items-center gap-3 text-xs font-bold sm:-mt-24 sm:mb-20 sm:text-lg lg:mt-0 lg:mb-6 lg:flex-wrap lg:text-black xl:mb-10">
             <div className="xs:gap-5 flex gap-3">

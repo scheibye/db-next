@@ -8,6 +8,7 @@ import { HeroSection } from '@/components/HeroSection'
 import { LoanApplicationForm } from '@/components/LoanApplicationForm'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { BlogSection } from '@/components/sections/blog/BlogSection'
+import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
 import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
 import { SocialProofSection } from '@/components/sections/SocialProofSection'
@@ -260,7 +261,8 @@ export default async function Home() {
       </section>
 
       <StepCardsSection />
-      <SocialProofSection />
+      <CtaSmallSection className="border-brand-dark border-b-2" />
+      <SocialProofSection className="pt-0!" />
       <AboutSection />
       <HelpCardsSection />
       <BlogSection />

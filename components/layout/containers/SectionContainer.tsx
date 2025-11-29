@@ -12,7 +12,7 @@ export function SectionContainer({
 
   return (
     <Comp
-      className={cn('max-w-container relative mx-auto', !noPadding && 'py-8 md:py-18', className)}
+      className={cn('max-w-container relative mx-auto', !noPadding && 'py-12 md:py-18', className)}
       {...props}
     >
       {children}
