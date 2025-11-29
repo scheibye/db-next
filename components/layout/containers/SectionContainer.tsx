@@ -1,18 +1,22 @@
+import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@/lib/utils'
 
 export function SectionContainer({
   children,
   className,
   noPadding,
+  asChild,
   ...props
-}: React.ComponentProps<'section'> & { noPadding?: boolean }) {
+}: React.ComponentProps<'div'> & { noPadding?: boolean; asChild?: boolean }) {
+  const Comp = asChild ? Slot : 'section'
+
   return (
-    <section
+    <Comp
       className={cn('max-w-container relative mx-auto', !noPadding && 'py-8 md:py-18', className)}
       {...props}
     >
       {children}
-    </section>
+    </Comp>
   )
 }
 
