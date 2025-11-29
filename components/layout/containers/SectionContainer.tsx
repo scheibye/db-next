@@ -19,12 +19,14 @@ export function SectionContainer({
 export function SectionContainerInner({
   children,
   className,
+  noColumns,
   ...props
-}: React.ComponentProps<'div'>) {
+}: React.ComponentProps<'div'> & { noColumns?: boolean }) {
   return (
     <div
       className={cn(
-        'lg:gap-gutter relative grid gap-10 px-(--container-padding) lg:grid-cols-12',
+        'lg:gap-gutter relative grid gap-10 px-(--container-padding)',
+        !noColumns && 'lg:grid-cols-12',
         className
       )}
       {...props}

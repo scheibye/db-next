@@ -1,5 +1,9 @@
 import Image from 'next/image'
 import { ScrollSnapContainer } from '@/components/layout/containers/ScrollSnapContainer'
+import {
+  SectionContainer,
+  SectionContainerInner,
+} from '@/components/layout/containers/SectionContainer'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
 import { cn } from '@/lib/utils'
@@ -29,17 +33,19 @@ const helpCards = [
 
 export function HelpCardsSection({ className }: { className?: string }) {
   return (
-    <section className={cn('max-w-container mx-auto py-8 md:py-18', className)}>
-      <div className="max-w-container-inner mx-auto grid gap-6">
+    <SectionContainer className={className}>
+      <SectionContainerInner className="gap-6" noColumns={true}>
         <h2 className="text-center text-2xl font-medium md:text-4xl lg:text-5xl">
           Hvad kan vi hjælpe dig med?
         </h2>
 
-        <ScrollSnapContainer className="xl:grid-cols-4">
-          {helpCards.map((card) => (
-            <HelpCard key={card.title} {...card} />
-          ))}
-        </ScrollSnapContainer>
+        <div className="-mx-[calc(var(--container-padding)+var(--spacing-glob-padding))] overflow-x-hidden lg:mx-0">
+          <ScrollSnapContainer className="xl:grid-cols-4">
+            {helpCards.map((card) => (
+              <HelpCard key={card.title} {...card} />
+            ))}
+          </ScrollSnapContainer>
+        </div>
 
         <div className="flex flex-col items-center gap-6 text-center md:flex-col-reverse md:gap-12">
           <BaseCtaButton className="xxs:w-auto w-full" href="/form">
@@ -54,8 +60,8 @@ export function HelpCardsSection({ className }: { className?: string }) {
             </small>
           </p>
         </div>
-      </div>
-    </section>
+      </SectionContainerInner>
+    </SectionContainer>
   )
 }
 

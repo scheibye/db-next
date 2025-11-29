@@ -24,7 +24,7 @@ const stepCards = [
 export function StepCardsSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className}>
-      <SectionContainerInner className="grid-cols-none! md:gap-12!">
+      <SectionContainerInner className="md:gap-12!" noColumns={true}>
         <div className="text-center text-balance">
           <h2 className="mb-6 text-4xl font-medium md:mb-10 md:text-5xl lg:text-6xl">
             Ansøg i dag, og få svar i morgen

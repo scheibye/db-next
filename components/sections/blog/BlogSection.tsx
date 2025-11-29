@@ -1,7 +1,10 @@
 import { ScrollSnapContainer } from '@/components/layout/containers/ScrollSnapContainer'
+import {
+  SectionContainer,
+  SectionContainerInner,
+} from '@/components/layout/containers/SectionContainer'
 import { BlogCard } from '@/components/sections/blog/BlogCard'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
-import { cn } from '@/lib/utils'
 
 const items = [
   {
@@ -50,8 +53,8 @@ const items = [
 
 export function BlogSection({ className }: { className?: string }) {
   return (
-    <section className={cn('max-w-container mx-auto py-8 md:py-18', className)}>
-      <div className="max-w-container-inner mx-auto grid gap-4 md:gap-6">
+    <SectionContainer className={className}>
+      <SectionContainerInner className="gap-6" noColumns={true}>
         <div className="text-center text-balance">
           <h2 className="mb-4 text-4xl font-medium md:mb-10 md:text-5xl lg:text-6xl">
             Dansk Boliglån Blog
@@ -59,18 +62,20 @@ export function BlogSection({ className }: { className?: string }) {
           <p className="text-lg sm:text-2xl">Vi blogger om boliglån og privatøkonomi.</p>
         </div>
 
-        <ScrollSnapContainer className="xl:grid-cols-3">
-          {items.map((item) => (
-            <BlogCard key={item.title} {...item} />
-          ))}
-        </ScrollSnapContainer>
+        <div className="-mx-[calc(var(--container-padding)+var(--spacing-glob-padding))] overflow-x-hidden lg:mx-0">
+          <ScrollSnapContainer className="xl:grid-cols-3">
+            {items.map((item) => (
+              <BlogCard key={item.title} {...item} />
+            ))}
+          </ScrollSnapContainer>
+        </div>
 
         <div className="text-center">
           <BaseCtaButton className="xxs:w-auto w-full" href="/artikler">
             Læs flere artikler
           </BaseCtaButton>
         </div>
-      </div>
-    </section>
+      </SectionContainerInner>
+    </SectionContainer>
   )
 }
