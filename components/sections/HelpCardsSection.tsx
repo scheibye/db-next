@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { ScrollSnapContainer } from '@/components/layout/containers/ScrollSnapContainer'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
 import { cn } from '@/lib/utils'
@@ -34,15 +35,11 @@ export function HelpCardsSection({ className }: { className?: string }) {
           Hvad kan vi hjælpe dig med?
         </h2>
 
-        <div className="-mx-padding-x flex w-[calc(100%+var(--spacing-padding-x)*2)] snap-x snap-mandatory gap-3 overflow-x-auto px-6 py-6 lg:mx-0 lg:grid lg:w-full lg:snap-none lg:grid-cols-2 lg:gap-5 lg:px-0 xl:grid-cols-4">
+        <ScrollSnapContainer className="xl:grid-cols-4">
           {helpCards.map((card) => (
-            <HelpCard
-              key={card.title}
-              className="w-full shrink-0 snap-center md:w-3/4 lg:w-full"
-              {...card}
-            />
+            <HelpCard key={card.title} {...card} />
           ))}
-        </div>
+        </ScrollSnapContainer>
 
         <div className="flex flex-col items-center gap-6 text-center md:flex-col-reverse md:gap-12">
           <BaseCtaButton className="xxs:w-auto w-full" href="/form">

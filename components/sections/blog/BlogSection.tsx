@@ -1,6 +1,7 @@
+import { ScrollSnapContainer } from '@/components/layout/containers/ScrollSnapContainer'
+import { BlogCard } from '@/components/sections/blog/BlogCard'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { cn } from '@/lib/utils'
-import { BlogCard } from './BlogCard'
 
 const items = [
   {
@@ -58,15 +59,11 @@ export function BlogSection({ className }: { className?: string }) {
           <p className="text-lg sm:text-2xl">Vi blogger om boliglån og privatøkonomi.</p>
         </div>
 
-        <div className="-mx-padding-x flex w-[calc(100%+var(--spacing-padding-x)*2)] snap-x snap-mandatory gap-3 overflow-x-auto px-6 py-6 lg:mx-0 lg:grid lg:w-full lg:snap-none lg:grid-cols-2 lg:px-0 xl:grid-cols-3 xl:gap-6">
+        <ScrollSnapContainer className="xl:grid-cols-3">
           {items.map((item) => (
-            <BlogCard
-              key={item.title}
-              className="w-full shrink-0 snap-center md:w-3/4 lg:w-full"
-              {...item}
-            />
+            <BlogCard key={item.title} {...item} />
           ))}
-        </div>
+        </ScrollSnapContainer>
 
         <div className="text-center">
           <BaseCtaButton className="xxs:w-auto w-full" href="/artikler">
