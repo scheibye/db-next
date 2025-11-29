@@ -6,7 +6,7 @@ export function SectionContainer({
   ...props
 }: React.ComponentProps<'section'>) {
   return (
-    <section className={cn('max-w-container mx-auto py-8 md:py-18', className)} {...props}>
+    <section className={cn('max-w-container relative mx-auto py-8 md:py-18', className)} {...props}>
       {children}
     </section>
   )
@@ -18,12 +18,12 @@ export function SectionContainerInner({
   withImage,
   ...props
 }: React.ComponentProps<'div'> & {
-  withImage?: 'left' | 'right' | 'center'
+  withImage?: 'left' | 'right'
 }) {
   return (
     <div
       className={cn(
-        'relative grid gap-10 px-(--container-padding) lg:grid-cols-12 lg:gap-6',
+        'lg:gap-gutter relative grid gap-10 px-(--container-padding) lg:grid-cols-12',
         '**:bg-image:max-w-none',
         '**:bg-image:-inset-x-(--container-padding)! **:bg-image:w-[calc(100%+var(--container-padding)*2)]!',
 

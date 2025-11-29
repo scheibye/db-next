@@ -10,6 +10,9 @@
   --breakpoint-xs: 30rem; /* 480px */
   --breakpoint-3xl: 112.5rem; /* 1800px */
 
+  /* Grid */
+  --spacing-gutter: 1.5rem; /* 24px */
+
   /* Sizing */
   --spacing-container: 118.75rem; /* 1900px */
   --spacing-container-inner: 101.25rem; /* 1620px */

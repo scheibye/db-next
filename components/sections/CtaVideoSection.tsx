@@ -1,28 +1,43 @@
+import {
+  SectionContainer,
+  SectionContainerInner,
+} from '@/components/layout/containers/SectionContainer'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
 import { cn } from '@/lib/utils'
 
 export function CtaVideoSection({ className }: { className?: string }) {
   return (
-    <section className={cn('relative h-dvh', className)}>
-      <video
-        className="pointer-events-none size-full object-cover"
-        src="/sections/cta-video/bg-video.mp4"
-        autoPlay={true}
-        muted={true}
-        playsInline={true}
-        loop={true}
-      />
+    <SectionContainer className={cn('h-dvh py-0!', className)}>
+      <div className="absolute inset-0">
+        <video
+          className="pointer-events-none size-full object-cover"
+          src="/sections/cta-video/bg-video.mp4"
+          autoPlay={true}
+          muted={true}
+          playsInline={true}
+          loop={true}
+        />
+      </div>
 
-      <div className="absolute inset-0 grid bg-black/30 xl:grid-cols-[1fr_1.7398fr]">
-        <div className="bg-brand-card/15 3xl:pl-33.25 hidden px-5 py-32 backdrop-blur-sm xl:block xl:self-end">
-          <p className="text-brand-card mb-12 text-3xl font-semibold text-balance xl:text-4xl">
-            Vores rådgivere sidder klar til at hjælpe dig
-          </p>
-          <BaseCtaButton href="#">Beregn dit boliglån</BaseCtaButton>
+      <SectionContainerInner className="z-1 h-full bg-black/30" withImage="left">
+        <div className="col-span-4 hidden self-end xl:block">
+          <div className="relative py-32">
+            {/* Blurred background */}
+            <div
+              className="bg-brand-card/15 absolute inset-0 -z-1 backdrop-blur-sm"
+              data-slot="bg-image"
+              role="presentation"
+            />
+
+            <p className="text-brand-card mb-12 text-3xl font-semibold text-balance xl:text-4xl">
+              Vores rådgivere sidder klar til at hjælpe dig
+            </p>
+            <BaseCtaButton href="#">Beregn dit boliglån</BaseCtaButton>
+          </div>
         </div>
 
-        <div className="text-brand-card mx-auto grid max-w-191 gap-7 self-end px-5 pt-24 pb-12 sm:gap-8 md:px-20 lg:self-center lg:p-12 lg:pt-0">
+        <div className="text-brand-card grid gap-6 self-end pt-24 pb-12 sm:gap-8 lg:col-span-6 lg:col-start-7 lg:self-center lg:py-0">
           <h2 className="text-4xl/snug font-medium text-balance lg:text-6xl">
             Et enklere alternativ til bankens afslag
           </h2>
@@ -49,7 +64,7 @@ export function CtaVideoSection({ className }: { className?: string }) {
             </BaseLinkUnderline>
           </div>
         </div>
-      </div>
-    </section>
+      </SectionContainerInner>
+    </SectionContainer>
   )
 }

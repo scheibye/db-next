@@ -264,7 +264,7 @@ export default async function Home() {
       <AboutSection />
       <HelpCardsSection />
       <BlogSection />
-      {/* <CtaVideoSection /> */}
+      <CtaVideoSection />
     </>
   )
 }
