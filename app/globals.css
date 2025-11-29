@@ -1,9 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-/* Custom variants */
-@custom-variant bg-image ([data-slot="bg-image"]);
-
 @theme {
   /* Breakpoints */
   --breakpoint-xxs: 23.75rem; /* 380px */

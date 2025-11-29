@@ -10,7 +10,7 @@ import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 export function SocialProofSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className}>
-      <SectionContainerInner className="lg:min-h-175" withImage="right">
+      <SectionContainerInner className="lg:min-h-175">
         <div className="order-2 space-y-6 self-center lg:order-1 lg:col-span-5 xl:space-y-10">
           {/* Trustpilot rating */}
           <div className="text-brand-card xs:gap-5 xs:text-sm relative z-1 -mt-20 mb-16 flex items-center gap-3 text-xs font-bold sm:-mt-24 sm:mb-20 sm:text-lg lg:mt-0 lg:mb-6 lg:flex-wrap lg:text-black xl:mb-10">
@@ -62,11 +62,10 @@ export function SocialProofSection({ className }: { className?: string }) {
 
         <div className="relative order-1 pb-[80%] lg:order-2 lg:col-span-6 lg:col-start-7 lg:pb-0">
           <Image
-            className="object-cover object-center"
+            className="-inset-x-(--container-padding)! w-[calc(100%+var(--container-padding)*2)]! max-w-none object-cover object-center xl:left-0! xl:w-[calc(100%+var(--container-padding))]!"
             src="/sections/social-proof/social-proof-bg.jpg"
             fill
             alt=""
-            data-slot="bg-image"
           />
         </div>
       </SectionContainerInner>

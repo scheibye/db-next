@@ -16,17 +16,16 @@ const listItems = [
 export function AboutSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className}>
-      <SectionContainerInner withImage="left">
+      <SectionContainerInner>
         <div className="relative grid items-end pt-64 pb-12 lg:col-span-5 lg:h-dvh lg:py-24">
           <Image
-            className="object-cover object-top-right"
+            className="-inset-x-(--container-padding)! w-[calc(100%+var(--container-padding)*2)]! max-w-none object-cover object-top-right xl:right-0! xl:w-[calc(100%+var(--container-padding))]!"
             src="/sections/about/about-bg.jpg"
             fill
             alt=""
-            data-slot="bg-image"
           />
 
-          <div className="text-brand-card relative z-1 grid gap-10">
+          <div className="text-brand-card relative z-1 grid gap-10 sm:pr-8">
             <div className="text-balance">
               <p className="mb-2 text-2xl font-semibold">Billigeste boliglån uden om bankerne</p>
               <p className="text-base">

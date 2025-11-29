@@ -36,12 +36,10 @@ export function StepCardsSection({ className }: { className?: string }) {
           </p>
         </div>
 
-        <div>
-          <div className="relative grid lg:grid-cols-3" data-slot="bg-image">
-            {stepCards.map((card, index) => (
-              <StepCard key={card.title} step={index + 1} {...card} />
-            ))}
-          </div>
+        <div className="relative -inset-x-(--container-padding) grid w-[calc(100%+var(--container-padding)*2)] lg:inset-x-auto lg:w-full lg:grid-cols-3">
+          {stepCards.map((card, index) => (
+            <StepCard key={card.title} step={index + 1} {...card} />
+          ))}
         </div>
 
         <div className="text-center">

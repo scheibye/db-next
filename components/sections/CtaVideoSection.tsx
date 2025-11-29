@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 export function CtaVideoSection({ className }: { className?: string }) {
   return (
-    <SectionContainer className={cn('h-dvh py-0!', className)}>
+    <SectionContainer className={cn('h-dvh', className)} noPadding={true}>
       <div className="absolute inset-0">
         <video
           className="pointer-events-none size-full object-cover"
@@ -20,13 +20,12 @@ export function CtaVideoSection({ className }: { className?: string }) {
         />
       </div>
 
-      <SectionContainerInner className="z-1 h-full bg-black/30" withImage="left">
+      <SectionContainerInner className="z-1 h-full bg-black/30">
         <div className="col-span-4 hidden self-end xl:block">
           <div className="relative py-32">
             {/* Blurred background */}
             <div
-              className="bg-brand-card/15 absolute inset-0 -z-1 backdrop-blur-sm"
-              data-slot="bg-image"
+              className="bg-brand-card/15 absolute -inset-x-(--container-padding) inset-y-0 -z-1 w-[calc(100%+var(--container-padding)+var(--spacing-gutter))] backdrop-blur-sm"
               role="presentation"
             />
 
