@@ -1,33 +1,22 @@
 import Link from 'next/link'
-import { cva } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
-import type { VariantProps } from 'class-variance-authority'
-
-const linkVariants = cva('border-b-[5px] pb-1.5 text-base sm:text-xl', {
-  variants: {
-    variant: {
-      default: 'border-brand-text',
-      light: 'border-brand-primary',
-    },
-  },
-  defaultVariants: {
-    variant: 'default',
-  },
-})
 
 export function BaseLinkUnderline({
   children,
   className,
   href,
-  variant,
   ...props
-}: VariantProps<typeof linkVariants> & {
+}: {
   className?: string
   href: string
   children: React.ReactNode
 }) {
   return (
-    <Link className={cn(linkVariants({ variant, className }))} href={href as any} {...props}>
+    <Link
+      className={cn('border-b-[5px] pb-1.5 text-base sm:text-xl', className)}
+      href={href as any}
+      {...props}
+    >
       {children}
     </Link>
   )

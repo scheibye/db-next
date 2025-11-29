@@ -101,7 +101,7 @@ function StepCard({
 
       <p className="mb-6 max-w-md text-lg text-balance sm:mb-12">{text}</p>
 
-      <BaseLinkUnderline className={cn('mt-auto', getLinkClasses())} href={href} variant="light">
+      <BaseLinkUnderline className={cn('mt-auto', getLinkClasses())} href={href}>
         Læs mere
       </BaseLinkUnderline>
     </div>

@@ -82,7 +82,7 @@ function HelpCard({
       <div className="text-brand-card bg-brand-dark/35 group-hover:bg-brand-dark/20 absolute inset-0 grid size-full p-8 text-center transition-all duration-500">
         <div className="self-end">
           <h3 className="mb-3 text-2xl font-medium">{title}</h3>
-          <BaseLinkUnderline href={href} variant="light">
+          <BaseLinkUnderline className="border-brand-primary" href={href}>
             Læs mere
           </BaseLinkUnderline>
         </div>

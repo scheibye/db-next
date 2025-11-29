@@ -44,7 +44,7 @@ export function CtaVideoSection({ className }: { className?: string }) {
           </div>
 
           <div>
-            <BaseLinkUnderline href="#" variant="light">
+            <BaseLinkUnderline className="border-brand-primary" href="#">
               Læs mere om os
             </BaseLinkUnderline>
           </div>
