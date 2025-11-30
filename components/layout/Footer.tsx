@@ -63,7 +63,7 @@ export function Footer() {
       <footer>
         <SectionContainerInner className="bg-brand-dark lg:gap-gutter! gap-0!">
           {/* Light section */}
-          <div className="relative pt-12 lg:col-span-4 lg:pt-24">
+          <div className="relative pt-12 lg:col-span-4 lg:pt-30">
             <div
               className="bg-brand-card absolute -inset-x-(--container-padding) inset-y-0 w-[calc(100%+var(--container-padding)*2)] lg:right-0 lg:w-[calc(100%+var(--container-padding)+var(--spacing-gutter))]"
               role="presentation"
@@ -133,7 +133,7 @@ export function Footer() {
           </div>
 
           {/* Dark section */}
-          <div className="text-brand-card relative flex flex-col pt-16 pb-8 lg:col-span-7 lg:col-start-6 lg:pt-24">
+          <div className="text-brand-card relative flex flex-col pt-16 pb-8 lg:col-span-7 lg:col-start-6 lg:pt-30">
             <div className="mb-12 lg:mb-24 2xl:flex 2xl:items-center 2xl:justify-between 2xl:gap-20">
               <div className="mb-10 text-2xl/normal font-medium text-balance md:text-3xl 2xl:mb-0">
                 Vores rådgivere sidder klar til at hjælpe dig
@@ -148,10 +148,10 @@ export function Footer() {
               {/* Navigation */}
               <div className="mb-16">
                 <nav className="2xl:flex 2xl:gap-x-24">
-                  <div className="xxs:grid xxs:grid-cols-2 xxs:gap-x-10 mb-12 2xl:grid-cols-1">
-                    <div className="xxs:mb-0 mb-12 2xl:mb-9">
-                      <div className="mb-5 text-lg font-bold">Mere om os</div>
-                      <ul className="space-y-3">
+                  <div className="xxs:grid xxs:grid-cols-2 xxs:gap-x-10 mb-12 2xl:mb-0 2xl:flex 2xl:flex-col 2xl:justify-between">
+                    <div className="xxs:mb-0 mb-12">
+                      <div className="mb-5 text-lg font-bold xl:mb-7">Mere om os</div>
+                      <ul className="space-y-4.5">
                         {aboutLinks.map((link) => (
                           <FooterNavLink key={link.label} {...link} />
                         ))}
@@ -159,8 +159,8 @@ export function Footer() {
                     </div>
 
                     <div>
-                      <div className="mb-5 text-lg font-bold">Sociale Medier</div>
-                      <ul className="space-y-3">
+                      <div className="mb-5 text-lg font-bold xl:mb-7">Sociale Medier</div>
+                      <ul className="space-y-4.5">
                         {socialLinks.map((link) => (
                           <FooterNavLink key={link.label} {...link} />
                         ))}
@@ -169,8 +169,8 @@ export function Footer() {
                   </div>
 
                   <div className="xxs:col-span-2">
-                    <div className="mb-5 text-lg font-bold">Nyttige links</div>
-                    <ul className="xs:columns-2 xs:gap-x-10 space-y-3 md:columns-3">
+                    <div className="mb-5 text-lg font-bold xl:mb-7">Nyttige links</div>
+                    <ul className="xs:columns-2 xs:gap-x-10 space-y-4.5 md:columns-3">
                       {otherLinks.map((link) => (
                         <FooterNavLink key={link.label} {...link} />
                       ))}

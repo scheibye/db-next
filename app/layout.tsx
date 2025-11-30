@@ -1,7 +1,7 @@
 import './globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
-import { Header } from '@/components/Header'
 import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
 // import { getSettings } from '@/lib/settings'
 import type { Metadata } from 'next'
 
@@ -13,7 +13,7 @@ const ubuntu_sans = Ubuntu_Sans({
 
 export const metadata: Metadata = {
   title: 'Dansk Boliglån',
-  description: 'Dansk Boliglån - moderne boliglånsløsninger.',
+  description: 'Dansk Boliglån – moderne boliglånsløsninger.',
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -22,8 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="da" className={`${ubuntu_sans.variable}`}>
       <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
-        {/* <Header /> */}
-
+        <Header />
         <main>{children}</main>
         <Footer />
       </body>

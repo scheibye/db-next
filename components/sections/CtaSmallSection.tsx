@@ -13,7 +13,7 @@ export function CtaSmallSection({ className }: { className?: string }) {
           <h2 className="mb-12 text-3xl text-balance lg:mb-0 lg:text-left">
             <strong className="font-semibold underline">Ansøg nu</strong>{' '}
             <span className="mt-2 block text-2xl lg:mt-0 lg:inline lg:text-3xl">
-              - Vi tager personligt hånd om dit boliglån.
+              &ndash; Vi tager personligt hånd om dit boliglån.
             </span>
           </h2>
 

@@ -29,7 +29,7 @@ export function AboutSection({ className }: { className?: string }) {
             <div className="text-balance">
               <p className="mb-2 text-2xl font-semibold">Billigeste boliglån uden om bankerne</p>
               <p className="text-base">
-                Hos Dansk Boliglån er alt gennemsigtigt - ingen gebyrer, ingen overraskelser.
+                Hos Dansk Boliglån er alt gennemsigtigt &ndash; ingen gebyrer, ingen overraskelser.
               </p>
             </div>
 
@@ -51,13 +51,15 @@ export function AboutSection({ className }: { className?: string }) {
 
           <h2 className="text-4xl font-medium text-balance xl:text-5xl 2xl:text-6xl">
             Vi er ikke en bank
-            <br /> - og det er netop pointen
+            <br />
+            &ndash; og det er netop pointen
           </h2>
 
           <div className="text-base sm:text-2xl/normal">
             <p>
-              Hos Dansk Boliglån arbejder vi under ejendomskreditlovgivningen - ikke bankens regler.
-              Det giver os frihed til at tænke anderledes, vurdere bredere og handle hurtigere.
+              Hos Dansk Boliglån arbejder vi under ejendomskreditlovgivningen &ndash; ikke bankens
+              regler. Det giver os frihed til at tænke anderledes, vurdere bredere og handle
+              hurtigere.
             </p>
           </div>
 
@@ -68,12 +70,12 @@ export function AboutSection({ className }: { className?: string }) {
               skemaer, kigger vi på det hele billede. På din situation, dine muligheder og på,
               hvordan finansieringen faktisk kan fungere i praksis. Vi tror på sund fornuft og
               skræddersyede løsninger frem for standardiserede afslag. Vi er sat i verden for at
-              hjælpe - ikke for at afvise.
+              hjælpe &ndash; ikke for at afvise.
             </p>
           </div>
 
           <p className="text-xl font-semibold">
-            Vi er sat i verden for at hjælpe - ikke for at afvise.
+            Vi er sat i verden for at hjælpe &ndash; ikke for at afvise.
           </p>
         </div>
       </SectionContainerInner>

@@ -37,6 +37,9 @@
 
   /* Transitions */
   --default-transition-duration: 300ms;
+
+  /* Z-indexes */
+  --z-index-header: 100;
 }
 
 @layer base {

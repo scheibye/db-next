@@ -8,7 +8,7 @@ import {
 
 export function MainHeroSection() {
   return (
-    <div className="-mt-(--spacing-global-padding) lg:mt-0 lg:mb-8 lg:grid lg:h-[calc(100dvh-var(--spacing-global-padding)*2)] lg:min-h-160 lg:grid-rows-[1fr_auto]">
+    <div className="-mt-(--spacing-global-padding) lg:mt-0 lg:mb-8 lg:grid lg:h-[calc(100dvh-var(--spacing-global-padding)*2)] lg:min-h-200 lg:grid-rows-[1fr_auto]">
       <SectionContainer className="lg:w-full" noPadding={true}>
         <SectionContainerInner className="lg:gap-gutter! gap-0! lg:h-full">
           <HeroForm className="relative z-1 -mt-14 md:-mt-17 lg:static lg:col-span-5 lg:mt-0 lg:self-end xl:col-span-4 xl:col-start-2" />
@@ -24,7 +24,8 @@ export function MainHeroSection() {
 
             <h1 className="text-brand-card xs:text-5xl absolute bottom-[35%] text-4xl leading-tight font-medium md:text-6xl lg:static lg:mb-16 xl:text-[70px] xl:leading-[80px]">
               Uden bøvl
-              <br />- og uden banken
+              <br />
+              &ndash; og uden banken
             </h1>
 
             <div className="hidden xl:block">TRUSTPILOT WIDGET</div>
@@ -38,7 +39,7 @@ export function MainHeroSection() {
             <div className="text-[0.9375rem] md:col-span-10 md:col-start-2 md:flex md:items-center md:justify-between lg:text-xl">
               <p className="mb-4 md:mb-0">
                 <strong className="font-medium">Gratis, uforpligtende og nemt</strong>
-                <br className="md:hidden" /> - Ring nu på{' '}
+                <br className="md:hidden" /> &ndash; Ring nu på{' '}
                 <a className="text-brand-dark underline hover:no-underline" href="tel:+4542440700">
                   42&nbsp;44&nbsp;07&nbsp;00
                 </a>

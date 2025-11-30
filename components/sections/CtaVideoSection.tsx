@@ -43,8 +43,8 @@ export function CtaVideoSection({ className }: { className?: string }) {
 
           <div className="text-base sm:text-2xl/normal">
             <p>
-              Hos Dansk Boliglån arbejder vi for dem, der falder udenfor bankens faste rammer - men
-              stadig har brug for en fair og gennemskuelig finansiering.
+              Hos Dansk Boliglån arbejder vi for dem, der falder udenfor bankens faste rammer
+              &ndash; men stadig har brug for en fair og gennemskuelig finansiering.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export function CtaVideoSection({ className }: { className?: string }) {
               Vi tilbyder et simpelt og konkurrencedygtigt alternativ til traditionel
               ejendomsfinansiering, både for private og erhverv. Uden unødvendige benspænd og lange
               processer. Hos os får du direkte kontakt, personlig behandling og en løsning, der
-              tager udgangspunkt i din situation - ikke i en skabelon.
+              tager udgangspunkt i din situation &ndash; ikke i en skabelon.
             </p>
           </div>
 

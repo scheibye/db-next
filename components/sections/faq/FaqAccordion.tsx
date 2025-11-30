@@ -27,7 +27,7 @@ function FaqAccordionTrigger({
     <AccordionPrimitive.Header>
       <AccordionPrimitive.Trigger
         className={cn(
-          'group flex w-full cursor-pointer items-center justify-between gap-4 py-3 text-left text-lg transition-all outline-none hover:underline',
+          'group flex w-full cursor-pointer items-center justify-between gap-4 py-3.5 text-left text-lg transition-all outline-none hover:underline',
           className
         )}
         data-slot="accordion-trigger"

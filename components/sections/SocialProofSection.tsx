@@ -49,9 +49,9 @@ export function SocialProofSection({ className }: { className?: string }) {
           <div className="italic sm:text-xl">
             <p>
               Utrolig kompetente mennesker hos Dansk Boliglån. Brian og Marrica hjalp med indfrielse
-              af gammel gæld - herunder skattegæld, så vores økonomi igen er kommet på rette spor.
-              Vi er meget taknemmelige for deres hjælp og helt igennem profesionelle måde, at gøre
-              tingene på.
+              af gammel gæld &ndash; herunder skattegæld, så vores økonomi igen er kommet på rette
+              spor. Vi er meget taknemmelige for deres hjælp og helt igennem profesionelle måde, at
+              gøre tingene på.
             </p>
           </div>
 

@@ -1,7 +1,10 @@
+import {
+  SectionContainer,
+  SectionContainerInner,
+} from '@/components/layout/containers/SectionContainer'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
 import { cn } from '@/lib/utils'
-import { SectionContainer, SectionContainerInner } from '../layout/containers/SectionContainer'
 
 const stepCards = [
   {
