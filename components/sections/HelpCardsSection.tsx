@@ -39,7 +39,7 @@ export function HelpCardsSection({ className }: { className?: string }) {
           Hvad kan vi hjælpe dig med?
         </h2>
 
-        <div className="-mx-[calc(var(--container-padding)+var(--spacing-global-pad))] overflow-x-hidden lg:mx-0">
+        <div className="-mx-[calc(var(--container-padding)+var(--spacing-global-padding))] overflow-x-hidden lg:mx-0">
           <ScrollSnapContainer className="xl:grid-cols-4">
             {helpCards.map((card) => (
               <HelpCard key={card.title} {...card} />

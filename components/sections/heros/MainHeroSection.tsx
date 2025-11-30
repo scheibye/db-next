@@ -8,9 +8,9 @@ import {
 
 export function MainHeroSection() {
   return (
-    <div className="-mt-(--spacing-global-padding) lg:mt-0 lg:grid lg:h-[calc(100dvh-var(--spacing-global-padding)*2)] lg:min-h-160 lg:grid-rows-[1fr_auto]">
+    <div className="-mt-(--spacing-global-padding) lg:mt-0 lg:mb-8 lg:grid lg:h-[calc(100dvh-var(--spacing-global-padding)*2)] lg:min-h-160 lg:grid-rows-[1fr_auto]">
       <SectionContainer className="lg:w-full" noPadding={true}>
-        <SectionContainerInner className="gap-0! lg:h-full lg:gap-(--spacing-gutter)!">
+        <SectionContainerInner className="lg:gap-gutter! gap-0! lg:h-full">
           <HeroForm className="relative z-1 -mt-14 md:-mt-17 lg:static lg:col-span-5 lg:mt-0 lg:self-end xl:col-span-4 xl:col-start-2" />
 
           <div className="relative -order-1 pb-[80%] md:pb-[50%] lg:static lg:order-2 lg:col-span-7 lg:col-start-7 lg:self-end lg:pb-16 2xl:col-span-5 2xl:col-start-7">
