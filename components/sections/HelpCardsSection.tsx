@@ -48,7 +48,7 @@ export function HelpCardsSection({ className }: { className?: string }) {
         </div>
 
         <div className="flex flex-col items-center gap-6 text-center md:flex-col-reverse md:gap-12">
-          <BaseCtaButton className="xs:w-96 w-full" href="/form">
+          <BaseCtaButton className="xs:min-w-96 xs:w-auto w-full" href="/form">
             Start låneansøgning
           </BaseCtaButton>
 

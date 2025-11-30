@@ -6,11 +6,28 @@ import {
   SectionContainerInner,
 } from '@/components/layout/containers/SectionContainer'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
+import { cn } from '@/lib/utils'
 
-export function SocialProofSection({ className }: { className?: string }) {
+export function SocialProofSection({
+  className,
+  withUnderline,
+}: {
+  className?: string
+  withUnderline?: boolean
+}) {
   return (
     <SectionContainer className={className}>
-      <SectionContainerInner className="lg:min-h-175">
+      <SectionContainerInner className={cn('lg:min-h-175', withUnderline && 'pb-12 lg:pb-0')}>
+        {withUnderline && (
+          <div
+            className="absolute inset-x-0 bottom-0 px-(--container-padding)"
+            role="presentation"
+            aria-hidden="true"
+          >
+            <div className="bg-brand-dark/50 h-[1.5px]" />
+          </div>
+        )}
+
         <div className="order-2 space-y-6 self-center lg:order-1 lg:col-span-5 lg:py-12 xl:space-y-10">
           {/* Trustpilot rating */}
           <div className="text-brand-card xs:gap-5 xs:text-sm relative z-1 -mt-20 mb-16 flex items-center gap-3 text-xs font-bold sm:-mt-24 sm:mb-20 sm:text-lg lg:mt-0 lg:mb-6 lg:flex-wrap lg:text-black xl:mb-10 xl:flex-nowrap xl:whitespace-nowrap">
@@ -55,7 +72,7 @@ export function SocialProofSection({ className }: { className?: string }) {
             </p>
           </div>
 
-          <BaseCtaButton className="xs:w-96 mt-2 w-full" href="/kontakt-os">
+          <BaseCtaButton className="xs:min-w-96 xs:w-auto mt-2 w-full" href="/kontakt-os">
             Kontakt os nu
           </BaseCtaButton>
         </div>
