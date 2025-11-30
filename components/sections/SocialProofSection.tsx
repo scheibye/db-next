@@ -13,7 +13,7 @@ export function SocialProofSection({ className }: { className?: string }) {
       <SectionContainerInner className="lg:min-h-175">
         <div className="order-2 space-y-6 self-center lg:order-1 lg:col-span-5 lg:py-12 xl:space-y-10">
           {/* Trustpilot rating */}
-          <div className="text-brand-card xs:gap-5 xs:text-sm relative z-1 -mt-20 mb-16 flex items-center gap-3 text-xs font-bold sm:-mt-24 sm:mb-20 sm:text-lg lg:mt-0 lg:mb-6 lg:flex-wrap lg:text-black xl:mb-10">
+          <div className="text-brand-card xs:gap-5 xs:text-sm relative z-1 -mt-20 mb-16 flex items-center gap-3 text-xs font-bold sm:-mt-24 sm:mb-20 sm:text-lg lg:mt-0 lg:mb-6 lg:flex-wrap lg:text-black xl:mb-10 xl:flex-nowrap xl:whitespace-nowrap">
             <div className="xs:gap-5 flex gap-3">
               <span className="xs:inline hidden">Excellent</span>
               <span className="inline-flex items-center gap-0.5">
@@ -42,7 +42,7 @@ export function SocialProofSection({ className }: { className?: string }) {
 
           <IconCustomQuote className="fill-brand-primary size-8 lg:size-14" />
 
-          <h2 className="text-brand-primary text-5xl text-balance italic md:text-6xl xl:text-7xl">
+          <h2 className="text-brand-primary text-5xl text-balance italic xl:text-6xl 2xl:text-7xl">
             Hjælper når alle andre siger nej!
           </h2>
 

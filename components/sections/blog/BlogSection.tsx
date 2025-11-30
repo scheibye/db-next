@@ -62,7 +62,7 @@ export function BlogSection({ className }: { className?: string }) {
           <p className="text-lg sm:text-2xl">Vi blogger om boliglån og privatøkonomi.</p>
         </div>
 
-        <div className="-mx-[calc(var(--container-padding)+var(--spacing-glob-padding))] overflow-x-hidden lg:mx-0">
+        <div className="-mx-[calc(var(--container-padding)+var(--spacing-global-padding))] overflow-x-hidden lg:mx-0">
           <ScrollSnapContainer className="xl:grid-cols-3">
             {items.map((item) => (
               <BlogCard key={item.title} {...item} />

@@ -39,7 +39,7 @@ export function HelpCardsSection({ className }: { className?: string }) {
           Hvad kan vi hjælpe dig med?
         </h2>
 
-        <div className="-mx-[calc(var(--container-padding)+var(--spacing-glob-padding))] overflow-x-hidden lg:mx-0">
+        <div className="-mx-[calc(var(--container-padding)+var(--spacing-global-pad))] overflow-x-hidden lg:mx-0">
           <ScrollSnapContainer className="xl:grid-cols-4">
             {helpCards.map((card) => (
               <HelpCard key={card.title} {...card} />
@@ -52,7 +52,7 @@ export function HelpCardsSection({ className }: { className?: string }) {
             Start låneansøgning
           </BaseCtaButton>
 
-          <p className="text-sm">
+          <p className="text-sm text-balance">
             <small className="italic">
               * Ved klik på knappen Forbrugslån sendes du til vores partner LendMe. Priseks.: Samlet
               kreditbeløb 130.000 kr. Var. deb. rente 3,60 - 20,95%. ÅOP 4,11 - 21,77%. Etb. omk.
@@ -77,7 +77,12 @@ function HelpCard({
   href: string
 }) {
   return (
-    <div className={cn('group relative grid min-h-138 overflow-hidden rounded-2xl', className)}>
+    <div
+      className={cn(
+        'group relative grid min-h-112 overflow-hidden rounded-2xl 2xl:min-h-136',
+        className
+      )}
+    >
       <Image
         className="object-cover transition-all duration-500 group-hover:scale-105"
         src={imageUrl}

@@ -35,7 +35,7 @@ function FaqAccordionTrigger({
       >
         {children}
         <div className="bg-brand-spring grid size-10 shrink-0 place-items-center rounded-xl">
-          <PlusIcon className="text-brand-dark pointer-events-none size-7 stroke-[1.25px] transition-transform group-data-[state=open]:rotate-45" />
+          <PlusIcon className="text-brand-dark pointer-events-none size-7 stroke-[1.25px] transition-transform duration-200 group-data-[state=open]:rotate-45" />
         </div>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
@@ -49,8 +49,8 @@ function FaqAccordionContent({
 }: React.ComponentProps<typeof AccordionPrimitive.Content>) {
   return (
     <AccordionPrimitive.Content
-      data-slot="accordion-content"
       className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden"
+      data-slot="accordion-content"
       {...props}
     >
       <div className={cn('pt-0 pb-4', className)}>{children}</div>

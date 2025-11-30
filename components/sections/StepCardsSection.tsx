@@ -90,17 +90,17 @@ function StepCard({
   return (
     <div
       className={cn(
-        'flex flex-col items-start overflow-hidden px-5 py-12 first:rounded-t-4xl last:rounded-b-4xl sm:px-12 lg:py-18 lg:first:rounded-t-none lg:first:rounded-l-4xl! lg:last:rounded-r-4xl! lg:last:rounded-b-none',
+        'flex flex-col items-start overflow-hidden px-5 py-12 first:rounded-t-4xl last:rounded-b-4xl sm:px-12 lg:first:rounded-t-none lg:first:rounded-l-4xl! lg:last:rounded-r-4xl! lg:last:rounded-b-none 2xl:py-18',
         getRootClasses(),
         className
       )}
     >
-      <div className="xxs:gap-8 mb-6 flex items-center gap-4 sm:mb-10 lg:block">
-        <div className="text-[100px] leading-none font-medium lg:mb-18">{step}</div>
+      <div className="xxs:gap-8 mb-6 flex items-center gap-4 sm:mb-8 lg:block 2xl:mb-10">
+        <div className="text-[100px] leading-none font-[350] lg:mb-12 2xl:mb-18">{step}</div>
         <h3 className="text-3xl font-medium sm:text-4xl">{title}</h3>
       </div>
 
-      <p className="mb-6 max-w-md text-lg text-balance sm:mb-12">{text}</p>
+      <p className="mb-6 max-w-md text-lg text-balance sm:mb-8 2xl:mb-12">{text}</p>
 
       <BaseLinkUnderline className={cn('mt-auto', getLinkClasses())} href={href}>
         Læs mere

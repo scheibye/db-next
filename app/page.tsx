@@ -11,6 +11,7 @@ import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
 import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
 import { FaqSection } from '@/components/sections/faq/FaqSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
+import { MainHeroSection } from '@/components/sections/heros/MainHeroSection'
 import { SocialProofSection } from '@/components/sections/SocialProofSection'
 import { StepCardsSection } from '@/components/sections/StepCardsSection'
 import { StepsSection } from '@/components/StepsSection'
@@ -256,10 +257,11 @@ export default async function Home() {
       })} */}
 
       {/* Formularen til sidst på siden */}
-      <section className="mt-8 mb-16 px-4 md:px-0">
+      {/* <section className="mt-8 mb-16 px-4 md:px-0">
         <LoanApplicationForm />
-      </section>
+      </section> */}
 
+      <MainHeroSection />
       <StepCardsSection />
       <FaqSection />
       <CtaSmallSection className="border-brand-dark border-b-2" />

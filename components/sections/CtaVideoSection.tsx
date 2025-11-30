@@ -37,7 +37,7 @@ export function CtaVideoSection({ className }: { className?: string }) {
         </div>
 
         <div className="text-brand-card grid gap-6 self-end pt-24 pb-12 sm:gap-8 lg:col-span-6 lg:col-start-7 lg:self-center lg:py-0">
-          <h2 className="text-4xl/snug font-medium text-balance lg:text-6xl">
+          <h2 className="text-4xl leading-tight font-medium text-balance lg:text-5xl 2xl:text-6xl">
             Et enklere alternativ til bankens afslag
           </h2>
 

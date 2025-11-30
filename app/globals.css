@@ -2,19 +2,23 @@
 @import 'tw-animate-css';
 
 @theme {
+  /* Fonts */
+  --font-sans: var(--font-ubuntu-sans);
+
   /* Breakpoints */
   --breakpoint-xxs: 23.75rem; /* 380px */
   --breakpoint-xs: 30rem; /* 480px */
   --breakpoint-3xl: 112.5rem; /* 1800px */
 
-  /* Grid */
+  /* Spacing */
+  --spacing-global-padding: 0.625rem; /* 10px */
+
+  /* -- Grid */
   --spacing-gutter: 1.5rem; /* 24px */
 
-  /* Sizing */
+  /* -- Containers */
   --spacing-container: 118.75rem; /* 1900px */
   --spacing-container-inner: 101.25rem; /* 1620px */
-
-  --spacing-glob-padding: 0.625rem; /* 10px */
 
   /* Colors */
   --color-brand-dark: #00382d;
@@ -28,42 +32,28 @@
   --color-trustpilot: #219653;
 
   /* Text */
-  --text-7xl: 5rem;
+  --text-7xl: 5rem; /* 80px */
   --text-7xl--line-height: 1.15;
 
   /* Transitions */
   --default-transition-duration: 300ms;
 }
 
-@theme inline {
-  /* Spacing */
-  --spacing-p-inner: calc(var(--spacing) * 5);
-  --spacing-p-inner-xl: calc(var(--spacing) * 12);
-  --spacing-p-inner-2xl: calc(var(--spacing) * 16);
-  --spacing-p-inner-3xl: calc(var(--spacing) * 36);
-}
-
 @layer base {
   /* Section container padding */
   :root {
-    --container-padding: var(--spacing-p-inner);
+    --container-padding: calc(var(--spacing) * 5);
   }
 
-  @media (width >= 80rem) /* xl */ {
+  @variant 2xl {
     :root {
-      --container-padding: var(--spacing-p-inner-xl);
+      --container-padding: calc(var(--spacing) * 16);
     }
   }
 
-  @media (width >= 96rem) /* 2xl */ {
+  @variant 3xl {
     :root {
-      --container-padding: var(--spacing-p-inner-2xl);
-    }
-  }
-
-  @media (width >= 112.5rem) /* 3xl */ {
-    :root {
-      --container-padding: var(--spacing-p-inner-3xl);
+      --container-padding: calc(var(--spacing) * 36);
     }
   }
 }

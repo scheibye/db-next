@@ -17,7 +17,7 @@ export function AboutSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className}>
       <SectionContainerInner>
-        <div className="relative grid items-end pt-64 pb-12 lg:col-span-5 lg:h-dvh lg:py-24">
+        <div className="relative grid items-end pt-64 pb-12 lg:col-span-5 lg:min-h-dvh 2xl:py-24">
           <Image
             className="-inset-x-(--container-padding)! w-[calc(100%+var(--container-padding)*2)]! max-w-none object-cover object-top-right xl:right-0! xl:w-[calc(100%+var(--container-padding))]!"
             src="/sections/about/about-bg.jpg"
@@ -49,7 +49,7 @@ export function AboutSection({ className }: { className?: string }) {
         <div className="space-y-7 self-center sm:space-y-9 lg:col-span-6 lg:col-start-7">
           <div className="text-brand-primary text-lg font-semibold sm:text-2xl">Om os</div>
 
-          <h2 className="text-4xl font-medium text-balance lg:text-6xl">
+          <h2 className="text-4xl font-medium text-balance xl:text-5xl 2xl:text-6xl">
             Vi er ikke en bank
             <br /> - og det er netop pointen
           </h2>

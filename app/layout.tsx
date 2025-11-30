@@ -6,8 +6,9 @@ import { Footer } from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 // Variable font
-const ubuntu = Ubuntu_Sans({
+const ubuntu_sans = Ubuntu_Sans({
   subsets: ['latin'],
+  variable: '--font-ubuntu-sans',
 })
 
 export const metadata: Metadata = {
@@ -19,15 +20,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // const settings = await getSettings()
 
   return (
-    <html lang="da" className={ubuntu.className}>
-      <body className="bg-brand-card p-glob-padding text-brand-dark relative antialiased">
+    <html lang="da" className={`${ubuntu_sans.variable}`}>
+      <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
         {/* <Header /> */}
 
-        {/* Indhold – max 1900 + 10px margin på hver side */}
-        <main>
-          <div className="mx-auto max-w-[1900px]">{children}</div>
-        </main>
-
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
