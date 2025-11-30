@@ -1,44 +1,31 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { getSettings } from "@/lib/settings";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { Ubuntu_Sans } from "next/font/google";
+import './globals.css'
+import { Ubuntu_Sans } from 'next/font/google'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
+// import { getSettings } from '@/lib/settings'
+import type { Metadata } from 'next'
 
-const ubuntu = Ubuntu_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-sans",
-});
-
+// Variable font
+const ubuntu_sans = Ubuntu_Sans({
+  subsets: ['latin'],
+  variable: '--font-ubuntu-sans',
+})
 
 export const metadata: Metadata = {
-  title: "Dansk Boliglån",
-  description: "Dansk Boliglån – moderne boliglånsløsninger.",
-};
+  title: 'Dansk Boliglån',
+  description: 'Dansk Boliglån – moderne boliglånsløsninger.',
+}
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const settings = await getSettings();
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // const settings = await getSettings()
 
   return (
-    <html lang="da" className={ubuntu.className}>
-      <body className="relative bg-brand-card">
-        {/* Header skal ligge ovenpå hero */}
+    <html lang="da" className={`${ubuntu_sans.variable}`}>
+      <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
         <Header />
-
-        {/* Indhold – max 1900 + 10px margin på hver side */}
-        <main>
-          <div className="mx-auto max-w-[1900px] px-[10px] py-[10px]">
-            {children}
-          </div>
-        </main>
-
-        <Footer settings={settings} />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
-  );
+  )
 }
