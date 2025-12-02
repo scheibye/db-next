@@ -14,7 +14,7 @@
     "^@/",
     "^[.]",
     "<TYPES>^react$",
-    "<TYPES>^next$",
+    "<TYPES>^next",
     "<TYPES>",
     "<TYPES>^@/",
     "<TYPES>^[.]"

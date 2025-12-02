@@ -1,9 +1,20 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
 /* Grundlæggende lys/dunkel baggrund */
 :root {
   --background: #fdffe6;
   --foreground: #222222;
+}
+
+@theme {
+  /* Breakpoints */
+  --breakpoint-xxs: 23.75rem; /* 380px */
+  --breakpoint-xs: 30rem; /* 480px */
+  --breakpoint-3xl: 112.5rem; /* 1800px */
+
+  /* Sizing */
+  --spacing-container: 118.75rem; /* px */
 }
 
 /* Tailwind v4 theme tokens – her definerer vi brand-farver & font */
