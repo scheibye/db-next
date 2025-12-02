@@ -24,7 +24,7 @@ export function CtaImagePatternSection({
             Hvad vi gør – og hvordan vi gør det
           </div>
 
-          <h2 className="text-4xl leading-tight font-medium text-balance lg:text-5xl 2xl:text-6xl">
+          <h2 className="text-3xl leading-tight font-medium text-balance md:text-4xl lg:text-5xl 2xl:text-6xl">
             Skræddersyede løsninger, når banken siger nej
           </h2>
 

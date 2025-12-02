@@ -1,4 +1,5 @@
 import { CtaImagePatternSection } from '@/components/sections/CtaImagePatternSection'
+import { CtaImageSection } from '@/components/sections/CtaImageSection'
 import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
 import { SimpleHero } from '@/components/sections/heros/SimpleHero'
 import { MissionSection } from '@/components/sections/MissionSection'
@@ -12,6 +13,7 @@ export default function AboutPage() {
       <MissionSection className="py-16 lg:py-32" />
       <CtaSmallSection className="bg-brand-spring" />
       <CtaImagePatternSection imageSrc="/sections/cta-image-pattern/cta-image-pattern-bg-2.jpg" />
+      <CtaImageSection imageSrc="/sections/cta-image/cta-image-bg.jpg" />
     </>
   )
 }
