@@ -19,9 +19,7 @@ export function BlogPostSection({ title, posts = [] }: BlogPostSectionProps) {
   return (
     <section className="bg-brand-card/40 px-4 py-12">
       <div className="mx-auto max-w-[1900px] px-[10px]">
-        {title && (
-          <h2 className="text-brand-dark mb-6 text-2xl font-semibold md:text-3xl">{title}</h2>
-        )}
+        {title && <h2 className="mb-6 text-2xl font-semibold md:text-3xl">{title}</h2>}
 
         <div className="grid gap-6 md:grid-cols-3">
           {posts.map((post, idx) => {
@@ -33,7 +31,7 @@ export function BlogPostSection({ title, posts = [] }: BlogPostSectionProps) {
                   </div>
                 )}
                 <div className="flex flex-col gap-2 p-5">
-                  <h3 className="text-brand-dark text-base font-semibold">{post.title}</h3>
+                  <h3 className="text-base font-semibold">{post.title}</h3>
                   {post.excerpt && (
                     <p className="text-brand-text/80 line-clamp-3 text-sm">{post.excerpt}</p>
                   )}

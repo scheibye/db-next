@@ -5,9 +5,17 @@ import { AboutUsSection } from '@/components/AboutUsSection'
 import { ApplyNowSection } from '@/components/ApplyNowSection'
 import { BlogPostSection } from '@/components/BlogPostSection'
 import { CtaProductsSection } from '@/components/CtaProductsSection'
-import { FaqSection } from '@/components/FaqSection'
 import { HeroSection } from '@/components/HeroSection'
 import { LoanApplicationForm } from '@/components/LoanApplicationForm'
+import { AboutSection } from '@/components/sections/AboutSection'
+import { BlogSection } from '@/components/sections/blog/BlogSection'
+import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
+import { CtaVideoSection } from '@/components/sections/CtaVideoSection'
+import { FaqSection } from '@/components/sections/faq/FaqSection'
+import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
+import { MainHeroSection } from '@/components/sections/heros/MainHeroSection'
+import { SocialProofSection } from '@/components/sections/SocialProofSection'
+import { StepCardsSection } from '@/components/sections/StepCardsSection'
 import { StepsSection } from '@/components/StepsSection'
 import { TrustpilotSection } from '@/components/TrustpilotSection'
 import { UspSection } from '@/components/UspSection'
@@ -153,8 +161,8 @@ export default async function Home() {
   }
 
   return (
-    <main>
-      {page.sections?.map((section: any, idx: number) => {
+    <>
+      {/* {page.sections?.map((section: any, idx: number) => {
         if (section._type === 'heroSection') {
           return <HeroSection key={idx} {...section} />
         }
@@ -248,12 +256,22 @@ export default async function Home() {
         }
 
         return null
-      })}
+      })} */}
 
       {/* Formularen til sidst på siden */}
-      <section className="mt-8 mb-16 px-4 md:px-0">
+      {/* <section className="mt-8 mb-16 px-4 md:px-0">
         <LoanApplicationForm />
-      </section>
-    </main>
+      </section> */}
+
+      <MainHeroSection />
+      <StepCardsSection />
+      <FaqSection />
+      <CtaSmallSection className="border-brand-dark border-b-2" />
+      <SocialProofSection className="pt-0!" />
+      <AboutSection />
+      <HelpCardsSection />
+      <BlogSection />
+      <CtaVideoSection />
+    </>
   )
 }

@@ -147,8 +147,8 @@ function SliderBlock({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between text-sm">
-        <label className="text-brand-dark font-medium">{label}</label>
-        <div className="text-brand-dark text-lg font-bold">{formatCurrency(value)}</div>
+        <label className="font-medium">{label}</label>
+        <div className="text-lg font-bold">{formatCurrency(value)}</div>
       </div>
 
       {/* Slider */}

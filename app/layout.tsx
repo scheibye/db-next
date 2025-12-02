@@ -1,14 +1,14 @@
 import './globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
-import { Header } from '@/components/Header'
 import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
 // import { getSettings } from '@/lib/settings'
 import type { Metadata } from 'next'
 
-const ubuntu = Ubuntu_Sans({
+// Variable font
+const ubuntu_sans = Ubuntu_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
-  variable: '--font-sans',
+  variable: '--font-ubuntu-sans',
 })
 
 export const metadata: Metadata = {
@@ -20,15 +20,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   // const settings = await getSettings()
 
   return (
-    <html lang="da" className={ubuntu.className}>
-      <body className="bg-brand-card relative p-2.5 antialiased">
+    <html lang="da" className={`${ubuntu_sans.variable}`}>
+      <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
         <Header />
-
-        {/* Indhold – max 1900 + 10px margin på hver side */}
-        <main>
-          <div className="mx-auto max-w-[1900px]">{children}</div>
-        </main>
-
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
