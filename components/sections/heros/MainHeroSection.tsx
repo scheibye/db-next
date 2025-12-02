@@ -22,7 +22,7 @@ export function MainHeroSection() {
               alt=""
             />
 
-            <h1 className="text-brand-card xs:text-5xl absolute bottom-[35%] text-4xl leading-tight font-medium md:text-6xl lg:static lg:mb-16 xl:text-[70px] xl:leading-[80px]">
+            <h1 className="text-brand-card xs:text-5xl absolute bottom-[35%] text-4xl leading-tight font-medium md:text-6xl lg:static lg:mb-16 xl:text-8xl">
               Uden bøvl
               <br />
               &ndash; og uden banken

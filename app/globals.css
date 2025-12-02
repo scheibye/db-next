@@ -34,8 +34,11 @@
   --color-trustpilot: #219653;
 
   /* Text */
-  --text-7xl: 5rem; /* 80px */
+  --text-7xl: 4.375rem; /* 70px */
   --text-7xl--line-height: 1.15;
+
+  --text-8xl: 5rem; /* 80px */
+  --text-8xl--line-height: 1.15;
 
   /* Transitions */
   --default-transition-duration: 300ms;

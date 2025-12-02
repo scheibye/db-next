@@ -32,7 +32,7 @@ export function SimpleHero({ label, title }: { label: string; title: string }) {
               {label}
             </div>
 
-            <h1 className="text-brand-card text-4xl leading-tight font-medium text-balance md:text-5xl xl:text-[70px] xl:leading-[80px]">
+            <h1 className="text-brand-card text-4xl leading-tight font-medium text-balance md:text-5xl xl:text-8xl">
               {title}
             </h1>
           </div>

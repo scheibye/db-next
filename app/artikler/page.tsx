@@ -80,7 +80,7 @@ export default function BlogPage() {
         </SectionContainerInner>
       </SectionContainer>
 
-      <CtaImagePatternSection />
+      <CtaImagePatternSection imageSrc="/sections/cta-image-pattern/cta-image-pattern-bg-1.jpg" />
 
       <SectionContainer className="lg:pb-0">
         <SectionContainerInner
