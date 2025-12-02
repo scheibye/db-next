@@ -40,8 +40,8 @@ export function MainHeroSection() {
               <p className="mb-4 md:mb-0">
                 <strong className="font-medium">Gratis, uforpligtende og nemt</strong>
                 <br className="md:hidden" /> &ndash; Ring nu på{' '}
-                <a className="text-brand-dark underline hover:no-underline" href="tel:+4542440700">
-                  42&nbsp;44&nbsp;07&nbsp;00
+                <a className="text-brand-dark underline hover:no-underline" href="tel:+4535953500">
+                  35&nbsp;95&nbsp;35&nbsp;00
                 </a>
               </p>
 

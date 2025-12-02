@@ -38,7 +38,7 @@ const otherLinks = [
   { label: 'Håndværkertilbud', href: '/haandvaerkertilbud' },
   { label: 'Ordbog', href: '/ordbog' },
   { label: 'Lån i friværdi', href: '/laan-i-frivaerdi' },
-  { label: 'Lån uden om banken', href: 'http://laan-uden-om-banken/' },
+  { label: 'Lån uden om banken', href: '/laan-uden-om-banken' },
   { label: 'Mellemfinansiering', href: '/mellemfinansiering' },
   { label: 'Nedsparingslån', href: '/nedsparingslaan' },
 
@@ -81,7 +81,7 @@ export function Footer() {
 
                 <address className="not-italic">
                   <p className="mb-2 text-lg font-medium">
-                    Simpel Kredit Ejendomskreditselskab&nbsp;ApS
+                    Dansk Boliglån Ejendomskreditselskab&nbsp;ApS
                   </p>
                   <p className="text-base">Hellerupgårdvej 18, 2900 Hellerup</p>
                 </address>
@@ -201,15 +201,6 @@ export function Footer() {
                     &copy; {new Date().getFullYear()} Simpel Kredit Ejendomskreditselskab ApS |
                     CVR.no 39650487
                   </p>
-
-                  <a
-                    className="text-brand-spring border-brand-spring border-b text-sm font-medium transition-colors hover:border-transparent"
-                    href="https://createdbyblack.com"
-                    rel="noopener noreferrer nofollow"
-                    target="_blank"
-                  >
-                    Created by Black
-                  </a>
                 </div>
               </div>
             </div>
