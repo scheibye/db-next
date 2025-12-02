@@ -4,6 +4,7 @@ import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
 import { CtaSmallTelSection } from '@/components/sections/CtaSmallTelSection'
 import { SimpleHero } from '@/components/sections/heros/SimpleHero'
 import { MissionSection } from '@/components/sections/MissionSection'
+import { TeamSection } from '@/components/sections/TeamSection'
 import { TextWithEmbeddedVideoSection } from '@/components/sections/TextWithEmbeddedVideoSection'
 
 export default function AboutPage() {
@@ -16,6 +17,7 @@ export default function AboutPage() {
       <CtaImagePatternSection imageSrc="/sections/cta-image-pattern/cta-image-pattern-bg-2.jpg" />
       <CtaImageSection imageSrc="/sections/cta-image/cta-image-bg.jpg" />
       <CtaSmallTelSection />
+      <TeamSection />
     </>
   )
 }
