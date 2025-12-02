@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import type { Settings } from '@/lib/settings'
 
 type FooterProps = {
@@ -44,12 +43,12 @@ export function Footer({ settings }: FooterProps) {
           <ul className="space-y-1">
             {footerLinks.map((link, idx) => (
               <li key={idx}>
-                <Link
+                <a
                   href={link.href}
                   className="text-brand-primary hover:text-brand-primary-soft transition"
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

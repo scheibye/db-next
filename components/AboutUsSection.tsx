@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 // components/AboutUsSection.tsx
 import Image from 'next/image'
 

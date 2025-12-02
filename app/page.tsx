@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { groq } from 'next-sanity'
 import { AboutUsSection } from '@/components/AboutUsSection'
 import { ApplyNowSection } from '@/components/ApplyNowSection'
