@@ -1,5 +1,6 @@
 import './globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
+import Script from 'next/script'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 // import { getSettings } from '@/lib/settings'
@@ -21,6 +22,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="da" className={`${ubuntu_sans.variable}`}>
+      <head>
+        {/* Trustpilot widget */}
+        <Script src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
+      </head>
+
       <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
         <Header />
         <main>{children}</main>
