@@ -6,7 +6,17 @@ import {
 import { BlogCard } from '@/components/sections/blog/BlogCard'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 
-const items = [
+type BlogCardVariant = 'dark' | 'spring' | 'primary' | 'primary-soft' | 'dusk' | 'white'
+
+type BlogItem = {
+  category: string
+  title: string
+  author: string
+  href: string
+  variant: BlogCardVariant
+}
+
+const items: BlogItem[] = [
   {
     category: 'Boliglån',
     title: 'Gæld til Gældsstyrelsen? Her er dine muligheder',
@@ -65,7 +75,14 @@ export function BlogSection({ className }: { className?: string }) {
         <div className="-mx-[calc(var(--container-padding)+var(--spacing-global-padding))] overflow-x-hidden lg:mx-0">
           <ScrollSnapContainer className="xl:grid-cols-3">
             {items.map((item) => (
-              <BlogCard key={item.title} {...item} />
+              <BlogCard
+                key={item.title}
+                category={item.category}
+                title={item.title}
+                author={item.author}
+                href={item.href}
+                variant={item.variant as BlogCardVariant}
+              />
             ))}
           </ScrollSnapContainer>
         </div>

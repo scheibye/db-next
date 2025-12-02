@@ -7,7 +7,17 @@ import { CtaImagePatternSection } from '@/components/sections/CtaImagePatternSec
 import { ImageHero } from '@/components/sections/heros/ImageHero'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 
-const items = [
+type BlogCardVariant = 'dark' | 'spring' | 'primary' | 'primary-soft' | 'dusk' | 'white'
+
+type BlogItem = {
+  category: string
+  title: string
+  author: string
+  href: string
+  variant: BlogCardVariant
+}
+
+const items: BlogItem[] = [
   {
     category: 'Boliglån',
     title: 'Gæld til Gældsstyrelsen? Her er dine muligheder',
@@ -73,10 +83,18 @@ export default function BlogPage() {
           </div>
 
           <div className="gap-gutter grid md:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => (
-              <BlogCard key={item.title} {...item} />
-            ))}
-          </div>
+  {items.map((item) => (
+    <BlogCard
+      key={item.title}
+      category={item.category}
+      title={item.title}
+      author={item.author}
+      href={item.href}
+      variant={item.variant as BlogCardVariant}
+    />
+  ))}
+</div>
+
         </SectionContainerInner>
       </SectionContainer>
 
@@ -90,7 +108,7 @@ export default function BlogPage() {
           <div
             className="absolute inset-x-0 bottom-0 px-(--container-padding)"
             role="presentation"
-            aria-hidden="true"
+            aria-hidden={true}
           >
             <div className="bg-brand-dark/50 h-[1.5px]" />
           </div>
