@@ -1,57 +1,43 @@
 // components/CtaProductsSection.tsx
 type CtaProductItem = {
-  title: string;
-  description?: string;
-  href?: string;
-  badge?: string;
-};
+  title: string
+  description?: string
+  href?: string
+  badge?: string
+}
 
 type CtaProductsSectionProps = {
-  title?: string;
-  subtitle?: string;
-  items?: CtaProductItem[];
-};
+  title?: string
+  subtitle?: string
+  items?: CtaProductItem[]
+}
 
-export function CtaProductsSection({
-  title,
-  subtitle,
-  items = [],
-}: CtaProductsSectionProps) {
-  if (!items.length) return null;
+export function CtaProductsSection({ title, subtitle, items = [] }: CtaProductsSectionProps) {
+  if (!items.length) return null
 
   return (
-    <section className="py-12 px-4 bg-white">
+    <section className="bg-white px-4 py-12">
       <div className="mx-auto max-w-[1900px] px-[10px]">
         {title && (
-          <h2 className="text-2xl md:text-3xl font-semibold text-brand-dark mb-2">
-            {title}
-          </h2>
+          <h2 className="text-brand-dark mb-2 text-2xl font-semibold md:text-3xl">{title}</h2>
         )}
-        {subtitle && (
-          <p className="text-sm md:text-base text-brand-text/80 mb-6">
-            {subtitle}
-          </p>
-        )}
+        {subtitle && <p className="text-brand-text/80 mb-6 text-sm md:text-base">{subtitle}</p>}
 
         <div className="grid gap-6 md:grid-cols-3">
           {items.map((item, idx) => {
             const content = (
-              <div className="h-full rounded-2xl border border-brand-dark/10 bg-brand-card px-6 py-5 flex flex-col gap-2">
+              <div className="border-brand-dark/10 bg-brand-card flex h-full flex-col gap-2 rounded-2xl border px-6 py-5">
                 {item.badge && (
-                  <span className="inline-flex items-center rounded-full bg-brand-spring/20 text-brand-dark text-[11px] px-3 py-1 font-medium">
+                  <span className="bg-brand-spring/20 text-brand-dark inline-flex items-center rounded-full px-3 py-1 text-[11px] font-medium">
                     {item.badge}
                   </span>
                 )}
-                <h3 className="text-base md:text-lg font-semibold text-brand-dark">
-                  {item.title}
-                </h3>
+                <h3 className="text-brand-dark text-base font-semibold md:text-lg">{item.title}</h3>
                 {item.description && (
-                  <p className="text-sm text-brand-text/80">
-                    {item.description}
-                  </p>
+                  <p className="text-brand-text/80 text-sm">{item.description}</p>
                 )}
               </div>
-            );
+            )
 
             return item.href ? (
               <a key={idx} href={item.href}>
@@ -59,10 +45,10 @@ export function CtaProductsSection({
               </a>
             ) : (
               <div key={idx}>{content}</div>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
+  )
 }
