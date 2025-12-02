@@ -24,10 +24,13 @@ export function SectionContainerInner({
   children,
   className,
   noColumns,
+  asChild,
   ...props
-}: React.ComponentProps<'div'> & { noColumns?: boolean }) {
+}: React.ComponentProps<'div'> & { noColumns?: boolean; asChild?: boolean }) {
+  const Comp = asChild ? Slot : 'div'
+
   return (
-    <div
+    <Comp
       className={cn(
         'lg:gap-gutter relative grid gap-10 px-(--container-padding)',
         !noColumns && 'lg:grid-cols-12',
@@ -36,6 +39,6 @@ export function SectionContainerInner({
       {...props}
     >
       {children}
-    </div>
+    </Comp>
   )
 }

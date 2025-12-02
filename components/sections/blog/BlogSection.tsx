@@ -71,7 +71,7 @@ export function BlogSection({ className }: { className?: string }) {
         </div>
 
         <div className="text-center">
-          <BaseCtaButton className="xs:w-96 w-full" href="/artikler">
+          <BaseCtaButton className="xs:min-w-96 xs:w-auto w-full" href="/artikler">
             Læs flere artikler
           </BaseCtaButton>
         </div>

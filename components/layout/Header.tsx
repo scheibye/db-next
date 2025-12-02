@@ -62,8 +62,8 @@ export function Header() {
           {/* Navigation */}
           <div
             className={cn(
-              'bg-brand-dark invisible fixed inset-0 z-[calc(var(--z-index-header)+1)] flex h-dvh flex-col items-center justify-center gap-10 opacity-0 transition-all duration-200 xl:visible! xl:static xl:h-auto xl:flex-row xl:bg-transparent xl:opacity-100!',
-              isMenuOpen && 'visible opacity-100'
+              'bg-brand-dark invisible fixed inset-0 z-[calc(var(--z-index-header)+1)] flex h-dvh flex-col items-center justify-center gap-10 opacity-0 xl:visible! xl:static xl:h-auto xl:flex-row xl:bg-transparent xl:opacity-100!',
+              isMenuOpen && 'visible opacity-100 transition-all duration-200'
             )}
           >
             <nav className="3xl:gap-20 3xl:text-[1.375rem] flex flex-col items-center gap-6 text-center text-xl whitespace-nowrap xl:flex-row xl:gap-14">

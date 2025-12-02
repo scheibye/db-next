@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@plugin '@tailwindcss/typography';
+
 @theme {
   /* Fonts */
   --font-sans: var(--font-ubuntu-sans);
@@ -40,6 +42,12 @@
 
   /* Z-indexes */
   --z-index-header: 100;
+}
+
+@utility prose-custom {
+  /* Typography */
+  --tw-prose-body: var(--color-brand-dark);
+  --tw-prose-headings: var(--color-brand-dark);
 }
 
 @layer base {
