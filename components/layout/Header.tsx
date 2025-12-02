@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { XIcon } from 'lucide-react'
 import { IconCustomMenu } from '@/components/icons/IconCustomMenu'
 import { SectionContainer } from '@/components/layout/containers/SectionContainer'
@@ -17,6 +18,7 @@ const navItems = [
 ]
 
 export function Header() {
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -70,7 +72,10 @@ export function Header() {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  className="hover:border-b-brand-spring text-brand-card border-y-3 border-transparent pb-1 transition-colors"
+                  className={cn(
+                    'hover:border-b-brand-spring text-brand-card border-y-3 border-transparent pb-1 transition-colors',
+                    pathname === item.href && 'border-b-brand-spring'
+                  )}
                   href={item.href}
                 >
                   {item.label}
