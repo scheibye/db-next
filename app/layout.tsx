@@ -4,7 +4,6 @@ import Script from 'next/script'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import type { Metadata } from 'next'
-import Script from 'next/script'
 
 // Variable font
 const ubuntu_sans = Ubuntu_Sans({
