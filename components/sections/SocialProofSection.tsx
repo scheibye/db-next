@@ -59,7 +59,7 @@ export function SocialProofSection({
 
           <IconCustomQuote className="fill-brand-primary size-8 lg:size-14" />
 
-          <h2 className="text-brand-primary text-5xl text-balance italic xl:text-6xl 2xl:text-7xl">
+          <h2 className="text-brand-primary text-5xl text-balance italic xl:text-6xl 2xl:text-6xl">
             Hjælper når alle andre siger nej!
           </h2>
 

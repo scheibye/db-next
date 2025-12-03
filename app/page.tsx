@@ -266,7 +266,7 @@ export default async function Home() {
       <MainHeroSection />
       <StepCardsSection />
       <FaqSection />
-      <CtaSmallSection className="border-brand-dark border-b-2" />
+      <CtaSmallSection />
       <SocialProofSection className="pt-0!" />
       <AboutSection />
       <HelpCardsSection />

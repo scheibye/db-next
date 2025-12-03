@@ -35,8 +35,8 @@ export function AboutSection({ className }: { className?: string }) {
 
             <ul className="space-y-1 text-base font-medium">
               {listItems.map((item) => (
-                <li key={item} className="flex items-center gap-2 text-base">
-                  <CheckIcon className="text-brand-card size-4 shrink-0" />
+                <li key={item} className="flex gap-2 text-base">
+                  <CheckIcon className="text-brand-card size-4 shrink-0 translate-y-1" />
                   {item}
                 </li>
               ))}
