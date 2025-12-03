@@ -5,25 +5,26 @@ import {
 } from '@/components/layout/containers/SectionContainer'
 import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 
-export function CtaImagePatternSection({ className }: { className?: string }) {
+export function CtaImagePatternSection({
+  className,
+  imageSrc,
+}: {
+  className?: string
+  imageSrc: string
+}) {
   return (
     <SectionContainer className={className} noPadding={true}>
       <div className="absolute inset-0">
-        <Image
-          className="pointer-events-none size-full object-cover"
-          src="/sections/cta-image-pattern/cta-image-pattern-bg.jpg"
-          fill
-          alt=""
-        />
+        <Image className="pointer-events-none size-full object-cover" src={imageSrc} fill alt="" />
       </div>
 
       <SectionContainerInner className="z-1 lg:min-h-dvh">
-        <div className="text-brand-card grid max-w-xl gap-6 self-center py-24 sm:gap-8 lg:col-span-6 lg:col-start-2 lg:max-w-none">
+        <div className="text-brand-card grid max-w-xl gap-6 self-center py-24 lg:col-span-6 lg:col-start-2 lg:max-w-none">
           <div className="text-brand-primary-soft text-xl font-medium lg:text-2xl">
             Hvad vi gør – og hvordan vi gør det
           </div>
 
-          <h2 className="text-4xl leading-tight font-medium text-balance lg:text-5xl 2xl:text-6xl">
+          <h2 className="text-3xl leading-tight font-medium text-balance md:text-4xl lg:text-5xl 2xl:text-6xl">
             Skræddersyede løsninger, når banken siger nej
           </h2>
 

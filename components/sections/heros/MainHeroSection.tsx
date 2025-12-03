@@ -13,7 +13,7 @@ export function MainHeroSection() {
         <SectionContainerInner className="lg:gap-gutter! gap-0! lg:h-full">
           <HeroForm className="relative z-1 -mt-14 md:-mt-17 lg:static lg:col-span-5 lg:mt-0 lg:self-end xl:col-span-4 xl:col-start-2" />
 
-          <div className="relative -order-1 pb-[80%] md:pb-[50%] lg:static lg:order-2 lg:col-span-7 lg:col-start-7 lg:self-end lg:pb-16 2xl:col-span-5 2xl:col-start-7">
+          <div className="relative -order-1 pb-[80%] md:pb-[50%] lg:static lg:order-2 lg:col-span-7 lg:col-start-7 lg:self-end lg:pb-12 2xl:col-span-5 2xl:col-start-7">
             <Image
               className="-inset-x-[calc(var(--container-padding)+var(--spacing-global-padding))]! -z-1 w-[calc(100%+var(--container-padding)*2+var(--spacing-global-padding)*2)]! max-w-none object-cover lg:inset-x-0! lg:size-full!"
               src="/sections/hero/main-hero-bg.jpg"
@@ -22,13 +22,25 @@ export function MainHeroSection() {
               alt=""
             />
 
-            <h1 className="text-brand-card xs:text-5xl absolute bottom-[35%] text-4xl leading-tight font-medium md:text-6xl lg:static lg:mb-16 xl:text-[70px] xl:leading-[80px]">
+            <h1 className="text-brand-card xs:text-5xl absolute bottom-[35%] text-4xl leading-tight font-medium md:text-6xl lg:static lg:mb-6 2xl:text-8xl">
               Uden bøvl
               <br />
               &ndash; og uden banken
             </h1>
 
-            <div className="hidden xl:block">TRUSTPILOT WIDGET</div>
+            {/* Trustpilot widget */}
+            <div className="hidden xl:block">
+              <div
+                className="trustpilot-widget"
+                data-locale="da-DK"
+                data-template-id="53aa8807dec7e10d38f59f32"
+                data-businessunit-id="5ed6a20389c572000158ee34"
+                data-token="1a6834da-1b77-4f9f-98e8-bac56ad3f87e"
+                data-style-width="255px"
+                data-style-height="120px"
+                data-theme="dark"
+              />
+            </div>
           </div>
         </SectionContainerInner>
       </SectionContainer>

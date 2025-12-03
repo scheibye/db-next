@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { XIcon } from 'lucide-react'
 import { IconCustomMenu } from '@/components/icons/IconCustomMenu'
 import { SectionContainer } from '@/components/layout/containers/SectionContainer'
@@ -17,6 +18,7 @@ const navItems = [
 ]
 
 export function Header() {
+  const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -66,11 +68,14 @@ export function Header() {
               isMenuOpen && 'visible opacity-100 transition-all duration-200'
             )}
           >
-            <nav className="3xl:gap-20 3xl:text-[1.375rem] flex flex-col items-center gap-6 text-center text-xl whitespace-nowrap xl:flex-row xl:gap-14">
+            <nav className="3xl:gap-20 3xl:text-[1.375rem] flex flex-col items-center gap-6 text-center text-lg whitespace-nowrap xl:flex-row xl:gap-10 2xl:gap-14 2xl:text-xl">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  className="hover:border-b-brand-spring text-brand-card border-y-3 border-transparent pb-1 transition-colors"
+                  className={cn(
+                    'hover:border-b-brand-spring text-brand-card border-y-3 border-transparent pb-1 transition-colors',
+                    pathname === item.href && 'border-b-brand-spring'
+                  )}
                   href={item.href}
                 >
                   {item.label}
@@ -80,7 +85,7 @@ export function Header() {
 
             <div className="flex items-center 2xl:absolute 2xl:right-(--container-padding)">
               <Link
-                className="border-brand-spring text-brand-card hover:bg-brand-spring hover:text-brand-dark 3xl:text-[1.375rem] rounded-full border-3 bg-transparent px-9 py-4 text-xl whitespace-nowrap transition-colors"
+                className="border-brand-spring text-brand-card hover:bg-brand-spring hover:text-brand-dark 3xl:text-[1.375rem] rounded-full border-3 bg-transparent px-9 py-4 text-lg whitespace-nowrap transition-colors 2xl:text-2xl"
                 href="/form"
               >
                 Start låneansøgning

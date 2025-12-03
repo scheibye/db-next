@@ -1,5 +1,6 @@
 import './globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
+import Script from 'next/script'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import type { Metadata } from 'next'
@@ -20,7 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID
 
   return (
-    <html lang="da" className={ubuntu_sans.variable}>
+    <html lang="da" className={`${ubuntu_sans.variable}`}>
+      <head>
+        {/* Trustpilot widget */}
+        <Script src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
+      </head>
+
       <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
         {gtmId && (
           <>

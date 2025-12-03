@@ -34,8 +34,11 @@
   --color-trustpilot: #219653;
 
   /* Text */
-  --text-7xl: 5rem; /* 80px */
+  --text-7xl: 4.375rem; /* 70px */
   --text-7xl--line-height: 1.15;
+
+  --text-8xl: 5rem; /* 80px */
+  --text-8xl--line-height: 1.15;
 
   /* Transitions */
   --default-transition-duration: 300ms;
@@ -67,37 +70,4 @@
       --container-padding: calc(var(--spacing) * 36);
     }
   }
-}
-
-/* Custom slider til Dansk Boliglån */
-input[type='range'].db-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-}
-
-input[type='range'].db-slider:focus {
-  outline: none;
-}
-
-input[type='range'].db-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 0;
-  height: 0;
-  border: none;
-}
-
-input[type='range'].db-slider::-moz-range-thumb {
-  width: 0;
-  height: 0;
-  border: none;
-  background: transparent;
-}
-
-input[type='range'].db-slider::-ms-thumb {
-  width: 0;
-  height: 0;
-  border: none;
-  background: transparent;
 }
