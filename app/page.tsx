@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { groq } from 'next-sanity'
-import { AboutUsSection } from '@/components/AboutUsSection'
-import { ApplyNowSection } from '@/components/ApplyNowSection'
-import { BlogPostSection } from '@/components/BlogPostSection'
-import { CtaProductsSection } from '@/components/CtaProductsSection'
-import { HeroSection } from '@/components/HeroSection'
-import { LoanApplicationForm } from '@/components/LoanApplicationForm'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { BlogSection } from '@/components/sections/blog/BlogSection'
 import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
@@ -16,10 +10,6 @@ import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
 import { MainHeroSection } from '@/components/sections/heros/MainHeroSection'
 import { SocialProofSection } from '@/components/sections/SocialProofSection'
 import { StepCardsSection } from '@/components/sections/StepCardsSection'
-import { StepsSection } from '@/components/StepsSection'
-import { TrustpilotSection } from '@/components/TrustpilotSection'
-import { UspSection } from '@/components/UspSection'
-import { VideoSection } from '@/components/VideoSection'
 import { sanityClient } from '@/lib/sanity.client'
 
 type HeroSectionData = {
