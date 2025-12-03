@@ -40,7 +40,7 @@ export function HeroFormHomeEquity() {
         <div className="grid gap-0.5">
           <div className="text-brand-dark flex items-center justify-between">
             <label className="text-base font-medium md:text-lg" htmlFor={`${id}-free-value`}>
-              Din friværdi
+              Friværdi i boligen
             </label>
             <span className="text-xl font-bold md:text-2xl">{formatPrice(freeValue[0])}</span>
           </div>
