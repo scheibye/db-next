@@ -13,21 +13,21 @@ import { BaseInput } from '@/components/ui/BaseInput'
 import { useLoanFormContext } from '@/contexts/loan-form'
 
 const formSchema = z.object({
-  name: z.string().min(1, 'Fornavn og efternavn er påkrævet').trim().toLowerCase(),
+  name: z.string().min(1, 'Fornavn og efternavn er påkrævet').trim(),
   email: z.email('Ugyldig e-mail adresse').min(1, 'E-mail adresse er påkrævet').trim(),
   phone: z.string().min(1, 'Mobilnummer er påkrævet').trim(),
 })
 
 export function LoanFormContactStep({ className }: { className?: string }) {
   const id = useId()
-  const { nextStep, updateFormData } = useLoanFormContext()
+  const { formData, nextStep, updateFormData } = useLoanFormContext()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
+      name: formData.contact?.name ?? '',
+      email: formData.contact?.email ?? '',
+      phone: formData.contact?.phone ?? '',
     },
   })
 

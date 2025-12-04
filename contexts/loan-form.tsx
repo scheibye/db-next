@@ -1,7 +1,10 @@
 'use client'
 
 import { createContext, useContext, useState } from 'react'
+import { EntryPath } from '@/types/loan-form'
 import type { LoanFormState } from '@/types/loan-form'
+
+const INITIAL_STEP = 0
 
 interface LoanFormContextType {
   step: number
@@ -24,9 +27,10 @@ export function useLoanFormContext() {
 }
 
 export function LoanFormProvider({ children }: { children: React.ReactNode }) {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(INITIAL_STEP)
 
   const [formData, setFormData] = useState<Partial<LoanFormState>>({
+    entryPath: EntryPath.Planner, // Default entry path until "Dreamer" is implemented
     base: {
       creditPurpose: null,
       loanAmount: null,
@@ -38,10 +42,13 @@ export function LoanFormProvider({ children }: { children: React.ReactNode }) {
       email: '',
       phone: '',
     },
+    property: {
+      address: '',
+    },
   })
 
   function previousStep() {
-    setStep((prevStep) => Math.max(0, prevStep - 1))
+    setStep((prevStep) => Math.max(INITIAL_STEP, prevStep - 1))
   }
 
   function nextStep() {

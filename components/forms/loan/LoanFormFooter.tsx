@@ -5,7 +5,13 @@ import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
 
-export function LoanFormFooter({ className }: { className?: string }) {
+export function LoanFormFooter({
+  className,
+  isOptional = false,
+}: {
+  className?: string
+  isOptional?: boolean
+}) {
   const router = useRouter()
   const { step, previousStep } = useLoanFormContext()
 
@@ -28,7 +34,7 @@ export function LoanFormFooter({ className }: { className?: string }) {
       </button>
 
       <BaseCtaButton className="xs:w-auto xs:min-w-80 w-full" type="submit">
-        Fortsæt
+        {isOptional ? 'Spring over' : 'Fortsæt'}
       </BaseCtaButton>
     </div>
   )
