@@ -1,8 +1,8 @@
-import './globals.css'
+import '@/app/globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
 import Script from 'next/script'
 import { Footer } from '@/components/layout/Footer'
-import { Header } from '@/components/layout/Header'
+import { LoanFormProvider } from '@/contexts/loan-form'
 import type { Metadata } from 'next'
 
 // Variable font
@@ -56,8 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         )}
 
-        <Header />
-        <main>{children}</main>
+        <LoanFormProvider>{children}</LoanFormProvider>
         <Footer />
       </body>
     </html>

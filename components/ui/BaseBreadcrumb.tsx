@@ -24,7 +24,7 @@ function BaseBreadcrumbItem({ className, ...props }: React.ComponentProps<'li'>)
   return (
     <li
       data-slot="breadcrumb-item"
-      className={cn('inline-flex items-center gap-1.5 underline underline-offset-2 hover:no-underline', className)}
+      className={cn('inline-flex items-center gap-1.5', className)}
       {...props}
     />
   )
@@ -41,8 +41,8 @@ function BaseBreadcrumbLink({
 
   return (
     <Comp
+      className={cn('underline underline-offset-2 transition-colors hover:no-underline', className)}
       data-slot="breadcrumb-link"
-      className={cn('hover:text-foreground transition-colors', className)}
       {...props}
     />
   )
@@ -51,7 +51,7 @@ function BaseBreadcrumbLink({
 function BaseBreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
-      className={cn('text-foreground font-normal', className)}
+      className={cn('text-brand-dark font-normal', className)}
       data-slot="breadcrumb-page"
       role="link"
       aria-disabled="true"

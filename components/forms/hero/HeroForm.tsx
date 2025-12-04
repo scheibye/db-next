@@ -1,40 +1,95 @@
 'use client'
 
-import { HeroFormHomeEquity } from '@/components/forms/hero/HeroFormHomeEquity'
-import { HeroFormHomePurchase } from '@/components/forms/hero/HeroFormHomePurchase'
-import {
-  HeroFormTabs,
-  HeroFormTabsContent,
-  HeroFormTabsList,
-  HeroFormTabsTrigger,
-} from '@/components/forms/hero/HeroFormTabs'
+import { useId, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { HeroFormSlider } from '@/components/forms/hero/HeroFormSlider'
+import { HeroFormToggle, HeroFormToggleItem } from '@/components/forms/hero/HeroFormToggle'
+import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
+import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
-
-const enum LoanType {
-  HomePurchase = 'home-purchase',
-  HomeEquity = 'home-equity',
-}
+import { CreditPurpose } from '@/types/loan-form'
 
 export function HeroForm({ className }: { className?: string }) {
+  const id = useId()
+  const router = useRouter()
+  const { updateFormData } = useLoanFormContext()
+
+  const [loanAmount, setLoanAmount] = useState<Array<number>>([1_000_000])
+  const [payout, setPayout] = useState<Array<number>>([100_000])
+  const [equity, setEquity] = useState<Array<number>>([1_000_000])
+  const [creditPurpose, setCreditPurpose] = useState<CreditPurpose>(CreditPurpose.Purchase)
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    updateFormData({
+      base: {
+        creditPurpose,
+        loanAmount: loanAmount[0],
+        payout: creditPurpose === CreditPurpose.Purchase ? payout[0] : null,
+        equity: creditPurpose === CreditPurpose.Supplement ? equity[0] : null,
+      },
+    })
+
+    router.push(`/form`)
+  }
+
   return (
     <div className={cn('', className)}>
-      <HeroFormTabs
+      <HeroFormToggle
         className="-mx-[calc(var(--container-padding))] w-[calc(100%+var(--container-padding)*2)] lg:mx-0 lg:w-auto"
-        defaultValue={LoanType.HomePurchase}
+        defaultValue={CreditPurpose.Purchase}
+        type="single"
+        value={creditPurpose}
+        onValueChange={(value) => {
+          if (value) setCreditPurpose(value as CreditPurpose)
+        }}
       >
-        <HeroFormTabsList>
-          <HeroFormTabsTrigger value={LoanType.HomePurchase}>Lån til Boligkøb</HeroFormTabsTrigger>
-          <HeroFormTabsTrigger value={LoanType.HomeEquity}>Lån i Friværdi</HeroFormTabsTrigger>
-        </HeroFormTabsList>
+        <HeroFormToggleItem value={CreditPurpose.Purchase}>Lån til Boligkøb</HeroFormToggleItem>
+        <HeroFormToggleItem value={CreditPurpose.Supplement}>Lån i Friværdi</HeroFormToggleItem>
+      </HeroFormToggle>
 
-        <HeroFormTabsContent value={LoanType.HomePurchase}>
-          <HeroFormHomePurchase />
-        </HeroFormTabsContent>
+      <form className="bg-brand-card px-5 py-9 md:px-9 md:py-13" onSubmit={handleSubmit}>
+        <div className="space-y-6 md:space-y-12">
+          <HeroFormSlider
+            id={`${id}-loan-amount`}
+            label="Lånebeløb"
+            value={loanAmount}
+            onValueChange={setLoanAmount}
+            min={200_000}
+            max={5_000_000}
+            step={50_000}
+          />
 
-        <HeroFormTabsContent value={LoanType.HomeEquity}>
-          <HeroFormHomeEquity />
-        </HeroFormTabsContent>
-      </HeroFormTabs>
+          {creditPurpose === CreditPurpose.Purchase && (
+            <HeroFormSlider
+              id={`${id}-payout`}
+              label="Din udbetaling til boligkøbet"
+              value={payout}
+              onValueChange={setPayout}
+              min={0}
+              max={1_250_000}
+              step={25_000}
+            />
+          )}
+
+          {creditPurpose === CreditPurpose.Supplement && (
+            <HeroFormSlider
+              id={`${id}-equity`}
+              label="Friværdi i boligen"
+              value={equity}
+              onValueChange={setEquity}
+              min={200_000}
+              max={5_000_000}
+              step={50_000}
+            />
+          )}
+        </div>
+
+        <div className="mt-6 text-center md:mt-8.5">
+          <BaseCtaButton type="submit">Start låneansøgning</BaseCtaButton>
+        </div>
+      </form>
     </div>
   )
 }

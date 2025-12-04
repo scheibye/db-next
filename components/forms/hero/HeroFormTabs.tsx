@@ -1,3 +1,6 @@
+// Currently this component is unused
+// But it will be used in the future when we add one more form to the hero
+
 'use client'
 
 import * as React from 'react'
