@@ -2,8 +2,11 @@
   "name": "db-web",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24"
+  },
   "scripts": {
-    "dev": "next dev",
+    "dev": "doppler run -p website -c dev -- next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -20,6 +23,7 @@
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@sanity/client": "^7.13.0",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.555.0",
@@ -43,6 +47,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.4",
+    "jiti": "^2.6.1",
     "prettier": "3.5.3",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwindcss": "^4",
