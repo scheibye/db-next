@@ -15,10 +15,8 @@ export function LoanFormHeaderTitle({
   children,
   isOptional = false,
 }: {
-  className?: string
-  children: React.ReactNode
   isOptional?: boolean
-}) {
+} & React.ComponentProps<'h2'>) {
   return (
     <h2
       className={cn(

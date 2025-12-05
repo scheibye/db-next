@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Loader2Icon } from 'lucide-react'
+import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import {
   LoanFormHeader,
   LoanFormHeaderDescription,

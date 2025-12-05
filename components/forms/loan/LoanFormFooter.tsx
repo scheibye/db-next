@@ -8,9 +8,11 @@ import { cn } from '@/lib/utils'
 export function LoanFormFooter({
   className,
   isOptional = false,
+  isNextStepDisabled = false,
 }: {
   className?: string
   isOptional?: boolean
+  isNextStepDisabled?: boolean
 }) {
   const router = useRouter()
   const { step, previousStep } = useLoanFormContext()
@@ -33,7 +35,11 @@ export function LoanFormFooter({
         Tilbage
       </button>
 
-      <BaseCtaButton className="xs:w-auto xs:min-w-80 w-full" type="submit">
+      <BaseCtaButton
+        className="xs:w-auto xs:min-w-80 w-full"
+        disabled={isNextStepDisabled}
+        type="submit"
+      >
         {isOptional ? 'Spring over' : 'Fortsæt'}
       </BaseCtaButton>
     </div>

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import type { VariantProps } from 'class-variance-authority'
 
 const buttonVariants = cva(
-  'group overflow-hidden inline-flex items-center font-medium rounded-full cursor-pointer text-brand-card whitespace-nowrap',
+  'group overflow-hidden inline-flex items-center font-medium rounded-full cursor-pointer text-brand-card whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
@@ -64,7 +64,7 @@ export function BaseCtaButton({
 function BaseCtaButtonText({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="bg-brand-primary group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center justify-center px-6 text-center transition-all xl:px-8 2xl:px-12"
+      className="bg-brand-primary group-disabled:bg-brand-primary group-disabled:text-brand-dark group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center justify-center px-6 text-center transition-all xl:px-8 2xl:px-12"
       data-slot="text"
     >
       {children}
@@ -75,7 +75,7 @@ function BaseCtaButtonText({ children }: { children: React.ReactNode }) {
 function BaseCtaButtonIcon() {
   return (
     <span className="inline-flex h-full w-16 shrink-0 items-center sm:w-17.5" data-slot="icon">
-      <IconCustomArrowRight className="group-hover:fill-brand-primary-soft! size-10 shrink-0 transition-all group-hover:translate-x-3" />
+      <IconCustomArrowRight className="group-hover:fill-brand-primary-soft! group-disabled:fill-brand-primary! size-10 shrink-0 transition-all group-hover:translate-x-3 group-disabled:translate-x-0" />
     </span>
   )
 }
