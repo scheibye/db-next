@@ -1,6 +1,7 @@
 'use client'
 
 import { LoanFormBorrowersStep } from '@/components/forms/loan/steps/LoanFormBorrowersStep'
+import { LoanFormChildrenStep } from '@/components/forms/loan/steps/LoanFormChildrenStep'
 import { LoanFormCivilStatusStep } from '@/components/forms/loan/steps/LoanFormCivilStatusStep'
 import { LoanFormContactStep } from '@/components/forms/loan/steps/LoanFormContactStep'
 import { LoanFormHousingStep } from '@/components/forms/loan/steps/LoanFormHousingStep'
@@ -26,6 +27,7 @@ export function LoanForm({ className }: { className?: string }) {
         {step === 2 && <LoanFormHousingStep />}
         {step === 3 && <LoanFormCivilStatusStep />}
         {step === 4 && <LoanFormBorrowersStep />}
+        {step === 5 && <LoanFormChildrenStep />}
       </div>
     </div>
   )

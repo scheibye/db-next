@@ -38,5 +38,6 @@ export interface LoanFormState {
     currentHousing: HousingType | null
     civilStatus: CivilStatus | null
     numberOfBorrowers: NumberOfBorrowers | null
+    childrenAges: Array<number>
   }
 }

@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import type { VariantProps } from 'class-variance-authority'
 
 const buttonVariants = cva(
-  'group overflow-hidden inline-flex items-center font-medium rounded-full cursor-pointer text-brand-card whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed',
+  'group overflow-hidden inline-flex items-center font-medium rounded-full cursor-pointer whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
@@ -64,7 +64,7 @@ export function BaseCtaButton({
 function BaseCtaButtonText({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="bg-brand-primary group-disabled:bg-brand-primary group-disabled:text-brand-dark group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center justify-center px-6 text-center transition-all xl:px-8 2xl:px-12"
+      className="bg-brand-primary group-disabled:bg-brand-primary text-brand-card group-disabled:text-brand-card group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center justify-center px-6 text-center transition-all xl:px-8 2xl:px-12"
       data-slot="text"
     >
       {children}
