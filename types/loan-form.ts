@@ -7,6 +7,8 @@ export type HousingType = 'ejerbolig' | 'andelsbolig' | 'lejebolig' | 'hjemmeboe
 
 export type CivilStatus = 'gift' | 'samlever' | 'enlig' | 'skilt' | 'enke'
 
+export type NumberOfBorrowers = 1 | 2 | 3 | 4
+
 export enum CreditPurpose {
   Purchase = 'purchase',
   Supplement = 'supplement',
@@ -35,5 +37,6 @@ export interface LoanFormState {
   lifeSituation: {
     currentHousing: HousingType | null
     civilStatus: CivilStatus | null
+    numberOfBorrowers: NumberOfBorrowers | null
   }
 }
