@@ -47,6 +47,7 @@ export function LoanFormProvider({ children }: { children: React.ReactNode }) {
     },
     lifeSituation: {
       currentHousing: null,
+      civilStatus: null,
     },
   })
 

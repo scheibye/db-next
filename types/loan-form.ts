@@ -5,6 +5,8 @@ export enum EntryPath {
 
 export type HousingType = 'ejerbolig' | 'andelsbolig' | 'lejebolig' | 'hjemmeboende'
 
+export type CivilStatus = 'gift' | 'samlever' | 'enlig' | 'skilt' | 'enke'
+
 export enum CreditPurpose {
   Purchase = 'purchase',
   Supplement = 'supplement',
@@ -32,5 +34,6 @@ export interface LoanFormState {
 
   lifeSituation: {
     currentHousing: HousingType | null
+    civilStatus: CivilStatus | null
   }
 }

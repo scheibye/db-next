@@ -1,5 +1,6 @@
 'use client'
 
+import { LoanFormCivilStatusStep } from '@/components/forms/loan/steps/LoanFormCivilStatusStep'
 import { LoanFormContactStep } from '@/components/forms/loan/steps/LoanFormContactStep'
 import { LoanFormHousingStep } from '@/components/forms/loan/steps/LoanFormHousingStep'
 import { LoanFormPropertyReviewStep } from '@/components/forms/loan/steps/LoanFormPropertyReviewStep'
@@ -22,6 +23,7 @@ export function LoanForm({ className }: { className?: string }) {
 
         {/* Shared steps */}
         {step === 2 && <LoanFormHousingStep />}
+        {step === 3 && <LoanFormCivilStatusStep />}
       </div>
     </div>
   )

@@ -1,26 +1,27 @@
 import { useId, useState } from 'react'
 import { RadioGroup } from '@base-ui-components/react/radio-group'
-import { Building2Icon, HomeIcon, KeyIcon, UsersIcon } from 'lucide-react'
+import { FlowerIcon, HeartIcon, HomeIcon, UserCheckIcon, UserIcon } from 'lucide-react'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import { LoanFormHeader, LoanFormHeaderTitle } from '@/components/forms/loan/LoanFormHeader'
 import { LoanFormSelectionCard } from '@/components/forms/loan/steps/LoanFormSelectionCard'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import type { LucideIcon } from 'lucide-react'
-import type { HousingType, LoanFormState } from '@/types/loan-form'
+import type { CivilStatus, LoanFormState } from '@/types/loan-form'
 
-const options: Array<{ label: string; value: HousingType; icon: LucideIcon }> = [
-  { label: 'Ejerbolig', value: 'ejerbolig', icon: HomeIcon },
-  { label: 'Andelsbolig', value: 'andelsbolig', icon: Building2Icon },
-  { label: 'Lejebolig', value: 'lejebolig', icon: KeyIcon },
-  { label: 'Hjemmeboende', value: 'hjemmeboende', icon: UsersIcon },
+const options: Array<{ label: string; value: CivilStatus; icon: LucideIcon }> = [
+  { label: 'Gift', value: 'gift', icon: HeartIcon },
+  { label: 'Samlever', value: 'samlever', icon: HomeIcon },
+  { label: 'Enlig', value: 'enlig', icon: UserIcon },
+  { label: 'Skilt', value: 'skilt', icon: UserCheckIcon },
+  { label: 'Enke', value: 'enke', icon: FlowerIcon },
 ] as const
 
-export function LoanFormHousingStep() {
+export function LoanFormCivilStatusStep() {
   const id = useId()
   const { formData, nextStep, updateFormData } = useLoanFormContext()
 
-  const [selectedHousing, setSelectedHousing] = useState<HousingType | null>(
-    formData.lifeSituation?.currentHousing ?? null
+  const [selectedCivilStatus, setSelectedCivilStatus] = useState<CivilStatus | null>(
+    formData.lifeSituation?.civilStatus ?? null
   )
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -29,7 +30,7 @@ export function LoanFormHousingStep() {
     updateFormData({
       lifeSituation: {
         ...(formData.lifeSituation as LoanFormState['lifeSituation']),
-        currentHousing: selectedHousing as HousingType,
+        civilStatus: selectedCivilStatus as CivilStatus,
       },
     })
 
@@ -39,14 +40,14 @@ export function LoanFormHousingStep() {
   return (
     <>
       <LoanFormHeader>
-        <LoanFormHeaderTitle id={`${id}-title`}>Hvordan bor du i dag?</LoanFormHeaderTitle>
+        <LoanFormHeaderTitle id={`${id}-title`}>Hvad er din civilstatus?</LoanFormHeaderTitle>
       </LoanFormHeader>
 
       <form onSubmit={handleSubmit}>
         <RadioGroup
-          className="grid grid-cols-2 gap-4"
-          value={selectedHousing}
-          onValueChange={(value) => setSelectedHousing(value as HousingType | null)}
+          className="grid grid-cols-3 gap-4"
+          value={selectedCivilStatus}
+          onValueChange={(value) => setSelectedCivilStatus(value as CivilStatus | null)}
           required={true}
           aria-labelledby={`${id}-title`}
         >
@@ -55,7 +56,7 @@ export function LoanFormHousingStep() {
           ))}
         </RadioGroup>
 
-        <LoanFormFooter isNextStepDisabled={!selectedHousing} />
+        <LoanFormFooter isNextStepDisabled={!selectedCivilStatus} />
       </form>
     </>
   )
