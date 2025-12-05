@@ -1,12 +1,13 @@
 'use client'
 
 import { LoanFormContactStep } from '@/components/forms/loan/steps/LoanFormContactStep'
-import { LoanFormPropertyStep } from '@/components/forms/loan/steps/LoanFormPropertyStep'
+import { LoanFormPropertyReviewStep } from '@/components/forms/loan/steps/LoanFormPropertyReviewStep'
+import { LoanFormPropertyStep } from '@/components/forms/loan/steps/property/LoanFormPropertyStep'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
 
 export function LoanForm({ className }: { className?: string }) {
-  const { step } = useLoanFormContext()
+  const { formData, step } = useLoanFormContext()
 
   return (
     <div
@@ -15,7 +16,8 @@ export function LoanForm({ className }: { className?: string }) {
       <div className="xl:mx-auto xl:max-w-200">
         {step === 0 && <LoanFormContactStep />}
         {step === 1 && <LoanFormPropertyStep isOptional={true} />}
-        {step === 2 && <div>Step 3</div>}
+        {/* Only show if address was provided */}
+        {step === 2 && formData.property?.address && <LoanFormPropertyReviewStep />}
       </div>
     </div>
   )

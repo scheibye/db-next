@@ -9,7 +9,11 @@ export const env = createEnv({
     DATABASE_URL: z.url().min(1),
     DATABASE_DIRECT_URL: z.url().min(1),
   },
-  client: {},
+  client: {
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string().min(1),
+  },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
-  experimental__runtimeEnv: {},
+  experimental__runtimeEnv: {
+    NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  },
 })

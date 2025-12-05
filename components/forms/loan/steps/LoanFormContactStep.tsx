@@ -6,7 +6,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CircleCheckIcon } from 'lucide-react'
 import { z } from 'zod'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
-import { LoanFormHeader } from '@/components/forms/loan/LoanFormHeader'
+import {
+  LoanFormHeader,
+  LoanFormHeaderDescription,
+  LoanFormHeaderTitle,
+} from '@/components/forms/loan/LoanFormHeader'
 import { BaseAlert, BaseAlertDescription } from '@/components/ui/BaseAlert'
 import { BaseField, BaseFieldError, BaseFieldLabel } from '@/components/ui/BaseField'
 import { BaseInput } from '@/components/ui/BaseInput'
@@ -45,10 +49,12 @@ export function LoanFormContactStep({ className }: { className?: string }) {
 
   return (
     <>
-      <LoanFormHeader
-        title="Hvem skal vi sende beregningen til?"
-        description="Helt uforpligtende. Vi spammer aldrig."
-      />
+      <LoanFormHeader>
+        <LoanFormHeaderTitle>Hvem skal vi sende beregningen til?</LoanFormHeaderTitle>
+        <LoanFormHeaderDescription>
+          Helt uforpligtende. Vi spammer aldrig.
+        </LoanFormHeaderDescription>
+      </LoanFormHeader>
 
       <form className={className} onSubmit={form.handleSubmit(handleSubmit)}>
         <div className="grid gap-6">

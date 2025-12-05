@@ -36,7 +36,7 @@ export function BaseAlertTitle({ className, ...props }: React.ComponentProps<'di
   return (
     <div
       data-slot="alert-title"
-      className={cn('col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight', className)}
+      className={cn('col-start-2 line-clamp-1 min-h-4 font-semibold tracking-tight', className)}
       {...props}
     />
   )
@@ -47,7 +47,7 @@ export function BaseAlertDescription({ className, ...props }: React.ComponentPro
     <div
       data-slot="alert-description"
       className={cn(
-        'text-brand-dark col-start-2 grid justify-items-start gap-1 text-base [&_p]:leading-relaxed',
+        'text-brand-dark col-start-2 grid justify-items-start gap-1 text-base [&_p]:leading-relaxed [&_strong]:font-semibold',
         className
       )}
       {...props}
