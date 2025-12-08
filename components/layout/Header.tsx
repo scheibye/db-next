@@ -11,8 +11,8 @@ import { BaseLogo } from '@/components/ui/BaseLogo'
 import { cn } from '@/lib/utils'
 
 const navItems = [
-  { href: '/laan-til-boligkoeb', label: 'Lån til boligkøb' },
-  { href: '/laan-i-frivaerdi', label: 'Lån i friværdi' },
+  { href: '/', label: 'Privat' },
+  { href: '/erhverv', label: 'Erhverv' },
   { href: '/artikler', label: 'Artikler' },
   { href: '/om-os', label: 'Om Os' },
 ]
