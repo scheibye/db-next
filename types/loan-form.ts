@@ -44,4 +44,11 @@ export interface LoanFormState {
 
   numberOfChildren: number | null
   agesOfChildren: Array<number>
+
+  // Optional comment
+  comment: string | null
+
+  // Consents
+  consentTerms: boolean
+  consentMarketing: boolean
 }

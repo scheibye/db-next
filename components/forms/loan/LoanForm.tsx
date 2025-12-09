@@ -7,6 +7,7 @@ import { LoanFormDebtorsStep } from '@/components/forms/loan/steps/LoanFormDebto
 import { LoanFormHousingStep } from '@/components/forms/loan/steps/LoanFormHousingStep'
 import { LoanFormIdentityStep } from '@/components/forms/loan/steps/LoanFormIdentityStep'
 import { LoanFormPropertyReviewStep } from '@/components/forms/loan/steps/LoanFormPropertyReviewStep'
+import { LoanFormSubmissionStep } from '@/components/forms/loan/steps/LoanFormSubmissionStep'
 import { LoanFormPropertyStep } from '@/components/forms/loan/steps/property/LoanFormPropertyStep'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
@@ -30,6 +31,7 @@ export function LoanForm({ className }: { className?: string }) {
         {step === 4 && <LoanFormDebtorsStep />}
         {step === 5 && <LoanFormChildrenStep />}
         {step === 6 && <LoanFormIdentityStep />}
+        {step === 7 && <LoanFormSubmissionStep />}
       </div>
     </div>
   )

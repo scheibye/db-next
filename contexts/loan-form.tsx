@@ -48,6 +48,9 @@ export function LoanFormProvider({ children }: { children: React.ReactNode }) {
     },
     numberOfChildren: null,
     agesOfChildren: [],
+    comment: null,
+    consentTerms: false,
+    consentMarketing: false,
   })
 
   function previousStep() {

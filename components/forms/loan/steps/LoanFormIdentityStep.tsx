@@ -46,6 +46,11 @@ export function LoanFormIdentityStep() {
   const mainDebtorInfo = formData.debtors?.[0] as LoanFormState['debtors'][0]
   const numberOfDebtors = formData.lifeSituation?.numberOfDebtors ?? 1
 
+  const form = useForm<Record<string, any>>({
+    resolver: zodResolver(createFormSchema(numberOfDebtors)),
+    defaultValues: getDefaultValues(),
+  })
+
   function getDefaultValues() {
     const values: Record<string, any> = {
       mainDebtorCprNumber: mainDebtorInfo?.cprNumber ?? '',
@@ -68,23 +73,16 @@ export function LoanFormIdentityStep() {
     return values
   }
 
-  const form = useForm<Record<string, any>>({
-    resolver: zodResolver(createFormSchema(numberOfDebtors)),
-    defaultValues: getDefaultValues(),
-  })
-
   function handleSubmit(data: Record<string, any>) {
     const updatedDebtors = [...(formData.debtors ?? [])]
 
     // Update main debtor's CPR
-    if (updatedDebtors[0]) {
-      updatedDebtors[0] = {
-        ...updatedDebtors[0],
-        cprNumber: data.mainDebtorCprNumber as string,
-      }
+    updatedDebtors[0] = {
+      ...updatedDebtors[0],
+      cprNumber: data.mainDebtorCprNumber as string,
     }
 
-    // Add/update additional debtors
+    // Add additional debtors
     for (let i = 1; i < numberOfDebtors; i++) {
       const additionalDebtorData = data[`additionalDebtor${i}`] as AdditionalDebtor
 
