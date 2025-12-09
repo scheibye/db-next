@@ -69,7 +69,10 @@ export function BlogSection({ className }: { className?: string }) {
           <h2 className="mb-4 text-4xl font-medium md:mb-10 md:text-5xl lg:text-6xl">
             Dansk Boliglån Blog
           </h2>
-          <p className="text-lg sm:text-2xl">Vi blogger om boliglån og privatøkonomi.</p>
+
+          <div className="text-lg sm:text-2xl">
+            <p>Vi blogger om boliglån og privatøkonomi.</p>
+          </div>
         </div>
 
         <div className="-mx-[calc(var(--container-padding)+var(--spacing-global-padding))] overflow-x-hidden lg:mx-0">
