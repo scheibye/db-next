@@ -1,4 +1,5 @@
-import { useId, useState } from 'react'
+import { useState } from 'react'
+import { NumberField } from '@base-ui-components/react/number-field'
 import { MinusIcon, PlusIcon } from 'lucide-react'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import {
@@ -8,29 +9,23 @@ import {
 } from '@/components/forms/loan/LoanFormHeader'
 import { BaseInput } from '@/components/ui/BaseInput'
 import { useLoanFormContext } from '@/contexts/loan-form'
-import type { LoanFormState } from '@/types/loan-form'
 
 const MAX_CHILDREN_COUNT = 10
 
 export function LoanFormChildrenStep() {
-  const id = useId()
   const { formData, nextStep, updateFormData } = useLoanFormContext()
 
-  const [childrenCount, setChildrenCount] = useState(
-    formData.lifeSituation?.childrenAges?.length ?? 0
-  )
+  const [childrenCount, setChildrenCount] = useState(formData.numberOfChildren ?? 0)
   const [childrenAges, setChildrenAges] = useState<Array<number | ''>>(
-    formData.lifeSituation?.childrenAges ?? []
+    formData.agesOfChildren ?? []
   )
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     updateFormData({
-      lifeSituation: {
-        ...(formData.lifeSituation as LoanFormState['lifeSituation']),
-        childrenAges: childrenAges as Array<number>,
-      },
+      numberOfChildren: childrenCount,
+      agesOfChildren: childrenAges as Array<number>,
     })
 
     nextStep()
@@ -45,14 +40,35 @@ export function LoanFormChildrenStep() {
   return (
     <>
       <LoanFormHeader>
-        <LoanFormHeaderTitle id={`${id}-title`}>Har du hjemmeboende børn?</LoanFormHeaderTitle>
+        <LoanFormHeaderTitle>Har du hjemmeboende børn?</LoanFormHeaderTitle>
         <LoanFormHeaderDescription>
           Børn påvirker rådighedsbeløbet &ndash; vi hjælper med beregningen.
         </LoanFormHeaderDescription>
       </LoanFormHeader>
 
       <form onSubmit={handleSubmit}>
-        <ChildrenCounter childrenCount={childrenCount} setChildrenCount={setChildrenCount} />
+        <NumberField.Root
+          className="flex items-center gap-8"
+          min={0}
+          max={MAX_CHILDREN_COUNT}
+          value={childrenCount}
+          onValueChange={(value) => setChildrenCount(value ?? 0)}
+        >
+          <NumberField.Decrement className="hover:bg-brand-primary/10 border-brand-border grid size-16 cursor-pointer place-content-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:bg-transparent disabled:opacity-50">
+            <MinusIcon className="text-brand-dark size-6" />
+          </NumberField.Decrement>
+
+          <div className="text-center">
+            <NumberField.Input className="text-brand-primary w-20 text-center text-5xl font-bold outline-none" />
+            <div className="text-brand-dark/75 mt-1 text-sm">
+              {childrenCount === 0 ? 'Ingen børn' : childrenCount === 1 ? 'Barn' : 'Børn'}
+            </div>
+          </div>
+
+          <NumberField.Increment className="hover:bg-brand-primary/10 border-brand-border grid size-16 cursor-pointer place-content-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:bg-transparent disabled:opacity-50">
+            <PlusIcon className="text-brand-dark size-6" />
+          </NumberField.Increment>
+        </NumberField.Root>
 
         {childrenCount > 0 && (
           <div className="mt-10">
@@ -73,46 +89,12 @@ export function LoanFormChildrenStep() {
         )}
 
         <LoanFormFooter
-          isNextStepDisabled={childrenCount > 0 && childrenAges.some((age) => age === '')}
+          isNextStepDisabled={
+            childrenCount > 0 &&
+            (childrenAges.length !== childrenCount || childrenAges.some((age) => age === ''))
+          }
         />
       </form>
     </>
-  )
-}
-
-function ChildrenCounter({
-  childrenCount,
-  setChildrenCount,
-}: {
-  childrenCount: number
-  setChildrenCount: (count: number) => void
-}) {
-  return (
-    <div className="flex items-center gap-8">
-      <button
-        className="hover:bg-brand-primary/10 border-brand-border grid size-16 cursor-pointer place-content-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:bg-transparent disabled:opacity-50"
-        disabled={childrenCount === 0}
-        type="button"
-        onClick={() => setChildrenCount(childrenCount - 1)}
-      >
-        <MinusIcon className="text-brand-dark size-6" />
-      </button>
-
-      <div className="min-w-20 text-center">
-        <div className="text-brand-primary text-5xl font-bold">{childrenCount}</div>
-        <div className="text-brand-dark/75 mt-1 text-sm">
-          {childrenCount === 0 ? 'Ingen børn' : childrenCount === 1 ? 'Barn' : 'Børn'}
-        </div>
-      </div>
-
-      <button
-        className="hover:bg-brand-primary/10 border-brand-border grid size-16 cursor-pointer place-content-center rounded-full border transition-colors disabled:cursor-not-allowed disabled:bg-transparent disabled:opacity-50"
-        disabled={childrenCount >= MAX_CHILDREN_COUNT}
-        type="button"
-        onClick={() => setChildrenCount(childrenCount + 1)}
-      >
-        <PlusIcon className="text-brand-dark size-6" />
-      </button>
-    </div>
   )
 }

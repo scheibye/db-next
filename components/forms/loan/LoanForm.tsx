@@ -1,10 +1,11 @@
 'use client'
 
-import { LoanFormBorrowersStep } from '@/components/forms/loan/steps/LoanFormBorrowersStep'
 import { LoanFormChildrenStep } from '@/components/forms/loan/steps/LoanFormChildrenStep'
 import { LoanFormCivilStatusStep } from '@/components/forms/loan/steps/LoanFormCivilStatusStep'
 import { LoanFormContactStep } from '@/components/forms/loan/steps/LoanFormContactStep'
+import { LoanFormDebtorsStep } from '@/components/forms/loan/steps/LoanFormDebtorsStep'
 import { LoanFormHousingStep } from '@/components/forms/loan/steps/LoanFormHousingStep'
+import { LoanFormIdentityStep } from '@/components/forms/loan/steps/LoanFormIdentityStep'
 import { LoanFormPropertyReviewStep } from '@/components/forms/loan/steps/LoanFormPropertyReviewStep'
 import { LoanFormPropertyStep } from '@/components/forms/loan/steps/property/LoanFormPropertyStep'
 import { useLoanFormContext } from '@/contexts/loan-form'
@@ -26,8 +27,9 @@ export function LoanForm({ className }: { className?: string }) {
         {/* Shared steps */}
         {step === 2 && <LoanFormHousingStep />}
         {step === 3 && <LoanFormCivilStatusStep />}
-        {step === 4 && <LoanFormBorrowersStep />}
+        {step === 4 && <LoanFormDebtorsStep />}
         {step === 5 && <LoanFormChildrenStep />}
+        {step === 6 && <LoanFormIdentityStep />}
       </div>
     </div>
   )

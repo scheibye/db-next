@@ -17,7 +17,8 @@ import { BaseInput } from '@/components/ui/BaseInput'
 import { useLoanFormContext } from '@/contexts/loan-form'
 
 const formSchema = z.object({
-  name: z.string().min(1, 'Fornavn og efternavn er påkrævet').trim(),
+  firstName: z.string().min(1, 'Fornavn er påkrævet').trim(),
+  lastName: z.string().min(1, 'Efternavn er påkrævet').trim(),
   email: z.email('Ugyldig e-mail adresse').min(1, 'E-mail adresse er påkrævet').trim(),
   phone: z.string().min(1, 'Mobilnummer er påkrævet').trim(),
 })
@@ -29,19 +30,24 @@ export function LoanFormContactStep({ className }: { className?: string }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: formData.contact?.name ?? '',
-      email: formData.contact?.email ?? '',
-      phone: formData.contact?.phone ?? '',
+      firstName: formData.debtors?.[0]?.firstName ?? '',
+      lastName: formData.debtors?.[0]?.lastName ?? '',
+      email: formData.debtors?.[0]?.email ?? '',
+      phone: formData.debtors?.[0]?.phoneNumber ?? '',
     },
   })
 
   function handleSubmit(data: z.infer<typeof formSchema>) {
     updateFormData({
-      contact: {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-      },
+      debtors: [
+        {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phoneNumber: data.phone,
+          cprNumber: null, // Unavailable yet on this step
+        },
+      ],
     })
 
     nextStep()
@@ -59,14 +65,31 @@ export function LoanFormContactStep({ className }: { className?: string }) {
       <form className={className} onSubmit={form.handleSubmit(handleSubmit)}>
         <div className="grid gap-6">
           <Controller
-            name="name"
+            name="firstName"
             control={form.control}
             render={({ field, fieldState }) => (
               <BaseField data-invalid={fieldState.invalid}>
-                <BaseFieldLabel htmlFor={`${id}-name`}>Fornavn og efternavn</BaseFieldLabel>
+                <BaseFieldLabel htmlFor={`${id}-firstName`}>Fornavn</BaseFieldLabel>
                 <BaseInput
-                  id={`${id}-name`}
-                  autoComplete="name"
+                  id={`${id}-firstName`}
+                  autoComplete="given-name"
+                  aria-invalid={fieldState.invalid}
+                  {...field}
+                />
+                {fieldState.invalid && <BaseFieldError errors={[fieldState.error]} />}
+              </BaseField>
+            )}
+          />
+
+          <Controller
+            name="lastName"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <BaseField data-invalid={fieldState.invalid}>
+                <BaseFieldLabel htmlFor={`${id}-lastName`}>Efternavn</BaseFieldLabel>
+                <BaseInput
+                  id={`${id}-lastName`}
+                  autoComplete="family-name"
                   aria-invalid={fieldState.invalid}
                   {...field}
                 />

@@ -41,5 +41,9 @@ export function LoanFormHeaderDescription({
   children: React.ReactNode
   className?: string
 }) {
-  return <p className={cn('text-xl duration-500 md:text-2xl', className)}>{children}</p>
+  return (
+    <p className={cn('text-xl leading-normal text-balance duration-500 md:text-2xl', className)}>
+      {children}
+    </p>
+  )
 }

@@ -37,20 +37,17 @@ export function LoanFormProvider({ children }: { children: React.ReactNode }) {
       payout: null,
       equity: null,
     },
-    contact: {
-      name: '',
-      email: '',
-      phone: '',
-    },
+    debtors: [],
     property: {
       address: '',
     },
     lifeSituation: {
       currentHousing: null,
       civilStatus: null,
-      numberOfBorrowers: null,
-      childrenAges: [],
+      numberOfDebtors: null,
     },
+    numberOfChildren: null,
+    agesOfChildren: [],
   })
 
   function previousStep() {

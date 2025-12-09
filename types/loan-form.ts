@@ -7,7 +7,7 @@ export type HousingType = 'ejerbolig' | 'andelsbolig' | 'lejebolig' | 'hjemmeboe
 
 export type CivilStatus = 'gift' | 'samlever' | 'enlig' | 'skilt' | 'enke'
 
-export type NumberOfBorrowers = 1 | 2 | 3 | 4
+export type NumberOfDebtors = 1 | 2 | 3 | 4
 
 export enum CreditPurpose {
   Purchase = 'purchase',
@@ -24,11 +24,13 @@ export interface LoanFormState {
     equity: number | null
   }
 
-  contact: {
-    name: string
+  debtors: Array<{
+    firstName: string
+    lastName: string
+    phoneNumber: string
     email: string
-    phone: string
-  }
+    cprNumber: string | null // Could be unavailable on the first form step
+  }>
 
   property: {
     address: string
@@ -37,7 +39,9 @@ export interface LoanFormState {
   lifeSituation: {
     currentHousing: HousingType | null
     civilStatus: CivilStatus | null
-    numberOfBorrowers: NumberOfBorrowers | null
-    childrenAges: Array<number>
+    numberOfDebtors: NumberOfDebtors | null
   }
+
+  numberOfChildren: number | null
+  agesOfChildren: Array<number>
 }

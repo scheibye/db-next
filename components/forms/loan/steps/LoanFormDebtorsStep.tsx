@@ -7,21 +7,21 @@ import { LoanFormSelectionCard } from '@/components/forms/loan/steps/LoanFormSel
 import { BaseAlert, BaseAlertDescription } from '@/components/ui/BaseAlert'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import type { LucideIcon } from 'lucide-react'
-import type { LoanFormState, NumberOfBorrowers } from '@/types/loan-form'
+import type { LoanFormState, NumberOfDebtors } from '@/types/loan-form'
 
-const options: Array<{ label: string; value: NumberOfBorrowers; icon: LucideIcon }> = [
+const options: Array<{ label: string; value: NumberOfDebtors; icon: LucideIcon }> = [
   { label: 'Jeg er alene', value: 1, icon: UserIcon },
   { label: 'Vi er to', value: 2, icon: UsersIcon },
   { label: 'Vi er tre', value: 3, icon: UsersRoundIcon },
   { label: 'Vi er fire', value: 4, icon: GroupIcon },
 ] as const
 
-export function LoanFormBorrowersStep() {
+export function LoanFormDebtorsStep() {
   const id = useId()
   const { formData, nextStep, updateFormData } = useLoanFormContext()
 
-  const [selectedNumberOfBorrowers, setSelectedNumberOfBorrowers] = useState<string | null>(
-    formData.lifeSituation?.numberOfBorrowers?.toString() ?? null
+  const [selectedNumberOfDebtors, setSelectedNumberOfDebtors] = useState<string | null>(
+    formData.lifeSituation?.numberOfDebtors?.toString() ?? null
   )
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -30,9 +30,7 @@ export function LoanFormBorrowersStep() {
     updateFormData({
       lifeSituation: {
         ...(formData.lifeSituation as LoanFormState['lifeSituation']),
-        numberOfBorrowers: Number.parseInt(
-          selectedNumberOfBorrowers as string
-        ) as NumberOfBorrowers,
+        numberOfDebtors: Number.parseInt(selectedNumberOfDebtors as string) as NumberOfDebtors,
       },
     })
 
@@ -48,8 +46,8 @@ export function LoanFormBorrowersStep() {
       <form onSubmit={handleSubmit}>
         <RadioGroup
           className="grid grid-cols-2 gap-4"
-          value={selectedNumberOfBorrowers}
-          onValueChange={(value) => setSelectedNumberOfBorrowers(value as string)}
+          value={selectedNumberOfDebtors}
+          onValueChange={(value) => setSelectedNumberOfDebtors(value as string)}
           required={true}
           aria-labelledby={`${id}-title`}
         >
@@ -72,7 +70,7 @@ export function LoanFormBorrowersStep() {
           </BaseAlertDescription>
         </BaseAlert>
 
-        <LoanFormFooter isNextStepDisabled={!selectedNumberOfBorrowers} />
+        <LoanFormFooter isNextStepDisabled={!selectedNumberOfDebtors} />
       </form>
     </>
   )
