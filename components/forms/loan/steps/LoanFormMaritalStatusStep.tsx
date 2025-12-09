@@ -6,9 +6,9 @@ import { LoanFormHeader, LoanFormHeaderTitle } from '@/components/forms/loan/Loa
 import { LoanFormSelectionCard } from '@/components/forms/loan/steps/LoanFormSelectionCard'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import type { LucideIcon } from 'lucide-react'
-import type { CivilStatus, LoanFormState } from '@/types/loan-form'
+import type { MaritalStatus } from '@/types/loan-form'
 
-const options: Array<{ label: string; value: CivilStatus; icon: LucideIcon }> = [
+const options: Array<{ label: string; value: MaritalStatus; icon: LucideIcon }> = [
   { label: 'Gift', value: 'gift', icon: HeartIcon },
   { label: 'Samlever', value: 'samlever', icon: HomeIcon },
   { label: 'Enlig', value: 'enlig', icon: UserIcon },
@@ -16,22 +16,19 @@ const options: Array<{ label: string; value: CivilStatus; icon: LucideIcon }> = 
   { label: 'Enke', value: 'enke', icon: FlowerIcon },
 ] as const
 
-export function LoanFormCivilStatusStep() {
+export function LoanFormMaritalStatusStep() {
   const id = useId()
   const { formData, nextStep, updateFormData } = useLoanFormContext()
 
-  const [selectedCivilStatus, setSelectedCivilStatus] = useState<CivilStatus | null>(
-    formData.lifeSituation?.civilStatus ?? null
+  const [selectedMaritalStatus, setSelectedMaritalStatus] = useState<MaritalStatus | null>(
+    formData.maritalStatus ?? null
   )
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     updateFormData({
-      lifeSituation: {
-        ...(formData.lifeSituation as LoanFormState['lifeSituation']),
-        civilStatus: selectedCivilStatus as CivilStatus,
-      },
+      maritalStatus: selectedMaritalStatus,
     })
 
     nextStep()
@@ -46,8 +43,8 @@ export function LoanFormCivilStatusStep() {
       <form onSubmit={handleSubmit}>
         <RadioGroup
           className="grid grid-cols-3 gap-4"
-          value={selectedCivilStatus}
-          onValueChange={(value) => setSelectedCivilStatus(value as CivilStatus | null)}
+          value={selectedMaritalStatus}
+          onValueChange={(value) => setSelectedMaritalStatus(value as MaritalStatus | null)}
           required={true}
           aria-labelledby={`${id}-title`}
         >
@@ -56,7 +53,7 @@ export function LoanFormCivilStatusStep() {
           ))}
         </RadioGroup>
 
-        <LoanFormFooter isNextStepDisabled={!selectedCivilStatus} />
+        <LoanFormFooter isNextStepDisabled={!selectedMaritalStatus} />
       </form>
     </>
   )

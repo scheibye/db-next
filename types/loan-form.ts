@@ -3,9 +3,9 @@ export enum EntryPath {
   Dreamer = 'dreamer',
 }
 
-export type HousingType = 'ejerbolig' | 'andelsbolig' | 'lejebolig' | 'hjemmeboende'
+export type HousingCondition = 'ejerbolig' | 'andelsbolig' | 'lejebolig' | 'hjemmeboende'
 
-export type CivilStatus = 'gift' | 'samlever' | 'enlig' | 'skilt' | 'enke'
+export type MaritalStatus = 'gift' | 'samlever' | 'enlig' | 'skilt' | 'enke'
 
 export type NumberOfDebtors = 1 | 2 | 3 | 4
 
@@ -24,6 +24,12 @@ export interface LoanFormState {
     equity: number | null
   }
 
+  property: {
+    address: string
+  }
+
+  // Debtors
+  numberOfDebtors: NumberOfDebtors | null
   debtors: Array<{
     firstName: string
     lastName: string
@@ -32,23 +38,18 @@ export interface LoanFormState {
     cprNumber: string | null // Could be unavailable on the first form step
   }>
 
-  property: {
-    address: string
-  }
+  // Life situation
+  maritalStatus: MaritalStatus | null
+  housingConditions: HousingCondition | null
 
-  lifeSituation: {
-    currentHousing: HousingType | null
-    civilStatus: CivilStatus | null
-    numberOfDebtors: NumberOfDebtors | null
-  }
-
+  // Children
   numberOfChildren: number | null
   agesOfChildren: Array<number>
-
-  // Optional comment
-  comment: string | null
 
   // Consents
   consentTerms: boolean
   consentMarketing: boolean
+
+  // Optional comment
+  comment: string | null
 }

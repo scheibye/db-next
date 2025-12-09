@@ -6,9 +6,9 @@ import { LoanFormHeader, LoanFormHeaderTitle } from '@/components/forms/loan/Loa
 import { LoanFormSelectionCard } from '@/components/forms/loan/steps/LoanFormSelectionCard'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import type { LucideIcon } from 'lucide-react'
-import type { HousingType, LoanFormState } from '@/types/loan-form'
+import type { HousingCondition } from '@/types/loan-form'
 
-const options: Array<{ label: string; value: HousingType; icon: LucideIcon }> = [
+const options: Array<{ label: string; value: HousingCondition; icon: LucideIcon }> = [
   { label: 'Ejerbolig', value: 'ejerbolig', icon: HomeIcon },
   { label: 'Andelsbolig', value: 'andelsbolig', icon: Building2Icon },
   { label: 'Lejebolig', value: 'lejebolig', icon: KeyIcon },
@@ -19,18 +19,15 @@ export function LoanFormHousingStep() {
   const id = useId()
   const { formData, nextStep, updateFormData } = useLoanFormContext()
 
-  const [selectedHousing, setSelectedHousing] = useState<HousingType | null>(
-    formData.lifeSituation?.currentHousing ?? null
+  const [selectedHousing, setSelectedHousing] = useState<HousingCondition | null>(
+    formData.housingConditions ?? null
   )
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     updateFormData({
-      lifeSituation: {
-        ...(formData.lifeSituation as LoanFormState['lifeSituation']),
-        currentHousing: selectedHousing as HousingType,
-      },
+      housingConditions: selectedHousing,
     })
 
     nextStep()
@@ -46,7 +43,7 @@ export function LoanFormHousingStep() {
         <RadioGroup
           className="grid grid-cols-2 gap-4"
           value={selectedHousing}
-          onValueChange={(value) => setSelectedHousing(value as HousingType | null)}
+          onValueChange={(value) => setSelectedHousing(value as HousingCondition | null)}
           required={true}
           aria-labelledby={`${id}-title`}
         >

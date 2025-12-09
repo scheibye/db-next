@@ -45,7 +45,7 @@ export function LoanFormIdentityStep() {
 
   // Always available on this step
   const mainDebtorInfo = formData.debtors?.[0] as LoanFormState['debtors'][0]
-  const numberOfDebtors = formData.lifeSituation?.numberOfDebtors ?? 1
+  const numberOfDebtors = formData.numberOfDebtors ?? 1
 
   const form = useForm<Record<string, any>>({
     resolver: zodResolver(createFormSchema(numberOfDebtors)),

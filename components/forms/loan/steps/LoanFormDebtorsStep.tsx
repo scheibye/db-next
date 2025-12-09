@@ -7,7 +7,7 @@ import { LoanFormSelectionCard } from '@/components/forms/loan/steps/LoanFormSel
 import { BaseAlert, BaseAlertDescription } from '@/components/ui/BaseAlert'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import type { LucideIcon } from 'lucide-react'
-import type { LoanFormState, NumberOfDebtors } from '@/types/loan-form'
+import type { NumberOfDebtors } from '@/types/loan-form'
 
 const options: Array<{ label: string; value: NumberOfDebtors; icon: LucideIcon }> = [
   { label: 'Jeg er alene', value: 1, icon: UserIcon },
@@ -21,17 +21,14 @@ export function LoanFormDebtorsStep() {
   const { formData, nextStep, updateFormData } = useLoanFormContext()
 
   const [selectedNumberOfDebtors, setSelectedNumberOfDebtors] = useState<string | null>(
-    formData.lifeSituation?.numberOfDebtors?.toString() ?? null
+    formData.numberOfDebtors?.toString() ?? null
   )
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     updateFormData({
-      lifeSituation: {
-        ...(formData.lifeSituation as LoanFormState['lifeSituation']),
-        numberOfDebtors: Number.parseInt(selectedNumberOfDebtors as string) as NumberOfDebtors,
-      },
+      numberOfDebtors: Number.parseInt(selectedNumberOfDebtors as string) as NumberOfDebtors,
     })
 
     nextStep()
