@@ -18,25 +18,33 @@ import type { DawaAddressAutocompleteResult } from '@/types/dawa'
 export function LoanFormPropertyStep({
   className,
   isOptional = false,
+  onNextStep,
+  onPreviousStep,
 }: {
   className?: string
   isOptional?: boolean
+  onNextStep: (address: string) => void
+  onPreviousStep: () => void
 }) {
   const id = useId()
+  const { formData, updateFormData } = useLoanFormContext()
 
-  const [searchValue, setSearchValue] = useState('')
-  const [selectedValue, setSelectedValue] = useState<DawaAddressAutocompleteResult | null>(null)
-
-  const { nextStep, updateFormData } = useLoanFormContext()
+  const [searchValue, setSearchValue] = useState(formData.property?.address ?? '')
+  const [selectedValue, setSelectedValue] = useState<DawaAddressAutocompleteResult | null>(
+    formData.property?.dawaResult ?? null
+  )
 
   function handleSubmit() {
+    const address = selectedValue?.tekst ?? ''
+
     updateFormData({
       property: {
-        address: selectedValue?.tekst ?? '',
+        address: address,
+        dawaResult: selectedValue ?? null,
       },
     })
 
-    nextStep()
+    onNextStep(address)
   }
 
   return (
@@ -75,7 +83,7 @@ export function LoanFormPropertyStep({
           )}
         </div>
 
-        <LoanFormFooter isOptional={isOptional} />
+        <LoanFormFooter isOptional={isOptional} onPrevious={onPreviousStep} />
       </form>
     </>
   )

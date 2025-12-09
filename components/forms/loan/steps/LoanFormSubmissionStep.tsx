@@ -23,9 +23,17 @@ const formSchema = z.object({
   consentMarketing: z.boolean().optional(),
 })
 
-export function LoanFormSubmissionStep({ className }: { className?: string }) {
+export function LoanFormSubmissionStep({
+  className,
+  onNextStep,
+  onPreviousStep,
+}: {
+  className?: string
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
   const id = useId()
-  const { formData, nextStep, updateFormData } = useLoanFormContext()
+  const { formData, updateFormData } = useLoanFormContext()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,7 +51,7 @@ export function LoanFormSubmissionStep({ className }: { className?: string }) {
       consentMarketing: data.consentMarketing,
     })
 
-    nextStep()
+    onNextStep()
   }
 
   return (
@@ -118,7 +126,7 @@ export function LoanFormSubmissionStep({ className }: { className?: string }) {
           />
         </div>
 
-        <LoanFormFooter />
+        <LoanFormFooter onPrevious={onPreviousStep} />
       </form>
     </>
   )

@@ -23,9 +23,17 @@ const formSchema = z.object({
   phone: z.string().min(1, 'Mobilnummer er påkrævet').trim(),
 })
 
-export function LoanFormContactStep({ className }: { className?: string }) {
+export function LoanFormContactStep({
+  className,
+  onNextStep,
+  onPreviousStep,
+}: {
+  className?: string
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
   const id = useId()
-  const { formData, nextStep, updateFormData } = useLoanFormContext()
+  const { formData, updateFormData } = useLoanFormContext()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,7 +58,7 @@ export function LoanFormContactStep({ className }: { className?: string }) {
       ],
     })
 
-    nextStep()
+    onNextStep()
   }
 
   return (
@@ -142,7 +150,7 @@ export function LoanFormContactStep({ className }: { className?: string }) {
           </BaseAlert>
         </div>
 
-        <LoanFormFooter />
+        <LoanFormFooter onPrevious={onPreviousStep} />
       </form>
     </>
   )

@@ -1,3 +1,5 @@
+import type { DawaAddressAutocompleteResult } from '@/types/dawa'
+
 export enum EntryPath {
   Planner = 'planner',
   Dreamer = 'dreamer',
@@ -26,6 +28,7 @@ export interface LoanFormState {
 
   property: {
     address: string
+    dawaResult: DawaAddressAutocompleteResult | null
   }
 
   // Debtors

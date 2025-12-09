@@ -39,9 +39,15 @@ function createFormSchema(numberOfDebtors: number) {
   return z.object(schema)
 }
 
-export function LoanFormIdentityStep() {
+export function LoanFormIdentityStep({
+  onNextStep,
+  onPreviousStep,
+}: {
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
   const id = useId()
-  const { formData, nextStep, updateFormData } = useLoanFormContext()
+  const { formData, updateFormData } = useLoanFormContext()
 
   // Always available on this step
   const mainDebtorInfo = formData.debtors?.[0] as LoanFormState['debtors'][0]
@@ -102,7 +108,7 @@ export function LoanFormIdentityStep() {
       debtors: updatedDebtors,
     })
 
-    nextStep()
+    onNextStep()
   }
 
   return (
@@ -283,7 +289,7 @@ export function LoanFormIdentityStep() {
           </>
         )}
 
-        <LoanFormFooter />
+        <LoanFormFooter onPrevious={onPreviousStep} />
       </form>
     </>
   )

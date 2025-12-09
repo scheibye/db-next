@@ -16,9 +16,15 @@ const options: Array<{ label: string; value: MaritalStatus; icon: LucideIcon }> 
   { label: 'Enke', value: 'enke', icon: FlowerIcon },
 ] as const
 
-export function LoanFormMaritalStatusStep() {
+export function LoanFormMaritalStatusStep({
+  onNextStep,
+  onPreviousStep,
+}: {
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
   const id = useId()
-  const { formData, nextStep, updateFormData } = useLoanFormContext()
+  const { formData, updateFormData } = useLoanFormContext()
 
   const [selectedMaritalStatus, setSelectedMaritalStatus] = useState<MaritalStatus | null>(
     formData.maritalStatus ?? null
@@ -31,7 +37,7 @@ export function LoanFormMaritalStatusStep() {
       maritalStatus: selectedMaritalStatus,
     })
 
-    nextStep()
+    onNextStep()
   }
 
   return (
@@ -53,7 +59,7 @@ export function LoanFormMaritalStatusStep() {
           ))}
         </RadioGroup>
 
-        <LoanFormFooter isNextStepDisabled={!selectedMaritalStatus} />
+        <LoanFormFooter isNextStepDisabled={!selectedMaritalStatus} onPrevious={onPreviousStep} />
       </form>
     </>
   )

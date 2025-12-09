@@ -16,9 +16,15 @@ const options: Array<{ label: string; value: NumberOfDebtors; icon: LucideIcon }
   { label: 'Vi er fire', value: 4, icon: GroupIcon },
 ] as const
 
-export function LoanFormDebtorsStep() {
+export function LoanFormDebtorsStep({
+  onNextStep,
+  onPreviousStep,
+}: {
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
   const id = useId()
-  const { formData, nextStep, updateFormData } = useLoanFormContext()
+  const { formData, updateFormData } = useLoanFormContext()
 
   const [selectedNumberOfDebtors, setSelectedNumberOfDebtors] = useState<string | null>(
     formData.numberOfDebtors?.toString() ?? null
@@ -31,7 +37,7 @@ export function LoanFormDebtorsStep() {
       numberOfDebtors: Number.parseInt(selectedNumberOfDebtors as string) as NumberOfDebtors,
     })
 
-    nextStep()
+    onNextStep()
   }
 
   return (
@@ -67,7 +73,7 @@ export function LoanFormDebtorsStep() {
           </BaseAlertDescription>
         </BaseAlert>
 
-        <LoanFormFooter isNextStepDisabled={!selectedNumberOfDebtors} />
+        <LoanFormFooter isNextStepDisabled={!selectedNumberOfDebtors} onPrevious={onPreviousStep} />
       </form>
     </>
   )

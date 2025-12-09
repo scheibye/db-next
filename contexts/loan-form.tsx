@@ -9,8 +9,8 @@ const INITIAL_STEP = 0
 interface LoanFormContextType {
   step: number
   formData: Partial<LoanFormState>
-  previousStep: () => void
-  nextStep: () => void
+  previousStep: (step?: number) => void
+  nextStep: (step?: number) => void
   updateFormData: (updates: Partial<LoanFormState>) => void
 }
 
@@ -39,6 +39,7 @@ export function LoanFormProvider({ children }: { children: React.ReactNode }) {
     },
     property: {
       address: '',
+      dawaResult: null,
     },
     numberOfDebtors: null,
     debtors: [],
@@ -51,12 +52,12 @@ export function LoanFormProvider({ children }: { children: React.ReactNode }) {
     consentMarketing: false,
   })
 
-  function previousStep() {
-    setStep((prevStep) => Math.max(INITIAL_STEP, prevStep - 1))
+  function previousStep(step?: number) {
+    setStep((prevStep) => (step ? step : Math.max(INITIAL_STEP, prevStep - 1)))
   }
 
-  function nextStep() {
-    setStep((prevStep) => prevStep + 1)
+  function nextStep(step?: number) {
+    setStep((prevStep) => (step ? step : prevStep + 1))
   }
 
   function updateFormData(updates: Partial<LoanFormState>) {

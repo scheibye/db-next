@@ -12,8 +12,14 @@ import { useLoanFormContext } from '@/contexts/loan-form'
 
 const MAX_CHILDREN_COUNT = 10
 
-export function LoanFormChildrenStep() {
-  const { formData, nextStep, updateFormData } = useLoanFormContext()
+export function LoanFormChildrenStep({
+  onNextStep,
+  onPreviousStep,
+}: {
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
+  const { formData, updateFormData } = useLoanFormContext()
 
   const [childrenCount, setChildrenCount] = useState(formData.numberOfChildren ?? 0)
   const [childrenAges, setChildrenAges] = useState<Array<number | ''>>(
@@ -28,7 +34,7 @@ export function LoanFormChildrenStep() {
       agesOfChildren: childrenAges as Array<number>,
     })
 
-    nextStep()
+    onNextStep()
   }
 
   function handleAgeChange(event: React.ChangeEvent<HTMLInputElement>, index: number) {
@@ -93,6 +99,7 @@ export function LoanFormChildrenStep() {
             childrenCount > 0 &&
             (childrenAges.length !== childrenCount || childrenAges.some((age) => age === ''))
           }
+          onPrevious={onPreviousStep}
         />
       </form>
     </>

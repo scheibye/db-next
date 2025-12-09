@@ -24,8 +24,14 @@ const loadingMessages = [
   'Validerer ejendomsoplysninger...',
 ]
 
-export function LoanFormPropertyReviewStep() {
-  const { formData, nextStep } = useLoanFormContext()
+export function LoanFormPropertyReviewStep({
+  onNextStep,
+  onPreviousStep,
+}: {
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
+  const { formData } = useLoanFormContext()
 
   const { data, isLoading, error } = useQuery<PropertyLookupData>({
     queryKey: ['property-lookup', formData.property?.address],
@@ -92,7 +98,7 @@ export function LoanFormPropertyReviewStep() {
         )}
       </div>
 
-      <LoanFormFooter onNextClick={nextStep} />
+      <LoanFormFooter onNext={onNextStep} onPrevious={onPreviousStep} />
     </>
   )
 }

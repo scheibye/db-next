@@ -45,7 +45,7 @@ export function LoanFormSuccessStep() {
           </li>
         </ul>
 
-        <BaseCtaButton>Fortsæt til budget med MitID</BaseCtaButton>
+        <BaseCtaButton href="/">Fortsæt til budget med MitID</BaseCtaButton>
 
         <p>
           <small className="text-xs">

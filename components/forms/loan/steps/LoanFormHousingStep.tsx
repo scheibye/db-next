@@ -15,9 +15,15 @@ const options: Array<{ label: string; value: HousingCondition; icon: LucideIcon 
   { label: 'Hjemmeboende', value: 'hjemmeboende', icon: UsersIcon },
 ] as const
 
-export function LoanFormHousingStep() {
+export function LoanFormHousingStep({
+  onNextStep,
+  onPreviousStep,
+}: {
+  onNextStep: () => void
+  onPreviousStep: () => void
+}) {
   const id = useId()
-  const { formData, nextStep, updateFormData } = useLoanFormContext()
+  const { formData, updateFormData } = useLoanFormContext()
 
   const [selectedHousing, setSelectedHousing] = useState<HousingCondition | null>(
     formData.housingConditions ?? null
@@ -30,7 +36,7 @@ export function LoanFormHousingStep() {
       housingConditions: selectedHousing,
     })
 
-    nextStep()
+    onNextStep()
   }
 
   return (
@@ -52,7 +58,7 @@ export function LoanFormHousingStep() {
           ))}
         </RadioGroup>
 
-        <LoanFormFooter isNextStepDisabled={!selectedHousing} />
+        <LoanFormFooter isNextStepDisabled={!selectedHousing} onPrevious={onPreviousStep} />
       </form>
     </>
   )
