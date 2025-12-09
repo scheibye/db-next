@@ -127,21 +127,21 @@ export function LoanFormIdentityStep({
         </h3>
 
         <dl className="bg-brand-spring/25 grid max-w-lg gap-3 rounded-2xl px-6 py-4">
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center justify-between gap-6 overflow-hidden">
             <dt className="text-brand-dark/75 font-medium">Navn</dt>
-            <dd className="text-lg font-semibold">
+            <dd className="truncate text-lg font-semibold">
               {mainDebtorInfo.firstName} {mainDebtorInfo.lastName}
             </dd>
           </div>
 
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center justify-between gap-6 overflow-hidden">
             <dt className="text-brand-dark/75 font-medium">Email</dt>
-            <dd className="text-lg font-semibold">{mainDebtorInfo.email}</dd>
+            <dd className="truncate text-lg font-semibold">{mainDebtorInfo.email}</dd>
           </div>
 
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center justify-between gap-6 overflow-hidden">
             <dt className="text-brand-dark/75 font-medium">Telefon</dt>
-            <dd className="text-lg font-semibold">{mainDebtorInfo.phoneNumber}</dd>
+            <dd className="truncate text-lg font-semibold">{mainDebtorInfo.phoneNumber}</dd>
           </div>
         </dl>
       </div>

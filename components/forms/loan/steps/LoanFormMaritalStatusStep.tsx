@@ -48,7 +48,7 @@ export function LoanFormMaritalStatusStep({
 
       <form onSubmit={handleSubmit}>
         <RadioGroup
-          className="grid grid-cols-3 gap-4"
+          className="grid grid-cols-2 gap-4 sm:grid-cols-3"
           value={selectedMaritalStatus}
           onValueChange={(value) => setSelectedMaritalStatus(value as MaritalStatus | null)}
           required={true}

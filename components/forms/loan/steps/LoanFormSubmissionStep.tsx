@@ -88,9 +88,10 @@ export function LoanFormSubmissionStep({
             control={form.control}
             render={({ field, fieldState }) => (
               <BaseField data-invalid={fieldState.invalid}>
-                <div className="flex items-center gap-3">
+                <div className="relative pl-7">
                   <BaseCheckbox
                     id={`${id}-consentTerms`}
+                    className="absolute top-0.75 left-0"
                     aria-invalid={fieldState.invalid}
                     checked={field.value}
                     onCheckedChange={field.onChange}
@@ -109,9 +110,10 @@ export function LoanFormSubmissionStep({
             control={form.control}
             render={({ field, fieldState }) => (
               <BaseField data-invalid={fieldState.invalid}>
-                <div className="flex items-center gap-3">
+                <div className="relative pl-7">
                   <BaseCheckbox
                     id={`${id}-consentMarketing`}
+                    className="absolute top-0.75 left-0"
                     aria-invalid={fieldState.invalid}
                     checked={field.value}
                     onCheckedChange={field.onChange}

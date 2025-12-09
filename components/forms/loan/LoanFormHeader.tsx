@@ -20,7 +20,7 @@ export function LoanFormHeaderTitle({
   return (
     <h2
       className={cn(
-        'mb-5 flex flex-wrap items-center gap-x-4 gap-y-3 text-4xl leading-tight xl:text-5xl',
+        'mb-5 flex flex-wrap items-center gap-x-4 gap-y-3 text-2xl leading-tight sm:text-3xl md:text-4xl xl:text-5xl',
         className
       )}
     >
@@ -42,6 +42,8 @@ export function LoanFormHeaderDescription({
   className?: string
 }) {
   return (
-    <p className={cn('text-xl leading-normal text-balance md:text-2xl', className)}>{children}</p>
+    <p className={cn('text-lg leading-normal text-balance sm:text-xl md:text-2xl', className)}>
+      {children}
+    </p>
   )
 }

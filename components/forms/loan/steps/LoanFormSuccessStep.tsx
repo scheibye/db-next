@@ -22,30 +22,32 @@ export function LoanFormSuccessStep() {
       </LoanFormHeader>
 
       <div className="bg-brand-primary/10 space-y-6 rounded-xl p-8 text-center">
-        <div>
+        <div className="text-balance">
           <h3 className="mb-2 text-2xl font-medium">Fortsæt med budget og MitID</h3>
 
           <p>Færdiggør din ansøgning og få et mere præcist tilbud</p>
         </div>
 
-        <ul className="space-y-2 *:flex *:items-center *:justify-center *:gap-2">
+        <ul className="space-y-4 text-sm text-balance *:flex *:flex-col *:items-center *:justify-center *:gap-2 xs:*:flex-row">
           <li>
-            <ClockIcon className="text-brand-primary size-4" />
+            <ClockIcon className="text-brand-primary size-4 shrink-0" />
             Få svar inden for få timer i stedet for 24 timer
           </li>
 
           <li>
-            <FileCheckIcon className="text-brand-primary size-4" />
+            <FileCheckIcon className="text-brand-primary size-4 shrink-0" />
             Få et mere præcist og personligt lånetilbud
           </li>
 
           <li>
-            <ShieldIcon className="text-brand-primary size-4" />
+            <ShieldIcon className="text-brand-primary size-4 shrink-0" />
             Sikker login med MitID • Tager kun 3-5 minutter
           </li>
         </ul>
 
-        <BaseCtaButton href="/">Fortsæt til budget med MitID</BaseCtaButton>
+        <BaseCtaButton className="xs:w-auto w-full" href="/">
+          Fortsæt <span className="xs:inline hidden">til budget med MitID</span>
+        </BaseCtaButton>
 
         <p>
           <small className="text-xs">
