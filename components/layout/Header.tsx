@@ -81,6 +81,7 @@ export function Header({ noNavigation }: { noNavigation?: boolean }) {
                         pathname === item.href && 'border-b-brand-spring'
                       )}
                       href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
                     </Link>
@@ -97,7 +98,6 @@ export function Header({ noNavigation }: { noNavigation?: boolean }) {
                 </div>
 
                 {/* Mobile menu close button */}
-
                 <button
                   className="absolute top-2 right-2 p-2 xl:hidden"
                   type="button"

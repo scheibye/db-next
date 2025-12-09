@@ -3,7 +3,7 @@ import {
   SectionContainerInner,
 } from '@/components/layout/containers/SectionContainer'
 
-export function TextWithEmbeddedVideoSection({ className }: { className?: string }) {
+export function TextWithVideoSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className} noPadding={true}>
       <SectionContainerInner>

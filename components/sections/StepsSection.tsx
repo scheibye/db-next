@@ -6,7 +6,7 @@ import { BaseCtaButton } from '@/components/ui/BaseCtaButton'
 import { BaseLinkUnderline } from '@/components/ui/BaseLinkUnderline'
 import { cn } from '@/lib/utils'
 
-const stepCards = [
+const stepsData = [
   {
     title: 'Ansøg online',
     text: 'Udfyld formularen og angiv låneformålet, så vender vi tilbage for at finde den bedste løsning for dig.',
@@ -24,7 +24,7 @@ const stepCards = [
   },
 ]
 
-export function StepCardsSection({ className }: { className?: string }) {
+export function StepsSection({ className }: { className?: string }) {
   return (
     <SectionContainer className={className}>
       <SectionContainerInner className="md:gap-12!" noColumns={true}>
@@ -40,7 +40,7 @@ export function StepCardsSection({ className }: { className?: string }) {
         </div>
 
         <div className="relative -inset-x-(--container-padding) grid w-[calc(100%+var(--container-padding)*2)] lg:inset-x-auto lg:w-full lg:grid-cols-3">
-          {stepCards.map((card, index) => (
+          {stepsData.map((card, index) => (
             <StepCard key={card.title} step={index + 1} {...card} />
           ))}
         </div>

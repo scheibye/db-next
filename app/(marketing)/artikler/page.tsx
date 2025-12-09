@@ -83,18 +83,17 @@ export default function BlogPage() {
           </div>
 
           <div className="gap-gutter grid md:grid-cols-2 lg:grid-cols-3">
-  {items.map((item) => (
-    <BlogCard
-      key={item.title}
-      category={item.category}
-      title={item.title}
-      author={item.author}
-      href={item.href}
-      variant={item.variant as BlogCardVariant}
-    />
-  ))}
-</div>
-
+            {items.map((item) => (
+              <BlogCard
+                key={item.title}
+                category={item.category}
+                title={item.title}
+                author={item.author}
+                href={item.href}
+                variant={item.variant as BlogCardVariant}
+              />
+            ))}
+          </div>
         </SectionContainerInner>
       </SectionContainer>
 

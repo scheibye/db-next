@@ -28,14 +28,12 @@ export function CtaImagePatternSection({
             Skræddersyede løsninger, når banken siger nej
           </h2>
 
-          <div className="text-base sm:text-2xl/normal">
+          <div className="space-y-6 text-sm *:first:text-base sm:text-lg *:first:sm:text-2xl/normal">
             <p>
               Vi tilbyder alternative låneløsninger - både med egne midler og i samarbejde med
               erfarne investorer.
             </p>
-          </div>
 
-          <div className="text-sm sm:text-lg">
             <p>
               Hos Dansk Boliglån er ingen sager ens. Derfor vurderer vi altid ud fra mennesket og
               mulighederne, ikke blot ud fra skabeloner og tal. Vi lytter. Vi handler. - Og vi gør

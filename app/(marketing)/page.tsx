@@ -9,7 +9,7 @@ import { FaqSection } from '@/components/sections/faq/FaqSection'
 import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
 import { MainHeroSection } from '@/components/sections/heros/MainHeroSection'
 import { SocialProofSection } from '@/components/sections/SocialProofSection'
-import { StepCardsSection } from '@/components/sections/StepCardsSection'
+import { StepsSection } from '@/components/sections/StepsSection'
 import { sanityClient } from '@/lib/sanity.client'
 
 type HeroSectionData = {
@@ -254,7 +254,7 @@ export default async function Home() {
       </section> */}
 
       <MainHeroSection />
-      <StepCardsSection />
+      <StepsSection />
       <FaqSection />
       <CtaSmallSection />
       <SocialProofSection className="pt-0!" />

@@ -23,9 +23,7 @@ export function MainHeroSection() {
             />
 
             <h1 className="text-brand-card xs:text-5xl absolute bottom-[35%] text-4xl leading-tight font-medium md:text-6xl lg:static lg:mb-6 2xl:text-8xl">
-              Uden bøvl
-              <br />
-              &ndash; og uden banken
+              Uden bøvl – og uden banken
             </h1>
 
             {/* Trustpilot widget */}

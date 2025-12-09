@@ -55,15 +55,13 @@ export function AboutSection({ className }: { className?: string }) {
             &ndash; og det er netop pointen
           </h2>
 
-          <div className="text-base sm:text-2xl/normal">
+          <div className="space-y-7 *:first:text-base *:last:text-xl *:last:font-semibold *:nth-[2]:text-sm sm:space-y-9 *:first:sm:text-2xl/normal *:nth-[2]:sm:text-lg">
             <p>
               Hos Dansk Boliglån arbejder vi under ejendomskreditlovgivningen &ndash; ikke bankens
               regler. Det giver os frihed til at tænke anderledes, vurdere bredere og handle
               hurtigere.
             </p>
-          </div>
 
-          <div className="text-sm sm:text-lg">
             <p>
               Det betyder også, at vi kan tilbyde et fleksibelt og konkurrencedygtigt alternativ til
               de traditionelle pengeinstitutter. Hvor banken ofte ser på fortiden og følger faste
@@ -72,11 +70,9 @@ export function AboutSection({ className }: { className?: string }) {
               skræddersyede løsninger frem for standardiserede afslag. Vi er sat i verden for at
               hjælpe &ndash; ikke for at afvise.
             </p>
-          </div>
 
-          <p className="text-xl font-semibold">
-            Vi er sat i verden for at hjælpe &ndash; ikke for at afvise.
-          </p>
+            <p>Vi er sat i verden for at hjælpe &ndash; ikke for at afvise.</p>
+          </div>
         </div>
       </SectionContainerInner>
     </SectionContainer>

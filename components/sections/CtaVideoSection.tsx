@@ -41,14 +41,12 @@ export function CtaVideoSection({ className }: { className?: string }) {
             Et enklere alternativ til bankens afslag
           </h2>
 
-          <div className="text-base sm:text-2xl/normal">
+          <div className="space-y-6 text-sm *:first:text-base sm:space-y-8 sm:text-lg *:first:sm:text-2xl/normal">
             <p>
               Hos Dansk Boliglån arbejder vi for dem, der falder udenfor bankens faste rammer
               &ndash; men stadig har brug for en fair og gennemskuelig finansiering.
             </p>
-          </div>
 
-          <div className="text-sm sm:text-lg">
             <p>
               Vi tilbyder et simpelt og konkurrencedygtigt alternativ til traditionel
               ejendomsfinansiering, både for private og erhverv. Uden unødvendige benspænd og lange
