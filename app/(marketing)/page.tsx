@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { groq } from 'next-sanity'
+// import { groq } from 'next-sanity'
 import { AboutSection } from '@/components/sections/AboutSection'
 import { BlogSection } from '@/components/sections/blog/BlogSection'
 import { CtaSmallSection } from '@/components/sections/CtaSmallSection'
@@ -10,145 +10,146 @@ import { HelpCardsSection } from '@/components/sections/HelpCardsSection'
 import { MainHeroSection } from '@/components/sections/heros/MainHeroSection'
 import { SocialProofSection } from '@/components/sections/SocialProofSection'
 import { StepsSection } from '@/components/sections/StepsSection'
-import { sanityClient } from '@/lib/sanity.client'
 
-type HeroSectionData = {
-  _type: 'heroSection'
-  eyebrow?: string
-  title: string
-  subtitle?: string
-  primaryCtaLabel?: string
-  primaryCtaHref?: string
-}
+// import { sanityClient } from '@/lib/sanity.client'
 
-type UspItemData = {
-  title: string
-  description?: string
-  icon?: string
-}
+// type HeroSectionData = {
+//   _type: 'heroSection'
+//   eyebrow?: string
+//   title: string
+//   subtitle?: string
+//   primaryCtaLabel?: string
+//   primaryCtaHref?: string
+// }
 
-type UspSectionData = {
-  _type: 'uspSection'
-  title?: string
-  items: UspItemData[]
-}
+// type UspItemData = {
+//   title: string
+//   description?: string
+//   icon?: string
+// }
 
-type StepsSectionData = {
-  _type: 'stepsSection'
-  title?: string
-  subtitle?: string
-  steps: { label: string; description?: string }[]
-}
+// type UspSectionData = {
+//   _type: 'uspSection'
+//   title?: string
+//   items: UspItemData[]
+// }
 
-type FaqSectionData = {
-  _type: 'faqSection'
-  title?: string
-  items: { question: string; answer: string }[]
-}
+// type StepsSectionData = {
+//   _type: 'stepsSection'
+//   title?: string
+//   subtitle?: string
+//   steps: { label: string; description?: string }[]
+// }
 
-type TrustpilotSectionData = {
-  _type: 'trustpilotSection'
-  title?: string
-  ratingText?: string
-  stars?: number
-}
+// type FaqSectionData = {
+//   _type: 'faqSection'
+//   title?: string
+//   items: { question: string; answer: string }[]
+// }
 
-type ApplyNowSectionData = {
-  _type: 'applyNowSection'
-  title?: string
-  subtitle?: string
-  bulletPoints?: string[]
-  primaryCtaLabel?: string
-  primaryCtaHref?: string
-  phone?: string
-}
+// type TrustpilotSectionData = {
+//   _type: 'trustpilotSection'
+//   title?: string
+//   ratingText?: string
+//   stars?: number
+// }
 
-type AboutUsSectionData = {
-  _type: 'aboutUsSection'
-  title?: string
-  subtitle?: string
-  body?: any
-  imageUrl?: string
-}
+// type ApplyNowSectionData = {
+//   _type: 'applyNowSection'
+//   title?: string
+//   subtitle?: string
+//   bulletPoints?: string[]
+//   primaryCtaLabel?: string
+//   primaryCtaHref?: string
+//   phone?: string
+// }
 
-type CtaProductsSectionData = {
-  _type: 'ctaProductsSection'
-  title?: string
-  subtitle?: string
-  items?: { title: string; description?: string; href?: string; badge?: string }[]
-}
+// type AboutUsSectionData = {
+//   _type: 'aboutUsSection'
+//   title?: string
+//   subtitle?: string
+//   body?: any
+//   imageUrl?: string
+// }
 
-type BlogPostSectionData = {
-  _type: 'blogPostSection'
-  title?: string
-  posts?: { title: string; excerpt?: string; href?: string; imageUrl?: string }[]
-}
+// type CtaProductsSectionData = {
+//   _type: 'ctaProductsSection'
+//   title?: string
+//   subtitle?: string
+//   items?: { title: string; description?: string; href?: string; badge?: string }[]
+// }
 
-type VideoSectionData = {
-  _type: 'videoSection'
-  title?: string
-  lead?: string
-  body?: string
-  ctaLabel?: string
-  ctaHref?: string
-  videoUrl?: string
-}
+// type BlogPostSectionData = {
+//   _type: 'blogPostSection'
+//   title?: string
+//   posts?: { title: string; excerpt?: string; href?: string; imageUrl?: string }[]
+// }
 
-type PageData = {
-  title: string
-  sections: (
-    | HeroSectionData
-    | UspSectionData
-    | StepsSectionData
-    | FaqSectionData
-    | TrustpilotSectionData
-    | ApplyNowSectionData
-    | AboutUsSectionData
-    | CtaProductsSectionData
-    | BlogPostSectionData
-    | VideoSectionData
-  )[]
-}
+// type VideoSectionData = {
+//   _type: 'videoSection'
+//   title?: string
+//   lead?: string
+//   body?: string
+//   ctaLabel?: string
+//   ctaHref?: string
+//   videoUrl?: string
+// }
 
-const homePageQuery = groq`
-  *[_type == "page" && slug.current == "forside"][0]{
-    title,
-    sections[]{
-      ...,
-      // uspSection
-      items[]{title, description, icon, question, answer, href, badge},
-      // stepsSection
-      steps[]{label, title, description},
-      // blogPostSection
-      posts[]{
-        title,
-        excerpt,
-        href,
-        "imageUrl": image.asset->url
-      },
-      // aboutUsSection
-      "imageUrl": image.asset->url
-    }
-  }
-`
+// type PageData = {
+//   title: string
+//   sections: (
+//     | HeroSectionData
+//     | UspSectionData
+//     | StepsSectionData
+//     | FaqSectionData
+//     | TrustpilotSectionData
+//     | ApplyNowSectionData
+//     | AboutUsSectionData
+//     | CtaProductsSectionData
+//     | BlogPostSectionData
+//     | VideoSectionData
+//   )[]
+// }
 
-async function getHomePage(): Promise<PageData | null> {
-  return sanityClient.fetch(homePageQuery)
-}
+// const homePageQuery = groq`
+//   *[_type == "page" && slug.current == "forside"][0]{
+//     title,
+//     sections[]{
+//       ...,
+//       // uspSection
+//       items[]{title, description, icon, question, answer, href, badge},
+//       // stepsSection
+//       steps[]{label, title, description},
+//       // blogPostSection
+//       posts[]{
+//         title,
+//         excerpt,
+//         href,
+//         "imageUrl": image.asset->url
+//       },
+//       // aboutUsSection
+//       "imageUrl": image.asset->url
+//     }
+//   }
+// `
+
+// async function getHomePage(): Promise<PageData | null> {
+//   return sanityClient.fetch(homePageQuery)
+// }
 
 export default async function Home() {
-  const page = await getHomePage()
+  // const page = await getHomePage()
 
-  if (!page) {
-    return (
-      <main className="p-8">
-        <h1 className="text-2xl font-bold">Ingen forside fundet</h1>
-        <p className="mt-2 text-slate-700">
-          Opret en “Side” med slug <code>forside</code> i Sanity.
-        </p>
-      </main>
-    )
-  }
+  // if (!page) {
+  //   return (
+  //     <main className="p-8">
+  //       <h1 className="text-2xl font-bold">Ingen forside fundet</h1>
+  //       <p className="mt-2 text-slate-700">
+  //         Opret en “Side” med slug <code>forside</code> i Sanity.
+  //       </p>
+  //     </main>
+  //   )
+  // }
 
   return (
     <>
