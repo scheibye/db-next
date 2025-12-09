@@ -12,6 +12,7 @@ import {
 import { BaseAlert, BaseAlertDescription } from '@/components/ui/BaseAlert'
 import { BaseField, BaseFieldError, BaseFieldLabel } from '@/components/ui/BaseField'
 import { BaseInput } from '@/components/ui/BaseInput'
+import { BaseSeparator } from '@/components/ui/BaseSeparator'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import type { LoanFormState } from '@/types/loan-form'
 
@@ -174,7 +175,7 @@ export function LoanFormIdentityStep() {
 
               return (
                 <div key={debtorNumber}>
-                  <hr className="bg-brand-dark/10 my-12 h-px w-full border-0" />
+                  <BaseSeparator className="my-12" />
 
                   <div className="grid gap-6">
                     <h3 className="text-xl font-semibold">Låntager nr. {debtorNumber}</h3>
