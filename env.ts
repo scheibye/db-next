@@ -8,7 +8,7 @@ export const env = createEnv({
   server: {
     DATABASE_URL: z.url().min(1),
     DATABASE_DIRECT_URL: z.url().min(1),
-    // OPENAI_API_KEY: z.string().min(1),
+    OPENAI_API_KEY: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: z.string().min(1),

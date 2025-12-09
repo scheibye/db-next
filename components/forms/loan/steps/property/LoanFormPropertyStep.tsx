@@ -102,7 +102,7 @@ function PropertyDetails({ selectedValue }: { selectedValue: DawaAddressAutocomp
                   lng: selectedValue.adresse.x,
                   lat: selectedValue.adresse.y,
                 }}
-                defaultZoom={12}
+                defaultZoom={16}
                 gestureHandling={'greedy'}
                 disableDefaultUI={true}
               >

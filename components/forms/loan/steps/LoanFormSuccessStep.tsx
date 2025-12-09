@@ -28,7 +28,7 @@ export function LoanFormSuccessStep() {
           <p>Færdiggør din ansøgning og få et mere præcist tilbud</p>
         </div>
 
-        <ul className="space-y-4 text-sm text-balance *:flex *:flex-col *:items-center *:justify-center *:gap-2 xs:*:flex-row">
+        <ul className="xs:*:flex-row space-y-4 text-sm text-balance *:flex *:flex-col *:items-center *:justify-center *:gap-2">
           <li>
             <ClockIcon className="text-brand-primary size-4 shrink-0" />
             Få svar inden for få timer i stedet for 24 timer

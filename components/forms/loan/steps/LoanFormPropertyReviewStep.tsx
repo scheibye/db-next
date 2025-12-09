@@ -33,9 +33,11 @@ export function LoanFormPropertyReviewStep({
 }) {
   const { formData } = useLoanFormContext()
 
+  // Address is guaranteed to be set at this point
   const { data, isLoading, error } = useQuery<PropertyLookupData>({
-    queryKey: ['property-lookup', formData.property?.address],
+    queryKey: ['property-lookup', formData.property!.address],
     queryFn: () => fetchPropertyLookup(formData.property!.address),
+    retry: false, // Do not retry on error
   })
 
   if (isLoading) {

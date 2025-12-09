@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { openai } from '@ai-sdk/openai'
 import { generateText, Output } from 'ai'
 import { z } from 'zod'
-// import { env } from '@/env'
+import { env } from '@/env'
 import { propertyLookupSchema } from '@/types/schemas/property-lookup'
 
 const requestSchema = z.object({
@@ -14,16 +14,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const { address } = requestSchema.parse(body)
 
-    // TODO: temp return for testing
-    return NextResponse.json({
-      isOnMarket: true,
-      currentListingPrice: 1000000,
-      pricePerSqm: 1000,
-    })
-
     console.log(`Property lookup request for address: ${address}`)
 
-    // const openaiApiKey = env.OPENAI_API_KEY
+    const openaiApiKey = env.OPENAI_API_KEY
 
     if (!openaiApiKey) {
       throw new Error('OPENAI_API_KEY must be set')
@@ -91,7 +84,7 @@ You will be given a property address in Denmark as a prompt.
         web_search: openai.tools.webSearch({
           userLocation: {
             type: 'approximate',
-            country: 'Denmark',
+            country: 'DK', // Denmark
           },
         }),
       },
