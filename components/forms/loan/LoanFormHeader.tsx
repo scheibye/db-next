@@ -42,8 +42,6 @@ export function LoanFormHeaderDescription({
   className?: string
 }) {
   return (
-    <p className={cn('text-xl leading-normal text-balance duration-500 md:text-2xl', className)}>
-      {children}
-    </p>
+    <p className={cn('text-xl leading-normal text-balance md:text-2xl', className)}>{children}</p>
   )
 }

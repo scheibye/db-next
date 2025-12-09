@@ -71,9 +71,13 @@ export default function LoanFormPropertyStepInput({
 
       {shouldRenderPopup && (
         <Autocomplete.Portal>
-          <Autocomplete.Positioner className="outline-none" sideOffset={8} align="start">
+          <Autocomplete.Positioner
+            className="bg-brand-card border-brand-border overflow-hidden rounded-xl border shadow-lg outline-none"
+            sideOffset={8}
+            align="start"
+          >
             <Autocomplete.Popup
-              className="bg-brand-card border-brand-border max-h-[min(var(--available-height),20.25rem)] w-(--anchor-width) max-w-(--available-width) scroll-py-2 overflow-y-auto overscroll-contain rounded-xl border py-1.5 text-base font-medium shadow-lg"
+              className="max-h-[min(var(--available-height),20.25rem)] w-(--anchor-width) max-w-(--available-width) scroll-py-2 overflow-y-auto overscroll-contain py-1.5 text-base font-medium"
               aria-busy={isLoading || undefined}
             >
               {isLoading && (

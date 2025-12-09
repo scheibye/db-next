@@ -9,10 +9,12 @@ export function LoanFormFooter({
   className,
   isOptional = false,
   isNextStepDisabled = false,
+  onNextClick,
 }: {
   className?: string
   isOptional?: boolean
   isNextStepDisabled?: boolean
+  onNextClick?: () => void
 }) {
   const router = useRouter()
   const { step, previousStep } = useLoanFormContext()
@@ -38,7 +40,8 @@ export function LoanFormFooter({
       <BaseCtaButton
         className="xs:w-auto xs:min-w-80 w-full"
         disabled={isNextStepDisabled}
-        type="submit"
+        type={onNextClick ? 'button' : 'submit'}
+        onClick={onNextClick ? onNextClick : undefined}
       >
         {isOptional ? 'Spring over' : 'Fortsæt'}
       </BaseCtaButton>

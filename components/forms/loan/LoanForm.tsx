@@ -21,19 +21,21 @@ export function LoanForm({ className }: { className?: string }) {
       className={cn('bg-brand-card rounded-4xl py-12 lg:px-12 lg:py-24 xl:shadow-2xl', className)}
     >
       <div className="xl:mx-auto xl:max-w-200">
+        {/* EntryPath.Planner only steps */}
         {step === 0 && <LoanFormContactStep />}
         {step === 1 && <LoanFormPropertyStep isOptional={true} />}
+
         {/* Only show if address was provided */}
-        {/* {step === 2 && formData.property?.address && <LoanFormPropertyReviewStep />} */}
+        {step === 2 && formData.property?.address && <LoanFormPropertyReviewStep />}
 
         {/* Shared steps */}
-        {step === 2 && <LoanFormHousingStep />}
-        {step === 3 && <LoanFormCivilStatusStep />}
-        {step === 4 && <LoanFormDebtorsStep />}
-        {step === 5 && <LoanFormChildrenStep />}
-        {step === 6 && <LoanFormIdentityStep />}
-        {step === 7 && <LoanFormSubmissionStep />}
-        {step === 8 && <LoanFormSuccessStep />}
+        {step === 3 && <LoanFormHousingStep />}
+        {step === 4 && <LoanFormCivilStatusStep />}
+        {step === 5 && <LoanFormDebtorsStep />}
+        {step === 6 && <LoanFormChildrenStep />}
+        {step === 7 && <LoanFormIdentityStep />}
+        {step === 8 && <LoanFormSubmissionStep />}
+        {step === 9 && <LoanFormSuccessStep />}
       </div>
     </div>
   )

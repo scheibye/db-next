@@ -120,7 +120,7 @@ export function LoanFormIdentityStep() {
           Hej {mainDebtorInfo?.firstName}, vi mangler kun dit CPR for at tjekke skat.
         </h3>
 
-        <dl className="bg-brand-primary/25 grid max-w-lg gap-3 rounded-2xl px-6 py-4">
+        <dl className="bg-brand-spring/25 grid max-w-lg gap-3 rounded-2xl px-6 py-4">
           <div className="flex items-center justify-between gap-6">
             <dt className="text-brand-dark/75 font-medium">Navn</dt>
             <dd className="text-lg font-semibold">
