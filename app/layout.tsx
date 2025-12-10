@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   title: 'Dansk Boliglån',
   description: 'Dansk Boliglån – moderne boliglånsløsninger.',
    icons: {
-    // Standard favicon til tabs m.m.
     icon: [
       {
         url: '/db-fav-150x150-1-32x32.png',
@@ -28,7 +27,6 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
-    // Apple touch icon (iOS “tilføj til hjemmeskærm”)
     apple: [
       {
         url: '/db-fav-150x150-1-180x180.png',
@@ -36,7 +34,6 @@ export const metadata: Metadata = {
         type: 'image/png',
       },
     ],
-    // Evt. ekstra stor til diverse PWA/OS-brug
     other: [
       {
         rel: 'icon',
