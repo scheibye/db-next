@@ -14,20 +14,45 @@ const ubuntu_sans = Ubuntu_Sans({
 export const metadata: Metadata = {
   title: 'Dansk Boliglån',
   description: 'Dansk Boliglån – moderne boliglånsløsninger.',
+  icons: {
+    icon: [
+      {
+        url: '/db-fav-150x150-1-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        url: '/db-fav-150x150-1-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+    ],
+    apple: [
+      {
+        url: '/db-fav-150x150-1-180x180.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+    other: [
+      {
+        rel: 'icon',
+        url: '/db-fav-150x150-1-270x270.png',
+        sizes: '270x270',
+        type: 'image/png',
+      },
+    ],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID
 
   return (
-    <html lang="da" className={`${ubuntu_sans.variable}`}>
-      <head>
-        {/* Trustpilot widget */}
-        <Script src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" />
-      </head>
+    <html lang="da" className={ubuntu_sans.variable}>
+      <head></head>
 
       <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
-        {/* This wrapper is required by Base UI */}
         <div className="isolate">
           {gtmId && (
             <>
@@ -58,8 +83,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </>
           )}
 
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+          </Providers>
+
           <Footer />
+
+          {/* Trustpilot script */}
+          <Script
+            src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+            strategy="lazyOnload"
+          />
         </div>
       </body>
     </html>
