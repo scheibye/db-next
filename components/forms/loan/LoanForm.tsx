@@ -11,6 +11,7 @@ import { LoanFormPropertyReviewStep } from '@/components/forms/loan/steps/LoanFo
 import { LoanFormSubmissionStep } from '@/components/forms/loan/steps/LoanFormSubmissionStep'
 import { LoanFormSuccessStep } from '@/components/forms/loan/steps/LoanFormSuccessStep'
 import { LoanFormPropertyStep } from '@/components/forms/loan/steps/property/LoanFormPropertyStep'
+import { BaseSeparator } from '@/components/ui/BaseSeparator'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
 import { EntryPath } from '@/types/loan-form'
@@ -51,7 +52,10 @@ export function LoanForm({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn('bg-brand-card rounded-4xl py-12 lg:px-12 lg:py-24 xl:shadow-2xl', className)}
+      className={cn(
+        'bg-brand-card rounded-4xl py-12 lg:px-12 lg:pt-20 lg:pb-18 xl:shadow-2xl',
+        className
+      )}
     >
       <div className="xl:mx-auto xl:max-w-200">
         {step === 0 && (
@@ -102,6 +106,23 @@ export function LoanForm({ className }: { className?: string }) {
         )}
 
         {step === 9 && <LoanFormSuccessStep />}
+      </div>
+
+      {/* Trustpilot widget */}
+      <div className="xl:hidden">
+        <BaseSeparator className="my-12" />
+
+        <div className="flex justify-center">
+          <div
+            className="trustpilot-widget"
+            data-locale="da-DK"
+            data-template-id="53aa8807dec7e10d38f59f32"
+            data-businessunit-id="5ed6a20389c572000158ee34"
+            data-token="1a6834da-1b77-4f9f-98e8-bac56ad3f87e"
+            data-style-width="255px"
+            data-style-height="120px"
+          />
+        </div>
       </div>
     </div>
   )
