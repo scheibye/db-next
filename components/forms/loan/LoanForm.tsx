@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { LoanFormChildrenStep } from '@/components/forms/loan/steps/LoanFormChildrenStep'
 import { LoanFormContactStep } from '@/components/forms/loan/steps/LoanFormContactStep'
@@ -17,8 +18,25 @@ import { cn } from '@/lib/utils'
 import { EntryPath } from '@/types/loan-form'
 
 export function LoanForm({ className }: { className?: string }) {
+  const formRef = useRef<HTMLDivElement>(null)
+
   const router = useRouter()
   const { formData, step, nextStep, previousStep } = useLoanFormContext()
+
+  // Scroll to top of form when step changes
+  useEffect(() => {
+    // Don't scroll on initial load
+    if (step === 0) {
+      return
+    }
+
+    if (formRef.current) {
+      formRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  }, [step])
 
   function handleNextStep() {
     nextStep()
@@ -52,6 +70,7 @@ export function LoanForm({ className }: { className?: string }) {
 
   return (
     <div
+      ref={formRef}
       className={cn(
         'bg-brand-card rounded-4xl py-12 lg:px-12 lg:pt-20 lg:pb-18 xl:shadow-2xl',
         className
