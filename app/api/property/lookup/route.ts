@@ -5,6 +5,9 @@ import { z } from 'zod'
 import { env } from '@/env'
 import { propertyLookupSchema } from '@/types/schemas/property-lookup'
 
+export const runtime = "nodejs";
+export const preferredRegion = ["arn1", "fra1"];
+
 const requestSchema = z.object({
   address: z.string().min(1, 'Address is required'),
 })
