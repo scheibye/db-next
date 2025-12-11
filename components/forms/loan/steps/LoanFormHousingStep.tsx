@@ -1,5 +1,4 @@
-import { useId, useState } from 'react'
-import { RadioGroup } from '@base-ui-components/react/radio-group'
+import { useState } from 'react'
 import { Building2Icon, HomeIcon, KeyIcon, UsersIcon } from 'lucide-react'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import { LoanFormHeader, LoanFormHeaderTitle } from '@/components/forms/loan/LoanFormHeader'
@@ -22,18 +21,17 @@ export function LoanFormHousingStep({
   onNextStep: () => void
   onPreviousStep: () => void
 }) {
-  const id = useId()
   const { formData, updateFormData } = useLoanFormContext()
 
   const [selectedHousing, setSelectedHousing] = useState<HousingCondition | null>(
     formData.housingConditions ?? null
   )
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  function handleSelection(value: HousingCondition) {
+    setSelectedHousing(value)
 
     updateFormData({
-      housingConditions: selectedHousing,
+      housingConditions: value,
     })
 
     onNextStep()
@@ -42,24 +40,21 @@ export function LoanFormHousingStep({
   return (
     <>
       <LoanFormHeader>
-        <LoanFormHeaderTitle id={`${id}-title`}>Hvordan bor du i dag?</LoanFormHeaderTitle>
+        <LoanFormHeaderTitle>Hvordan bor du i dag?</LoanFormHeaderTitle>
       </LoanFormHeader>
 
-      <form onSubmit={handleSubmit}>
-        <RadioGroup
-          className="grid grid-cols-2 gap-4"
-          value={selectedHousing}
-          onValueChange={(value) => setSelectedHousing(value as HousingCondition | null)}
-          required={true}
-          aria-labelledby={`${id}-title`}
-        >
-          {options.map((option) => (
-            <LoanFormSelectionCard key={option.value} {...option} />
-          ))}
-        </RadioGroup>
+      <div className="grid grid-cols-2 gap-4">
+        {options.map((option) => (
+          <LoanFormSelectionCard
+            key={option.value}
+            isSelected={selectedHousing === option.value}
+            onClick={() => handleSelection(option.value)}
+            {...option}
+          />
+        ))}
+      </div>
 
-        <LoanFormFooter isNextStepDisabled={!selectedHousing} onPrevious={onPreviousStep} />
-      </form>
+      <LoanFormFooter isNextButtonHidden={true} onPrevious={onPreviousStep} />
     </>
   )
 }

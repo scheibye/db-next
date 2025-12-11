@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 
 export function LoanFormFooter({
   className,
+  isNextButtonHidden = false,
   isNextButtonDimmed = false,
   isNextStepDisabled = false,
   previousButtonText = 'Tilbage',
@@ -13,6 +14,7 @@ export function LoanFormFooter({
   onPrevious,
 }: {
   className?: string
+  isNextButtonHidden?: boolean
   isNextButtonDimmed?: boolean
   isNextStepDisabled?: boolean
   previousButtonText?: string
@@ -30,15 +32,17 @@ export function LoanFormFooter({
         {previousButtonText}
       </button>
 
-      <BaseCtaButton
-        className="xs:w-auto xs:min-w-80 w-full"
-        disabled={isNextStepDisabled}
-        type={onNext ? 'button' : 'submit'}
-        variant={isNextButtonDimmed ? 'ghost' : 'default'}
-        onClick={onNext || undefined}
-      >
-        {nextButtonText}
-      </BaseCtaButton>
+      {!isNextButtonHidden && (
+        <BaseCtaButton
+          className="xs:w-auto xs:min-w-80 w-full"
+          disabled={isNextStepDisabled}
+          type={onNext ? 'button' : 'submit'}
+          variant={isNextButtonDimmed ? 'ghost' : 'default'}
+          onClick={onNext || undefined}
+        >
+          {nextButtonText}
+        </BaseCtaButton>
+      )}
     </div>
   )
 }
