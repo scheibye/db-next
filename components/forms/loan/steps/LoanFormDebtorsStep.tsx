@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { RadioGroup } from '@base-ui-components/react/radio-group'
 import { GroupIcon, InfoIcon, UserIcon, UsersIcon, UsersRoundIcon } from 'lucide-react'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import { LoanFormHeader, LoanFormHeaderTitle } from '@/components/forms/loan/LoanFormHeader'

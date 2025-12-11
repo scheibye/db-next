@@ -1,4 +1,4 @@
-import { Radio } from '@base-ui-components/react/radio'
+import { Radio } from '@base-ui/react/radio'
 import { CheckCircle2Icon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { LucideIcon } from 'lucide-react'
