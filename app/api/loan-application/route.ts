@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+export const runtime = "nodejs";
+export const preferredRegion = ["arn1", "fra1"]; // Stockholm + Frankfurt
+
 // Tænk på dette som en "facade".
 // Senere kan du herinde kalde din egen backend-API med fetch til fx https://api.danskboliglaan.dk/...
 
