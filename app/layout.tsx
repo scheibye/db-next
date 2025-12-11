@@ -2,7 +2,6 @@ import '@/app/globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
 import Script from 'next/script'
 import { Providers } from '@/app/providers'
-import { Footer } from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 // Variable font
