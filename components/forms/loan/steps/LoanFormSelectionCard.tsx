@@ -24,7 +24,7 @@ export function LoanFormSelectionCard({
       <Radio.Root
         className={cn(
           'border-brand-border relative flex cursor-pointer flex-col items-center gap-3 rounded-xl border p-6 transition-colors sm:p-8',
-          'hover:bg-brand-primary/10',
+          'hover:bg-brand-primary/10 active:bg-brand-primary/10',
           isSelected && 'bg-brand-primary/15 border-brand-primary/75'
         )}
         value={value}

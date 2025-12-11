@@ -30,17 +30,17 @@ export function LoanFormSuccessStep() {
 
         <ul className="xs:*:flex-row space-y-4 text-sm text-balance *:flex *:flex-col *:items-center *:justify-center *:gap-2">
           <li>
-            <ClockIcon className="text-brand-primary size-4 shrink-0" />
+            <ClockIcon className="text-brand-primary size-4.5 shrink-0" />
             Få svar inden for få timer i stedet for 24 timer
           </li>
 
           <li>
-            <FileCheckIcon className="text-brand-primary size-4 shrink-0" />
+            <FileCheckIcon className="text-brand-primary size-4.5 shrink-0" />
             Få et mere præcist og personligt lånetilbud
           </li>
 
           <li>
-            <ShieldIcon className="text-brand-primary size-4 shrink-0" />
+            <ShieldIcon className="text-brand-primary size-4.5 shrink-0" />
             Sikker login med MitID • Tager kun 3-5 minutter
           </li>
         </ul>
@@ -49,10 +49,8 @@ export function LoanFormSuccessStep() {
           Fortsæt <span className="xs:inline hidden">til budget med MitID</span>
         </BaseCtaButton>
 
-        <p>
-          <small className="text-xs">
-            Åbnes i et nyt vindue så du kan henvise til dine oplysninger
-          </small>
+        <p className="text-xs leading-relaxed text-balance">
+          Åbnes i et nyt vindue så du kan henvise til dine oplysninger
         </p>
       </div>
 
@@ -60,8 +58,8 @@ export function LoanFormSuccessStep() {
 
       <div className="[&_a]:text-brand-primary text-center text-balance [&_a]:underline [&_a]:hover:no-underline">
         <p>
-          Har du spørgsmål? Kontakt os på <a href="tel:+4535953500">+45 3595 3500</a> eller{' '}
-          <a href="mailto:soren@danskboliglaan.dk">soren@danskboliglaan.dk</a>
+          Har du spørgsmål? Kontakt os på <a href="tel:+4535953500">+45&nbsp;3595&nbsp;3500</a>{' '}
+          eller <a href="mailto:soren@danskboliglaan.dk">soren@danskboliglaan.dk</a>
         </p>
       </div>
     </>
