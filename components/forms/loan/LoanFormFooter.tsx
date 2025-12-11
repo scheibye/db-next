@@ -5,14 +5,18 @@ import { cn } from '@/lib/utils'
 
 export function LoanFormFooter({
   className,
-  isOptional = false,
+  isNextButtonDimmed = false,
   isNextStepDisabled = false,
+  previousButtonText = 'Tilbage',
+  nextButtonText = 'Fortsæt',
   onNext,
   onPrevious,
 }: {
   className?: string
-  isOptional?: boolean
+  isNextButtonDimmed?: boolean
   isNextStepDisabled?: boolean
+  previousButtonText?: string
+  nextButtonText?: string
   onNext?: () => void
   onPrevious?: () => void
 }) {
@@ -23,16 +27,17 @@ export function LoanFormFooter({
         type="button"
         onClick={onPrevious}
       >
-        Tilbage
+        {previousButtonText}
       </button>
 
       <BaseCtaButton
         className="xs:w-auto xs:min-w-80 w-full"
         disabled={isNextStepDisabled}
         type={onNext ? 'button' : 'submit'}
+        variant={isNextButtonDimmed ? 'ghost' : 'default'}
         onClick={onNext || undefined}
       >
-        {isOptional ? 'Spring over' : 'Fortsæt'}
+        {nextButtonText}
       </BaseCtaButton>
     </div>
   )

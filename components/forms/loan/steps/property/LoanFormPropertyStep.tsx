@@ -34,6 +34,8 @@ export function LoanFormPropertyStep({
     formData.property?.dawaResult ?? null
   )
 
+  const isNextButtonDimmed = !selectedValue
+
   function handleSubmit() {
     const address = selectedValue?.tekst ?? ''
 
@@ -83,7 +85,11 @@ export function LoanFormPropertyStep({
           )}
         </div>
 
-        <LoanFormFooter isOptional={isOptional} onPrevious={onPreviousStep} />
+        <LoanFormFooter
+          isNextButtonDimmed={isNextButtonDimmed}
+          nextButtonText={isNextButtonDimmed ? 'Spring over' : 'Fortsæt'}
+          onPrevious={onPreviousStep}
+        />
       </form>
     </>
   )
