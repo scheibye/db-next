@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { LoanFormProgress } from '@/components/forms/loan/LoanFormProgress'
 import { LoanFormChildrenStep } from '@/components/forms/loan/steps/LoanFormChildrenStep'
 import { LoanFormContactStep } from '@/components/forms/loan/steps/LoanFormContactStep'
 import { LoanFormDebtorsStep } from '@/components/forms/loan/steps/LoanFormDebtorsStep'
@@ -16,6 +17,8 @@ import { BaseSeparator } from '@/components/ui/BaseSeparator'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
 import { EntryPath } from '@/types/loan-form'
+
+const TOTAL_STEPS = 9
 
 export function LoanForm({ className }: { className?: string }) {
   const formRef = useRef<HTMLDivElement>(null)
@@ -72,66 +75,84 @@ export function LoanForm({ className }: { className?: string }) {
     <div
       ref={formRef}
       className={cn(
-        'bg-brand-card rounded-4xl py-12 lg:px-12 lg:pt-20 lg:pb-18 xl:shadow-2xl',
+        'bg-brand-card relative xl:overflow-hidden xl:rounded-3xl xl:shadow-2xl',
         className
       )}
     >
-      <div className="xl:mx-auto xl:max-w-200">
-        {step === 0 && (
-          <LoanFormContactStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+      {step <= TOTAL_STEPS && (
+        <LoanFormProgress
+          currentStep={step}
+          totalSteps={TOTAL_STEPS}
+          address={formData.property?.address ?? null}
+          loanAmount={formData.base?.loanAmount ?? null}
+          downPayment={formData.base?.payout ?? null}
+          currentListingPrice={formData.aiPricing?.currentListingPrice ?? null}
+          pricePerSqm={formData.aiPricing?.pricePerSqm ?? null}
+        />
+      )}
 
-        {step === 1 && (
-          <LoanFormPropertyStep
-            isOptional={true}
-            onNextStep={handlePropertyNextStep}
-            onPreviousStep={handlePreviousStep}
-          />
-        )}
+      <div className="pt-8 lg:px-12 lg:pt-12 lg:pb-18">
+        <div className="xl:mx-auto xl:max-w-200">
+          {step === 1 && (
+            <LoanFormContactStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 2 && (
-          <LoanFormPropertyReviewStep
-            onNextStep={handleNextStep}
-            onPreviousStep={handlePreviousStep}
-          />
-        )}
+          {step === 2 && (
+            <LoanFormPropertyStep
+              isOptional={true}
+              onNextStep={handlePropertyNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
 
-        {/* Shared steps */}
-        {step === 3 && (
-          <LoanFormHousingStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 3 && (
+            <LoanFormPropertyReviewStep
+              onNextStep={handleNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
 
-        {step === 4 && (
-          <LoanFormMaritalStatusStep
-            onNextStep={handleNextStep}
-            onPreviousStep={handlePreviousStep}
-          />
-        )}
+          {/* Shared steps */}
+          {step === 4 && (
+            <LoanFormHousingStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 5 && (
-          <LoanFormDebtorsStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 5 && (
+            <LoanFormMaritalStatusStep
+              onNextStep={handleNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
 
-        {step === 6 && (
-          <LoanFormChildrenStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 6 && (
+            <LoanFormDebtorsStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 7 && (
-          <LoanFormIdentityStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 7 && (
+            <LoanFormChildrenStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 8 && (
-          <LoanFormSubmissionStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 8 && (
+            <LoanFormIdentityStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 9 && <LoanFormSuccessStep />}
+          {step === 9 && (
+            <LoanFormSubmissionStep
+              onNextStep={handleNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
+
+          {/* Success step */}
+          {step === TOTAL_STEPS + 1 && <LoanFormSuccessStep />}
+        </div>
       </div>
 
       {/* Trustpilot widget */}
-      <div className="xl:hidden">
-        <BaseSeparator className="my-12" />
+      <div className="mt-12 xl:hidden">
+        <BaseSeparator />
 
-        <div className="flex justify-center">
+        <div className="my-8 flex justify-center">
           <div
             className="trustpilot-widget"
             data-locale="da-DK"

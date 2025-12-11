@@ -59,12 +59,7 @@ export default function LoanFormPropertyStepInput({
         <BaseLabel htmlFor={id}>Adresse</BaseLabel>
         <Autocomplete.Input
           render={
-            <BaseInput
-              id={id}
-              className="pr-15"
-              placeholder="Indtast adresse, postnummer og by"
-              autoComplete="off"
-            />
+            <BaseInput id={id} placeholder="Indtast adresse, postnummer og by" autoComplete="off" />
           }
         />
       </div>

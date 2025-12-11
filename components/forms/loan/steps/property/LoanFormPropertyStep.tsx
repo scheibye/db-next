@@ -43,8 +43,8 @@ export function LoanFormPropertyStep({
 
     updateFormData({
       property: {
-        address: address,
-        dawaResult: selectedValue ?? null,
+        address,
+        dawaResult: selectedValue,
       },
     })
 

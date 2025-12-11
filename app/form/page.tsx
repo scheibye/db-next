@@ -9,16 +9,16 @@ export default function FormPage() {
   return (
     <>
       <SimpleHero
-        className="hidden xl:block xl:max-h-120 2xl:max-h-144"
+        className="hidden xl:block xl:h-120 2xl:h-144"
         label="Dansk Boliglån"
         title="Få et gratis tilbud"
         withTrustpilot={true}
       />
 
-      {/* Z-index to be above the hero */}
+      {/* Z-index is to be above the hero */}
       <SectionContainer className="z-10 xl:pb-24" noPadding={true}>
         <SectionContainerInner>
-          <LoanForm className="lg:col-start-2 lg:col-end-12 xl:-mt-32" />
+          <LoanForm className="lg:col-span-12 xl:col-start-2 xl:col-end-12 xl:-mt-32" />
         </SectionContainerInner>
       </SectionContainer>
     </>

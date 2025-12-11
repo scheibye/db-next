@@ -31,7 +31,7 @@ export function LoanFormPropertyReviewStep({
   onNextStep: () => void
   onPreviousStep: () => void
 }) {
-  const { formData } = useLoanFormContext()
+  const { formData, updateFormData } = useLoanFormContext()
 
   // Address is guaranteed to be set at this point
   const { data, isLoading, error } = useQuery<PropertyLookupData>({
@@ -39,6 +39,17 @@ export function LoanFormPropertyReviewStep({
     queryFn: () => fetchPropertyLookup(formData.property!.address),
     retry: false, // Do not retry on error
   })
+
+  function handleNextStep() {
+    updateFormData({
+      aiPricing: {
+        currentListingPrice: data?.currentListingPrice ?? null,
+        pricePerSqm: data?.pricePerSqm ?? null,
+      },
+    })
+
+    onNextStep()
+  }
 
   if (isLoading) {
     return <LoadingState isLoading={isLoading} />
@@ -100,7 +111,7 @@ export function LoanFormPropertyReviewStep({
         )}
       </div>
 
-      <LoanFormFooter onNext={onNextStep} onPrevious={onPreviousStep} />
+      <LoanFormFooter onNext={handleNextStep} onPrevious={onPreviousStep} />
     </>
   )
 }

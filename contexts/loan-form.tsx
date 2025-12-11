@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from 'react'
 import { EntryPath } from '@/types/loan-form'
 import type { LoanFormState } from '@/types/loan-form'
 
-const INITIAL_STEP = 0
+const INITIAL_STEP = 1
 
 interface LoanFormContextType {
   step: number
@@ -40,6 +40,10 @@ export function LoanFormProvider({ children }: { children: React.ReactNode }) {
     property: {
       address: '',
       dawaResult: null,
+    },
+    aiPricing: {
+      currentListingPrice: null,
+      pricePerSqm: null,
     },
     numberOfDebtors: null,
     debtors: [],
