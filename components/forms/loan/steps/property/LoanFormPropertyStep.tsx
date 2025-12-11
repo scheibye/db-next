@@ -1,7 +1,7 @@
 'use client'
 
 import { useId, useState } from 'react'
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps'
+import { APIProvider } from '@vis.gl/react-google-maps'
 import { CheckCircleIcon, InfoIcon, MapPinIcon } from 'lucide-react'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import {
@@ -10,6 +10,8 @@ import {
   LoanFormHeaderTitle,
 } from '@/components/forms/loan/LoanFormHeader'
 import LoanFormPropertyStepInput from '@/components/forms/loan/steps/property/LoanFormPropertyStepInput'
+import { StandardMap } from '@/components/maps/StandardMap'
+import { StreetViewMap } from '@/components/maps/StreetViewMap'
 import { BaseAlert, BaseAlertDescription, BaseAlertTitle } from '@/components/ui/BaseAlert'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { env } from '@/env'
@@ -101,19 +103,25 @@ function PropertyDetails({ selectedValue }: { selectedValue: DawaAddressAutocomp
       <div className="space-y-4">
         {selectedValue.adresse.x && selectedValue.adresse.y ? (
           // If the address has coordinates - show the map
-          <div className="aspect-video w-full overflow-hidden rounded-xl">
+          <div className="space-y-6">
             <APIProvider apiKey={env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
-              <Map
-                defaultCenter={{
-                  lng: selectedValue.adresse.x,
-                  lat: selectedValue.adresse.y,
-                }}
-                defaultZoom={16}
-                gestureHandling={'greedy'}
-                disableDefaultUI={true}
-              >
-                <Marker position={{ lat: selectedValue.adresse.y, lng: selectedValue.adresse.x }} />
-              </Map>
+              <div className="aspect-video w-full overflow-hidden rounded-xl">
+                <StandardMap
+                  position={{
+                    lat: selectedValue.adresse.y,
+                    lng: selectedValue.adresse.x,
+                  }}
+                />
+              </div>
+
+              <div className="aspect-video w-full overflow-hidden rounded-xl">
+                <StreetViewMap
+                  position={{
+                    lat: selectedValue.adresse.y,
+                    lng: selectedValue.adresse.x,
+                  }}
+                />
+              </div>
             </APIProvider>
           </div>
         ) : (
