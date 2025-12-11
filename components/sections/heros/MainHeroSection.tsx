@@ -5,6 +5,7 @@ import {
   SectionContainer,
   SectionContainerInner,
 } from '@/components/layout/containers/SectionContainer'
+import { TrustpilotWidget } from '@/components/ui/TrustpilotWidget'
 
 export function MainHeroSection() {
   return (
@@ -26,19 +27,7 @@ export function MainHeroSection() {
               Uden bøvl – og uden banken
             </h1>
 
-            {/* Trustpilot widget */}
-            <div className="hidden xl:block">
-              <div
-                className="trustpilot-widget"
-                data-locale="da-DK"
-                data-template-id="53aa8807dec7e10d38f59f32"
-                data-businessunit-id="5ed6a20389c572000158ee34"
-                data-token="1a6834da-1b77-4f9f-98e8-bac56ad3f87e"
-                data-style-width="255px"
-                data-style-height="120px"
-                data-theme="dark"
-              />
-            </div>
+            <TrustpilotWidget className="hidden xl:block" theme="dark" />
           </div>
         </SectionContainerInner>
       </SectionContainer>
