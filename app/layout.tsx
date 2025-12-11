@@ -50,8 +50,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="da" className={ubuntu_sans.variable}>
-      <head></head>
-
       <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
         <div className="isolate">
           {gtmId && (
@@ -83,11 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </>
           )}
 
-          <Providers>
-            {children}
-          </Providers>
-
-          <Footer />
+          <Providers>{children}</Providers>
 
           {/* Trustpilot script */}
           <Script
