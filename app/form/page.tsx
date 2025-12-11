@@ -18,7 +18,7 @@ export default function FormPage() {
       {/* Z-index is to be above the hero */}
       <SectionContainer className="z-10 xl:pb-24" noPadding={true}>
         <SectionContainerInner>
-          <LoanForm className="lg:col-span-12 xl:col-start-2 xl:col-end-12 xl:-mt-32" />
+          <LoanForm className="lg:col-span-12 xl:-mt-32 2xl:col-start-2 2xl:col-end-12" />
         </SectionContainerInner>
       </SectionContainer>
     </>

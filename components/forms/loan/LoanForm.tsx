@@ -17,6 +17,7 @@ import { BaseSeparator } from '@/components/ui/BaseSeparator'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
 import { EntryPath } from '@/types/loan-form'
+import { LoanFormTrustSidebar } from './LoanFormTrustSidebar'
 
 const TOTAL_STEPS = 9
 
@@ -91,8 +92,8 @@ export function LoanForm({ className }: { className?: string }) {
         />
       )}
 
-      <div className="pt-8 lg:px-12 lg:pt-12 lg:pb-18">
-        <div className="xl:mx-auto xl:max-w-200">
+      <div className="xl:grid xl:grid-cols-[1fr_auto]">
+        <div className="pt-8 lg:px-12 lg:pt-12 lg:pb-18">
           {step === 1 && (
             <LoanFormContactStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
           )}
@@ -146,6 +147,8 @@ export function LoanForm({ className }: { className?: string }) {
           {/* Success step */}
           {step === TOTAL_STEPS + 1 && <LoanFormSuccessStep />}
         </div>
+
+        <LoanFormTrustSidebar className="hidden xl:block xl:w-sm" />
       </div>
 
       {/* Trustpilot widget */}

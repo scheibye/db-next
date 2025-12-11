@@ -72,7 +72,7 @@ export function LoanFormProgress({
 
             {hasData && (
               <span className="hidden xl:flex xl:items-center xl:gap-3">
-                <span className="text-brand-dark/25">•</span>
+                {loanAmount && <span className="text-brand-dark/25">•</span>}
                 <span className="flex min-w-0 items-center gap-2">
                   {loanAmount && (
                     <span className="flex items-center gap-1.5">
