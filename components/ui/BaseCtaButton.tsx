@@ -11,8 +11,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          '[&>[data-slot="icon"]]:bg-brand-dusk [&>[data-slot="icon"]>svg]:fill-brand-primary',
-        light: '[&>[data-slot="icon"]]:bg-brand-card [&>[data-slot="icon"]>svg]:fill-brand-dark',
+          '[&>[data-slot="text"]]:group-disabled:bg-brand-primary [&>[data-slot="text"]]:group-disabled:text-brand-card [&>[data-slot="text"]]:group-hover:bg-brand-primary-soft [&>[data-slot="text"]]:group-hover:text-brand-dark [&>[data-slot="text"]]:text-brand-card [&>[data-slot="text"]]:bg-brand-primary [&>[data-slot="icon"]]:bg-brand-dusk [&>[data-slot="icon"]>svg]:fill-brand-primary',
+        light:
+          '[&>[data-slot="text"]]:group-disabled:bg-brand-primary [&>[data-slot="text"]]:group-disabled:text-brand-card [&>[data-slot="text"]]:group-hover:bg-brand-primary-soft [&>[data-slot="text"]]:group-hover:text-brand-dark [&>[data-slot="text"]]:text-brand-card [&>[data-slot="text"]]:bg-brand-primary [&>[data-slot="icon"]]:bg-brand-card [&>[data-slot="icon"]>svg]:fill-brand-dark',
+        ghost:
+          '[&>[data-slot="text"]]:text-brand-dark [&>[data-slot="text"]]:bg-transparent [&>[data-slot="icon"]]:bg-transparent [&>[data-slot="icon"]>svg]:fill-brand-primary',
       },
       size: {
         md: 'h-14 sm:h-17.5 text-lg sm:text-xl 2xl:text-2xl',
@@ -64,7 +67,7 @@ export function BaseCtaButton({
 function BaseCtaButtonText({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="bg-brand-primary group-disabled:bg-brand-primary text-brand-card group-disabled:text-brand-card group-hover:bg-brand-primary-soft group-hover:text-brand-dark inline-flex h-full grow items-center justify-center px-6 text-center transition-all xl:px-8 2xl:px-12"
+      className="inline-flex h-full grow items-center justify-center px-6 text-center transition-all xl:px-8 2xl:px-12"
       data-slot="text"
     >
       {children}

@@ -14,6 +14,8 @@ import { BaseField, BaseFieldError, BaseFieldLabel } from '@/components/ui/BaseF
 import { BaseInput } from '@/components/ui/BaseInput'
 import { BaseSeparator } from '@/components/ui/BaseSeparator'
 import { useLoanFormContext } from '@/contexts/loan-form'
+import { cprSchema } from '@/types/schemas/cpr-number'
+import { formatCprNumber } from '@/utils/validation'
 import type { LoanFormState } from '@/types/loan-form'
 
 const additionalDebtorSchema = z.object({
@@ -21,14 +23,14 @@ const additionalDebtorSchema = z.object({
   lastName: z.string().min(1, 'Efternavn er påkrævet').trim(),
   email: z.email('Ugyldig e-mail adresse').min(1, 'E-mail adresse er påkrævet').trim(),
   phone: z.string().min(1, 'Mobilnummer er påkrævet').trim(),
-  cprNumber: z.string().min(1, 'CPR er påkrævet').trim(),
+  cprNumber: cprSchema,
 })
 
 type AdditionalDebtor = z.infer<typeof additionalDebtorSchema>
 
 function createFormSchema(numberOfDebtors: number) {
   const schema: Record<string, z.ZodTypeAny> = {
-    mainDebtorCprNumber: z.string().min(1, 'CPR er påkrævet').trim(),
+    mainDebtorCprNumber: cprSchema,
   }
 
   // Add schema for additional debtors (starting from debtor 2)
@@ -158,7 +160,13 @@ export function LoanFormIdentityStep({
                   id={`${id}-mainDebtorCprNumber`}
                   placeholder="DDMMÅÅ-XXXX"
                   aria-invalid={fieldState.invalid}
+                  inputMode="numeric"
                   {...field}
+                  // Override the onChange handler to format CPR number
+                  onChange={(event) => {
+                    const formatted = formatCprNumber(event.target.value)
+                    field.onChange(formatted)
+                  }}
                 />
                 {fieldState.invalid && <BaseFieldError errors={[fieldState.error]} />}
               </BaseField>
@@ -276,7 +284,13 @@ export function LoanFormIdentityStep({
                             id={`${id}-${fieldPrefix}-cprNumber`}
                             placeholder="DDMMÅÅ-XXXX"
                             aria-invalid={fieldState.invalid}
+                            inputMode="numeric"
                             {...field}
+                            // Override the onChange handler to format CPR number
+                            onChange={(event) => {
+                              const formatted = formatCprNumber(event.target.value)
+                              field.onChange(formatted)
+                            }}
                           />
                           {fieldState.invalid && <BaseFieldError errors={[fieldState.error]} />}
                         </BaseField>

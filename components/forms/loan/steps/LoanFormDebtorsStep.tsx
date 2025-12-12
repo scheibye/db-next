@@ -1,5 +1,4 @@
-import { useId, useState } from 'react'
-import { RadioGroup } from '@base-ui-components/react/radio-group'
+import { useState } from 'react'
 import { GroupIcon, InfoIcon, UserIcon, UsersIcon, UsersRoundIcon } from 'lucide-react'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import { LoanFormHeader, LoanFormHeaderTitle } from '@/components/forms/loan/LoanFormHeader'
@@ -23,18 +22,17 @@ export function LoanFormDebtorsStep({
   onNextStep: () => void
   onPreviousStep: () => void
 }) {
-  const id = useId()
   const { formData, updateFormData } = useLoanFormContext()
 
   const [selectedNumberOfDebtors, setSelectedNumberOfDebtors] = useState<string | null>(
     formData.numberOfDebtors?.toString() ?? null
   )
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  function handleSelection(value: NumberOfDebtors) {
+    setSelectedNumberOfDebtors(String(value))
 
     updateFormData({
-      numberOfDebtors: Number.parseInt(selectedNumberOfDebtors as string) as NumberOfDebtors,
+      numberOfDebtors: value,
     })
 
     onNextStep()
@@ -43,38 +41,30 @@ export function LoanFormDebtorsStep({
   return (
     <>
       <LoanFormHeader>
-        <LoanFormHeaderTitle id={`${id}-title`}>Hvor mange skal stå på lånet?</LoanFormHeaderTitle>
+        <LoanFormHeaderTitle>Hvor mange skal stå på lånet?</LoanFormHeaderTitle>
       </LoanFormHeader>
 
-      <form onSubmit={handleSubmit}>
-        <RadioGroup
-          className="grid grid-cols-2 gap-4"
-          value={selectedNumberOfDebtors}
-          onValueChange={(value) => setSelectedNumberOfDebtors(value as string)}
-          required={true}
-          aria-labelledby={`${id}-title`}
-        >
-          {options.map((option) => (
-            <LoanFormSelectionCard
-              key={option.value}
-              icon={option.icon}
-              label={option.label}
-              value={option.value.toString()}
-            />
-          ))}
-        </RadioGroup>
+      <div className="grid grid-cols-2 gap-4">
+        {options.map((option) => (
+          <LoanFormSelectionCard
+            key={option.value}
+            isSelected={selectedNumberOfDebtors === String(option.value)}
+            onClick={() => handleSelection(option.value)}
+            {...option}
+          />
+        ))}
+      </div>
 
-        <BaseAlert className="mt-6">
-          <InfoIcon />
-          <BaseAlertDescription>
-            <span>
-              <strong>Tip:</strong> To ansøgere øger chancen for godkendelse markant.
-            </span>
-          </BaseAlertDescription>
-        </BaseAlert>
+      <BaseAlert className="mt-6">
+        <InfoIcon />
+        <BaseAlertDescription>
+          <span>
+            <strong>Tip:</strong> To ansøgere øger chancen for godkendelse markant.
+          </span>
+        </BaseAlertDescription>
+      </BaseAlert>
 
-        <LoanFormFooter isNextStepDisabled={!selectedNumberOfDebtors} onPrevious={onPreviousStep} />
-      </form>
+      <LoanFormFooter isNextStepDisabled={!selectedNumberOfDebtors} onPrevious={onPreviousStep} />
     </>
   )
 }

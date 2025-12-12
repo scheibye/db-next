@@ -1,6 +1,8 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { LoanFormProgress } from '@/components/forms/loan/LoanFormProgress'
 import { LoanFormChildrenStep } from '@/components/forms/loan/steps/LoanFormChildrenStep'
 import { LoanFormContactStep } from '@/components/forms/loan/steps/LoanFormContactStep'
 import { LoanFormDebtorsStep } from '@/components/forms/loan/steps/LoanFormDebtorsStep'
@@ -11,13 +13,35 @@ import { LoanFormPropertyReviewStep } from '@/components/forms/loan/steps/LoanFo
 import { LoanFormSubmissionStep } from '@/components/forms/loan/steps/LoanFormSubmissionStep'
 import { LoanFormSuccessStep } from '@/components/forms/loan/steps/LoanFormSuccessStep'
 import { LoanFormPropertyStep } from '@/components/forms/loan/steps/property/LoanFormPropertyStep'
+import { BaseSeparator } from '@/components/ui/BaseSeparator'
+import { TrustpilotWidget } from '@/components/ui/TrustpilotWidget'
 import { useLoanFormContext } from '@/contexts/loan-form'
 import { cn } from '@/lib/utils'
 import { EntryPath } from '@/types/loan-form'
+import { LoanFormTrustSidebar } from './LoanFormTrustSidebar'
+
+const TOTAL_STEPS = 9
 
 export function LoanForm({ className }: { className?: string }) {
+  const formRef = useRef<HTMLDivElement>(null)
+
   const router = useRouter()
   const { formData, step, nextStep, previousStep } = useLoanFormContext()
+
+  // Scroll to top of form when step changes
+  useEffect(() => {
+    // Don't scroll on initial load
+    if (step === 0) {
+      return
+    }
+
+    if (formRef.current) {
+      formRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  }, [step])
 
   function handleNextStep() {
     nextStep()
@@ -51,57 +75,90 @@ export function LoanForm({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn('bg-brand-card rounded-4xl py-12 lg:px-12 lg:py-24 xl:shadow-2xl', className)}
+      ref={formRef}
+      className={cn(
+        'bg-brand-card relative xl:overflow-hidden xl:rounded-3xl xl:shadow-2xl',
+        className
+      )}
     >
-      <div className="xl:mx-auto xl:max-w-200">
-        {step === 0 && (
-          <LoanFormContactStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+      {step <= TOTAL_STEPS && (
+        <LoanFormProgress
+          currentStep={step}
+          totalSteps={TOTAL_STEPS}
+          address={formData.property?.address ?? null}
+          loanAmount={formData.base?.loanAmount ?? null}
+          downPayment={formData.base?.payout ?? null}
+          currentListingPrice={formData.aiPricing?.currentListingPrice ?? null}
+          pricePerSqm={formData.aiPricing?.pricePerSqm ?? null}
+        />
+      )}
 
-        {step === 1 && (
-          <LoanFormPropertyStep
-            isOptional={true}
-            onNextStep={handlePropertyNextStep}
-            onPreviousStep={handlePreviousStep}
-          />
-        )}
+      <div className="xl:grid xl:grid-cols-[1fr_auto]">
+        <div className="pt-8 lg:px-12 lg:pt-12 lg:pb-18">
+          {step === 1 && (
+            <LoanFormContactStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 2 && (
-          <LoanFormPropertyReviewStep
-            onNextStep={handleNextStep}
-            onPreviousStep={handlePreviousStep}
-          />
-        )}
+          {step === 2 && (
+            <LoanFormPropertyStep
+              isOptional={true}
+              onNextStep={handlePropertyNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
 
-        {/* Shared steps */}
-        {step === 3 && (
-          <LoanFormHousingStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 3 && (
+            <LoanFormPropertyReviewStep
+              onNextStep={handleNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
 
-        {step === 4 && (
-          <LoanFormMaritalStatusStep
-            onNextStep={handleNextStep}
-            onPreviousStep={handlePreviousStep}
-          />
-        )}
+          {/* Shared steps */}
+          {step === 4 && (
+            <LoanFormHousingStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 5 && (
-          <LoanFormDebtorsStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 5 && (
+            <LoanFormMaritalStatusStep
+              onNextStep={handleNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
 
-        {step === 6 && (
-          <LoanFormChildrenStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 6 && (
+            <LoanFormDebtorsStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 7 && (
-          <LoanFormIdentityStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 7 && (
+            <LoanFormChildrenStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 8 && (
-          <LoanFormSubmissionStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
-        )}
+          {step === 8 && (
+            <LoanFormIdentityStep onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          )}
 
-        {step === 9 && <LoanFormSuccessStep />}
+          {step === 9 && (
+            <LoanFormSubmissionStep
+              onNextStep={handleNextStep}
+              onPreviousStep={handlePreviousStep}
+            />
+          )}
+
+          {/* Success step */}
+          {step === TOTAL_STEPS + 1 && <LoanFormSuccessStep />}
+        </div>
+
+        <LoanFormTrustSidebar className="hidden xl:block xl:w-sm" />
+      </div>
+
+      {/* Trustpilot widget */}
+      <div className="mt-12 xl:hidden">
+        <BaseSeparator />
+
+        <div className="my-8 flex justify-center">
+          <TrustpilotWidget />
+        </div>
       </div>
     </div>
   )

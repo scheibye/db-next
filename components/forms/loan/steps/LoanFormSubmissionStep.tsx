@@ -40,7 +40,7 @@ export function LoanFormSubmissionStep({
     defaultValues: {
       comment: formData.comment ?? '',
       consentTerms: formData.consentTerms ?? false,
-      consentMarketing: formData.consentMarketing ?? true,
+      consentMarketing: formData.consentMarketing ?? false,
     },
   })
 

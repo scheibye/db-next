@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { Autocomplete } from '@base-ui-components/react/autocomplete'
+import { Autocomplete } from '@base-ui/react/autocomplete'
 import { useQuery } from '@tanstack/react-query'
 import { Loader2Icon, MapPinIcon } from 'lucide-react'
 import { useDebounce } from 'use-debounce'
@@ -59,12 +59,7 @@ export default function LoanFormPropertyStepInput({
         <BaseLabel htmlFor={id}>Adresse</BaseLabel>
         <Autocomplete.Input
           render={
-            <BaseInput
-              id={id}
-              className="pr-15"
-              placeholder="Indtast adresse, postnummer og by"
-              autoComplete="off"
-            />
+            <BaseInput id={id} placeholder="Indtast adresse, postnummer og by" autoComplete="off" />
           }
         />
       </div>

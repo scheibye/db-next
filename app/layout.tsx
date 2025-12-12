@@ -2,7 +2,6 @@ import '@/app/globals.css'
 import { Ubuntu_Sans } from 'next/font/google'
 import Script from 'next/script'
 import { Providers } from '@/app/providers'
-import { Footer } from '@/components/layout/Footer'
 import type { Metadata } from 'next'
 
 // Variable font
@@ -50,8 +49,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="da" className={ubuntu_sans.variable}>
-      <head></head>
-
       <body className="bg-brand-card p-global-padding text-brand-dark relative antialiased">
         <div className="isolate">
           {gtmId && (
@@ -83,11 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </>
           )}
 
-          <Providers>
-            {children}
-          </Providers>
-
-          <Footer />
+          <Providers>{children}</Providers>
 
           {/* Trustpilot script */}
           <Script

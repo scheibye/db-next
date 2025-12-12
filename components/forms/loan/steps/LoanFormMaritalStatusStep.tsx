@@ -1,5 +1,4 @@
-import { useId, useState } from 'react'
-import { RadioGroup } from '@base-ui-components/react/radio-group'
+import { useState } from 'react'
 import { FlowerIcon, HeartIcon, HomeIcon, UserCheckIcon, UserIcon } from 'lucide-react'
 import { LoanFormFooter } from '@/components/forms/loan/LoanFormFooter'
 import { LoanFormHeader, LoanFormHeaderTitle } from '@/components/forms/loan/LoanFormHeader'
@@ -23,18 +22,17 @@ export function LoanFormMaritalStatusStep({
   onNextStep: () => void
   onPreviousStep: () => void
 }) {
-  const id = useId()
   const { formData, updateFormData } = useLoanFormContext()
 
   const [selectedMaritalStatus, setSelectedMaritalStatus] = useState<MaritalStatus | null>(
     formData.maritalStatus ?? null
   )
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  function handleSelection(value: MaritalStatus) {
+    setSelectedMaritalStatus(value)
 
     updateFormData({
-      maritalStatus: selectedMaritalStatus,
+      maritalStatus: value,
     })
 
     onNextStep()
@@ -43,24 +41,21 @@ export function LoanFormMaritalStatusStep({
   return (
     <>
       <LoanFormHeader>
-        <LoanFormHeaderTitle id={`${id}-title`}>Hvad er din civilstatus?</LoanFormHeaderTitle>
+        <LoanFormHeaderTitle>Hvad er din civilstatus?</LoanFormHeaderTitle>
       </LoanFormHeader>
 
-      <form onSubmit={handleSubmit}>
-        <RadioGroup
-          className="grid grid-cols-2 gap-4 sm:grid-cols-3"
-          value={selectedMaritalStatus}
-          onValueChange={(value) => setSelectedMaritalStatus(value as MaritalStatus | null)}
-          required={true}
-          aria-labelledby={`${id}-title`}
-        >
-          {options.map((option) => (
-            <LoanFormSelectionCard key={option.value} {...option} />
-          ))}
-        </RadioGroup>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+        {options.map((option) => (
+          <LoanFormSelectionCard
+            key={option.value}
+            isSelected={selectedMaritalStatus === option.value}
+            onClick={() => handleSelection(option.value)}
+            {...option}
+          />
+        ))}
+      </div>
 
-        <LoanFormFooter isNextStepDisabled={!selectedMaritalStatus} onPrevious={onPreviousStep} />
-      </form>
+      <LoanFormFooter isNextButtonHidden={true} onPrevious={onPreviousStep} />
     </>
   )
 }

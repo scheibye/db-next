@@ -31,6 +31,11 @@ export interface LoanFormState {
     dawaResult: DawaAddressAutocompleteResult | null
   }
 
+  aiPricing: {
+    currentListingPrice: number | null
+    pricePerSqm: number | null
+  }
+
   // Debtors
   numberOfDebtors: NumberOfDebtors | null
   debtors: Array<{
